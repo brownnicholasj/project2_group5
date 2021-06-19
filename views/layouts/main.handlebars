@@ -9,7 +9,41 @@
 </head>
 
 <body>
+<header>
+  <nav>
+    <li>Home</li>
+    <li>Dashboard</li>
+    <li>Login</li>
+    <li>Logout</li>
+  </nav>
+
+  <div class="search-field">
+    <form>
+      <label for="search-search">Search:</label>
+      <input type="text" id="search-field">
+    </form>
+  </div>
+</header>
+
+<aside>
+  <div class="next-events">
+    <h3>Event</h3>
+    <p>Next Event(s)</p>
+  </div>
+
+  <div class="calendar">
+    <img src="../../public/images/placeholder.jfif">
+  </div>
+
+  <div class="event-buttons">
+    <button value="New Event"></button>
+    <button value="Delete Event"></button>
+  </div>
+</aside>
+
+<main>
+  {{body}}
+</main>
 
 </body>
-
 </html>
