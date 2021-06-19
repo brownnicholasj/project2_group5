@@ -1,17 +1,17 @@
 const router = require('express').Router();
-const { Project, User } = require('../models');
+const { User, Event } = require('../models');
 const withAuth = require('../util/authorize');
 
 router.get('/', async (req, res) => {
   try {
     // Get all users with their related data
     const userData = await User.findAll({
-    //   include: [
-    //     {
-    //       model: Event,
-    //       attributes: ['name'],
-    //     },
-    //   ],
+      include: [
+        {
+          model: Event,
+          // attributes: ['name'],
+        },
+      ],
     attributes: { exclude: ['password'] },
     });
 
@@ -31,12 +31,12 @@ router.get('/', async (req, res) => {
 router.get('/user/:id', async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id, {
-    //   include: [
-    //     {
-    //       model: Event,
-    //       attributes: ['name'],
-    //     },
-    //   ],
+      include: [
+        {
+          model: Event,
+          // attributes: ['name'],
+        },
+      ],
     attributes: { exclude: ['password'] },
     });
 
