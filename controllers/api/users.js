@@ -1,6 +1,10 @@
+// 
+// Handles CRUD operations for User model
+// 
 const router = require('express').Router();
 const { User } = require('../../models');
 
+// Post a user - Data is in the req.body and req.session
 router.post('/', async (req, res) => {
   try {
     const userData = await User.create(req.body);
@@ -16,6 +20,7 @@ router.post('/', async (req, res) => {
   }
 });
 
+// Update a user  - Data is in the req.body and req.session
 router.put("/:id", async (req, res) => {
   // Update a user by its `email` value
   try {
@@ -32,6 +37,7 @@ router.put("/:id", async (req, res) => {
   }
 });
 
+// Delete a user - Data is in the req.body and req.session
 router.delete("/:id", async (req, res) => {
   // Delete a user by its `email` value
   try {
@@ -46,6 +52,7 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+// Post a login request - Data is in the req.body and req.session
 router.post('/login', async (req, res) => {
   try {
     const userData = await User.findOne({ where: { email: req.body.email } });
@@ -78,6 +85,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
+// Post a logout request - Data is in the req.body and req.session
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
