@@ -16,11 +16,11 @@ User.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    user_name: {
+    username: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-   email: {
+    email: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
@@ -43,7 +43,10 @@ User.init(
         return newUserData;
       },
       beforeUpdate: async (updatedUserData) => {
-        updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+        updatedUserData.password = await bcrypt.hash(
+          updatedUserData.password,
+          10
+        );
         return updatedUserData;
       },
     },
