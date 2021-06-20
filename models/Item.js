@@ -19,14 +19,14 @@ Item.init(
       type: DataTypes.STRING,
     },
     quantity: {
-        type: DataTypes.INTEGER,
-      },
+      type: DataTypes.INTEGER,
+    },
     qty_uom: {
-        type: DataTypes.STRING,
-      },
+      type: DataTypes.STRING,
+    },
     cost_perunit: {
-        type: DataTypes.INTEGER,
-      },
+      type: DataTypes.INTEGER,
+    },
     event_id: {
       type: DataTypes.INTEGER,
       references: {

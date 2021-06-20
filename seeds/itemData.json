@@ -1,0 +1,10 @@
+[
+    {
+        "category": "Food",
+        "name": "Cheese Pizza",
+        "quantity": 1,
+        "qty_uom": "piece",
+        "cost_perunit": 1,
+        "event_id": 1
+    }
+]

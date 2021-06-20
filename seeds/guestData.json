@@ -1,0 +1,10 @@
+[
+    {
+        "guest_type": "First",
+        "first_name": "John",
+        "last_name": "Doe",
+        "email": "jd@email.com",
+        "response": false,
+        "event_id": 1
+    }
+]
