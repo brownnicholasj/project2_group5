@@ -1,9 +1,62 @@
 [
     {
+        "id": 1,
         "name": "Pizza Party",
         "event_type": "Celebration",
         "location_name": "My House",
-        "event_date": "06/19/2021 13:00:00",
+        "location_addr1": "",
+        "location_addr2": "",
+        "location_city": "",
+        "location_state": "",
+        "location_zip": "",
+        "location_country": "",
+        "event_date": "2021-06-29 18:00:00",
+        "event_reference": "",
         "user_id": 1
+    },
+    {
+        "id": 2,
+        "name": "4th of July",
+        "event_type": "Celebration",
+        "location_name": "Park",
+        "location_addr1": "",
+        "location_addr2": "",
+        "location_city": "",
+        "location_state": "",
+        "location_zip": "",
+        "location_country": "",
+        "event_date": "2021-07-04 22:00:00",
+        "event_reference": "",
+        "user_id": 1
+    },
+    {
+        "id": 3,
+        "name": "Halloween",
+        "event_type": "Celebration",
+        "location_name": "Neighborhood",
+        "location_addr1": "",
+        "location_addr2": "",
+        "location_city": "",
+        "location_state": "",
+        "location_zip": "",
+        "location_country": "",
+        "event_date": "2021-10-31 18:00:00",
+        "event_reference": "",
+        "user_id": 2
+    },
+    {
+        "id": 4,
+        "name": "Goldfish Died",
+        "event_type": "Funeral",
+        "location_name": "Bathroom",
+        "location_addr1": "",
+        "location_addr2": "",
+        "location_city": "",
+        "location_state": "",
+        "location_zip": "",
+        "location_country": "",
+        "event_date": "2021-06-30 18:00:00",
+        "event_reference": "",
+        "user_id": 3
     }
 ]
