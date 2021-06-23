@@ -3,26 +3,29 @@
 //
 const router = require('express').Router();
 const { Event } = require('../../models');
-const withAuth = require('../../utils/auth');
+const withAuth = require('../../util/authorize');
 
 // Post an event - Data is in the req.body and req.session
 router.post('/', withAuth, async (req, res) => {
   try {
-    const newEvent = await Event.create({
+    const eventData = await Event.create({
       ...req.body,
       user_id: req.session.user_id,
     });
 
-    res.status(200).json(newEvent);
+    res.status(200).json({
+      message: 'Event created successfully!',
+    });
   } catch (err) {
-    res.status(400).json(err);
+    res.status(400).json({ message: `Error: ${err.message}` });
   }
 });
 
 // Update an event - Data is in the req.body and req.session
 router.put('/:id', withAuth, async (req, res) => {
+  console.log(req.params);
   try {
-    const eventData = await Event.update({
+    const eventData = await Event.update(req.body, {
       where: {
         id: req.params.id,
       },
@@ -35,9 +38,11 @@ router.put('/:id', withAuth, async (req, res) => {
       return;
     }
 
-    res.status(200).json(eventData);
+    res.status(200).json({
+      message: 'Event updated successfully!',
+    });
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json({ message: `Error: ${err.message}` });
   }
 });
 
@@ -57,9 +62,11 @@ router.delete('/:id', withAuth, async (req, res) => {
       return;
     }
 
-    res.status(200).json(eventData);
+    res.status(200).json({
+      message: 'Event deleted successfully!',
+    });
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json({ message: `Error: ${err.message}` });
   }
 });
 
