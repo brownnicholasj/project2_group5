@@ -6,7 +6,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "seed": "node seeds/seed.js",
-    "watch": "nodemon server.js"
+    "watch": "nodemon server.js",
+    "build:css": "tailwind build -i src/style.css -o public/css/style.css"
   },
   "keywords": [],
   "author": "",
@@ -19,7 +20,8 @@
     "express-handlebars": "^5.2.0",
     "express-session": "^1.17.1",
     "mysql2": "^2.2.5",
-    "sequelize": "^6.3.5"
+    "sequelize": "^6.3.5",
+    "tailwindcss": "^2.2.2"
   },
   "devDependencies": {
     "eslint": "^7.12.1",
