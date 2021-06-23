@@ -1,25 +1,74 @@
 const router = require('express').Router();
-const { User, Event } = require('../models');
+const { Event, Guest, Item, User } = require('../models');
 const withAuth = require('../util/authorize');
 
-// home page route
-router.get('/', async (req, res) => {
+// Get all events - Data will be in the res.body
+router.get('/events', async (req, res) => {
   try {
-    // const projectData = await Project.findAll({
-    //   include: [
-    //     {
-    //       model: User,
-    //       attributes: ['name', 'email'],
-    //     },
-    //   ],
-    // });
+    // Get all events and their associated data
+    const eventData = await Event.findAll({
+      include: [
+        {
+          model: Guest,
+        },
+        {
+          model: Item,
+        },
+        {
+          model: User,
+        },
+      ],
+    });
 
-    // const project = projectData.map((data) => data.get({ plain: true }));
+    // res.status(200).json(eventData);
+    // return;
 
-    res.render('home');
+    // Serialize data so the template can read it
+    const events = eventData.map((event) =>
+      event.get({
+        plain: true,
+      })
+    );
+    // Pass serialized data and session flag into template
+    res.render('event', {
+      events,
+      logged_in: req.session.logged_in,
+    });
   } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
+    res.status(500).json({ message: `Error: ${err.message}` });
+  }
+});
+
+// Get an event by id - Data will be in the res.body
+router.get('/events/:id', async (req, res) => {
+  try {
+    const eventData = await Event.findByPk(req.params.id, {
+      include: [
+        {
+          model: Guest,
+        },
+        {
+          model: Item,
+        },
+        {
+          model: User,
+        },
+      ],
+    });
+
+    // res.status(200).json(eventData);
+    // return;
+
+    const event = eventData.get({
+      plain: true,
+    });
+
+    res.render('events', {
+      ...event,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json({ message: `Error: ${err.message}` });
   }
 });
 
