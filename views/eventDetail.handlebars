@@ -1,0 +1,61 @@
+<div class="content-box border-4 px-4 m-1.5 rounded w-10/12 grid grid-cols-1 grid-rows-5 gap-4">
+    <h2 class="col-span-full m-1.5 text-center text-4xl font-bold">Event Details</h2>
+    <form class="block col-span-full row-start-2 row-end-6 grid grid-cols-4 grid-rows-6">
+      {{!-- FIRST ROW --}}
+      <div class="row-start-1 row-span-1 col-start-1 col-span-1 grid justify-items-center">
+        <label class="font-bold">Event Name:</label>
+        <input class="m-1.5 w-10/12 text-center" type="text" id="event-name" value="current name here"/>
+      </div>
+      <div class="row-start-1 row-span-1 col-start-2 col-span-1 grid justify-items-center">
+        <label class="font-bold">Event Type:</label>
+        <input class="m-1.5 w-10/12 text-center" type="text" id="event-type" value="current type here"/>
+      </div>      
+      <div class="row-start-1 row-span-1 col-start-3 col-span-1 grid justify-items-center">
+        <label class="font-bold">Event Date:</label>
+        <input class="m-1.5 w-10/12 text-center" type="text" id="event-date" value="current date here"/>
+      </div>
+      <div class="row-start-1 row-span-1 col-start-4 col-span-1 grid justify-items-center">
+        <label class="font-bold">Days Until Event:</label>
+        <h2 class="m-1.5 w-10/12 text-center">Days Remaining Calc here</h2>
+      </div>
+      {{!-- SECOND ROW --}}
+      <div class="row-start-2 row-span-1 col-start-1 col-span-4 grid justify-items-center">
+        <label class="font-bold">Location Name:</label>
+        <input class="m-1.5 w-10/12 text-center" type="text" id="event-loc-name" value="current loc name here"/>
+      </div>
+      {{!-- THIRD ROW --}}
+      <div class="row-start-3 row-span-1 col-start-1 col-span-2 grid justify-items-center">
+        <label class="font-bold">Location Address 1:</label>
+        <input class="m-1.5 w-10/12 text-center" type="text" id="event-loc-addr1" value="current addr1 here"/>
+      </div>
+      <div class="row-start-3 row-span-1 col-start-3 col-span-2 grid justify-items-center">
+        <label class="font-bold">Location Address 2:</label>
+        <input class="m-1.5 w-10/12 text-center" type="text" id="event-loc-addr2" value="current addr2 here"/>
+      </div>  
+      {{!-- FOURTH ROW --}}
+      <div class="row-start-4 row-span-1 col-start-1 col-span-1 grid justify-items-center">
+        <label class="font-bold">Location City:</label>
+        <input class="m-1.5 w-10/12 text-center" type="text" id="event-loc-city" value="current city here"/>
+      </div>
+      <div class="row-start-4 row-span-1 col-start-2 col-span-1 grid justify-items-center">
+        <label class="font-bold">Location State:</label>
+        <input class="m-1.5 w-10/12 text-center" type="text" id="event-loc-state" value="current state here"/>
+      </div>      
+      <div class="row-start-4 row-span-1 col-start-3 col-span-1 grid justify-items-center">
+        <label class="font-bold">Location Zip:</label>
+        <input class="m-1.5 w-10/12 text-center" type="text" id="event-loc-zip" value="current zip here"/>
+      </div>
+      <div class="row-start-4 row-span-1 col-start-4 col-span-1 grid justify-items-center">
+        <label class="font-bold">Location Country:</label>
+        <input class="m-1.5 w-10/12 text-center" type="text" id="event-loc-ctry" value="current ctry here"/>
+      </div>    
+      {{!-- FIFTH ROW --}}
+      <div class="row-start-5 row-span-1 col-start-1 col-span-4 grid justify-items-center">
+        <label class="font-bold">Event Reference/links:</label>
+        <input class="m-1.5 w-10/12 text-center" type="text" id="event-loc-name" value="current reference name here"/>
+      </div>
+      {{!-- SIXTH ROW --}}
+       <button class="row-start-6 row-span-1 col-start-1 col-span-2 box-border border-2 px-4 rounded m-1.5 font-bold" type="submit" id="event-update-btn">Update</button>
+       <button class="row-start-6 row-span-1 col-start-3 col-span-2 box-border border-2 px-4 rounded m-1.5 font-bold" type="submit" id="event-delete-btn">Delete</button>
+    </form>
+</div>
