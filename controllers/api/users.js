@@ -38,16 +38,17 @@ router.get('/', async (req, res) => {
 });
 
 // Get a user by id - Data will be in the res.body
-router.get('/user/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
-    const userData = await User.findByPk(req.params.id, {
-      include: [
-        {
-          model: Event,
-          // attributes: ['name'],
-        },
-      ],
-    });
+    const userData = await User.findByPk(req.params.id);
+    //   {
+    //   include: [
+    //     {
+    //       model: event,
+    //       // attributes: ['name'],
+    //     },
+    //   ],
+    // });
 
     if (!userData) {
       res.status(404).json({
@@ -60,10 +61,11 @@ router.get('/user/:id', async (req, res) => {
       plain: true,
     });
 
-    res.render('user', {
-      ...user,
-      logged_in: req.session.logged_in,
-    });
+    res.status(200).json(user);
+    // res.render('user', {
+    //   ...user,
+    //   logged_in: req.session.logged_in,
+    // });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -86,13 +88,14 @@ router.post('/', async (req, res) => {
 });
 
 // Update a user  - Data is in the req.body and req.session
-router.put('/:id', async (req, res) => {
+router.put('/', async (req, res) => {
   // Update a user by its `email` value
   try {
     const user = await User.update(req.body, {
       where: {
-        id: req.params.email,
+        email: req.body.email,
       },
+      individualHooks: true,
     });
     if (!user) {
       res.status(404).json({
@@ -156,7 +159,7 @@ router.post('/login', async (req, res) => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
 
-      res.json({
+      res.status(200).json({
         user: userData,
         message: 'You are now logged in!',
       });
