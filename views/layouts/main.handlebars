@@ -9,41 +9,42 @@
 </head>
 
 <body class="bg-gray-600">
-<header>
-  <nav class="container mx-auto px-4">
-    <a href="/" class="inline-block border-4 w-48 h-14 rounded text-center text-4xl m-1.5">Home</a>
-    <a href="/dashboard" class="inline-block border-4 w-48 h-14 rounded text-center text-4xl m-1.5">Dashboard</a>
-    {{#unless logged_in}}   <a href="/login" class="inline-block border-4 w-48 h-14 rounded text-center text-4xl m-1.5">Login</a>
-    {{/unless}}   
-    {{#if logged_in}}   <a href="/" class="inline-block border-4 w-48 h-14 rounded text-center text-4xl m-1.5">Logout</a>
-    {{/if}}
+
+<header class="flex flex-row justify-between items-center bg-gray-200 h-9 w-screen">
+   <nav class="flex flex-row justify-around">
+    <a href="/" class=" p-2 hover:bg-gray-600 hover:text-white">Home</a>
+    <a href="/" class="p-2 hover:bg-gray-600 hover:text-white">Dashboard</a>
+    <a href="/" class="p-2 hover:bg-gray-600 hover:text-white">Login</a>
+    <a href="/" class="p-2 hover:bg-gray-600 hover:text-white">Logout</a>
   </nav>
 
-  <div class="search-field">
-    <form>
-      <label for="search-search">Search:</label>
-      <input type="text" id="search-field">
+  <div class="flex flex-row bg-gray-200">
+    <form class="text-center align-middle px-4 text-gray-200">
+      <input type="text" id="search-field" class="rounded-md" placeholder="Search">
     </form>
   </div>
 </header>
-<main class="content-box px-4 m-1.5 rounded w-full grid grid-cols-6 grid-rows-3 gap-4">
-<aside class="content-box row-start-1 row-span-3 col-start-1 col-span-1">
-  <div class="next-events">
-    <h3>Event</h3>
-    <p>Next Event(s)</p>
-  </div>
 
-  <div class="calendar">
+<main class="flex flex-row bg-blue-400 grid grid-cols-12 h-auto w-screen p-0 m-0">
+  <div id='aside' class="flex flex-column grid col-span-4 box-border bg-red-200 w-60 h-60 m-0 p-0">
+    <div>
+      <h3>Event</h3>
+      <p>Next Event(s)</p>
+    </div>
+
+
+    <div class="calendar">
     <img src="../../public/images/placeholder.jfif">
+    </div>
+
+    <div class="event-buttons">
+      <button value="New Event"></button>
+      <button value="Delete Event"></button>
+    </div>
   </div>
 
-  <div class="event-buttons">
-    <button value="New Event"></button>
-    <button value="Delete Event"></button>
+  <div id="main" class="col-span-8">
+    {{body}}
   </div>
-</aside>
-<section class="content-box row-start-1 row-span-3 col-start-2 col-span-7">{{{body}}}</section>
-</main>
-
 </body>
 </html>
