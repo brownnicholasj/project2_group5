@@ -5,16 +5,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Event Planning</title>
-  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/css/style.css" />
 </head>
 
 <body class="bg-gray-600">
 <header>
   <nav class="container mx-auto px-4">
-    <a href="/" class="inline-block border-4 w-48 h-24 text-center align-middle">Home</a>
-    <a href="/" class="inline-block border-4 w-48 h-24 text-center align-middle">Dashboard</a>
-    <a href="/" class="inline-block border-4 w-48 h-24 text-center align-middle">Login</a>
-    <a href="/" class="inline-block border-4 w-48 h-24 text-center align-middle">Logout</a>
+    <a href="/" class="inline-block border-4 w-48 h-14 rounded text-center text-4xl m-1.5">Home</a>
+    <a href="/" class="inline-block border-4 w-48 h-14 rounded text-center text-4xl m-1.5">Dashboard</a>
+    {{#unless loggedIn}}   <a href="/" class="inline-block border-4 w-48 h-14 rounded text-center text-4xl m-1.5">Login</a>
+    {{/unless}}   
+    {{#if loggedIn}}   <a href="/" class="inline-block border-4 w-48 h-14 rounded text-center text-4xl m-1.5">Logout</a>
+    {{/if}}
   </nav>
 
   <div class="search-field">
@@ -24,8 +26,8 @@
     </form>
   </div>
 </header>
-
-<aside>
+<main class="content-box px-4 m-1.5 rounded w-full grid grid-cols-6 grid-rows-3 gap-4">
+<aside class="content-box row-start-1 row-span-3 col-start-1 col-span-1">
   <div class="next-events">
     <h3>Event</h3>
     <p>Next Event(s)</p>
@@ -40,9 +42,7 @@
     <button value="Delete Event"></button>
   </div>
 </aside>
-
-<main>
-  {{body}}
+<section class="content-box row-start-1 row-span-3 col-start-2 col-span-7">{{{body}}}</section>
 </main>
 
 </body>
