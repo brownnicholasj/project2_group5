@@ -138,6 +138,7 @@ router.get('/users/:user_id/events/:id', async (req, res) => {
   }
 });
 
+// CREATED AND WORKING BY NIC 6/24
 router.get('/users/:user_id/events/:id/eventDetails', async (req, res) => {
   try {
     const eventData = await Event.findByPk(req.params.id);
@@ -148,6 +149,41 @@ router.get('/users/:user_id/events/:id/eventDetails', async (req, res) => {
 
     res.render('eventDetail', {
       event,
+      logged_in: req.session.logged_in,
+      user_id: req.session.user_id,
+    });
+  } catch (err) {
+    res.status(500).json({ message: `Error: ${err.message}` });
+  }
+});
+
+router.get('/users/:user_id/events/:id/guestDetails', async (req, res) => {
+  try {
+    const guests = await Guest.findAll({
+      where: {
+        event_id: req.params.id,
+      },
+      raw: true,
+    });
+
+    res.render('guestDetail', {
+      guests,
+      logged_in: req.session.logged_in,
+      user_id: req.session.user_id,
+    });
+  } catch (err) {
+    res.status(500).json({ message: `Error: ${err.message}` });
+  }
+});
+
+router.get('/guest/:id', async (req, res) => {
+  try {
+    const guests = await Guest.findByPk(req.params.id, {
+      raw: true,
+    });
+
+    res.render('guestDetailEdit', {
+      guests,
       logged_in: req.session.logged_in,
       user_id: req.session.user_id,
     });
