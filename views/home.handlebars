@@ -1,6 +1,15 @@
-{{#unless loggedIn}}
+{{!-- {{#unless logged_in}} --}}
 <h1 class="font-bold text-7xl">The Event Planning Site</h1>
-{{/unless}}
-{{#if loggedIn}}
-<h1 class="font-bold text-3xl">Your Events</h1>
-{{/if}}
+{{!-- {{/unless}}
+{{#if logged_in}}
+<div class="content-box px-4 m-1.5 w-10/12 grid grid-cols-4 gap-4">
+    <h1 class="font-bold text-3xl row-start-1 row-span-1 col-span-full text-center">Your Events</h1>
+    {{#each event}}
+    <a href="" class="row-start-2 row-span-1 col-span-full grid grid-cols-3 border-2 rounded m-1.5 shadow-md">
+        <h2 class="justify-self-start m-1.5">event name here</h2>
+        <h2 class="justify-self-center m-1.5">event location here</h2>
+        <h3 class="justify-self-end m-1.5">event date here</h3>
+    </a>
+    {{/each}}
+</div>
+{{/if}} --}}

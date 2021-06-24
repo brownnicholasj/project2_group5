@@ -24,6 +24,33 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/dashboard', withAuth, async (req, res) => {
+  try {
+    // Get all events and their associated data
+    const eventData = await Event.findAll({
+      where: { user_id: req.session.user_id },
+    });
+
+    // res.status(200).json(eventData);
+    // return;
+
+    // Serialize data so the template can read it
+    const events = eventData.map((event) =>
+      event.get({
+        plain: true,
+      })
+    );
+    // Pass serialized data and session flag into template
+    res.render('dashboard', {
+      events,
+      logged_in: req.session.logged_in,
+      user_id: req.session.user_id,
+    });
+  } catch (err) {
+    res.status(500).json({ message: `Error: ${err.message}` });
+  }
+});
+
 // Get all events - Data will be in the res.body
 router.get('/events', async (req, res) => {
   try {
