@@ -12,10 +12,10 @@
 <header>
   <nav class="container mx-auto px-4">
     <a href="/" class="inline-block border-4 w-48 h-14 rounded text-center text-4xl m-1.5">Home</a>
-    <a href="/" class="inline-block border-4 w-48 h-14 rounded text-center text-4xl m-1.5">Dashboard</a>
-    {{#unless loggedIn}}   <a href="/" class="inline-block border-4 w-48 h-14 rounded text-center text-4xl m-1.5">Login</a>
+    <a href="/dashboard" class="inline-block border-4 w-48 h-14 rounded text-center text-4xl m-1.5">Dashboard</a>
+    {{#unless logged_in}}   <a href="/login" class="inline-block border-4 w-48 h-14 rounded text-center text-4xl m-1.5">Login</a>
     {{/unless}}   
-    {{#if loggedIn}}   <a href="/" class="inline-block border-4 w-48 h-14 rounded text-center text-4xl m-1.5">Logout</a>
+    {{#if logged_in}}   <a href="/" class="inline-block border-4 w-48 h-14 rounded text-center text-4xl m-1.5">Logout</a>
     {{/if}}
   </nav>
 

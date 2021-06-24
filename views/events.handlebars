@@ -1,14 +1,14 @@
 <div class="content-box px-4 m-1.5 w-10/12 grid grid-cols-4 gap-4">
     <h1 class="font-bold text-3xl col-span-full text-center">{{event.name}}</h1>
-    <a href="" class="row-start-2 row-span-1 col-start-1 col-span-2 grid grid-cols-2 border-2 rounded m-1.5 shadow-md">
+    <a href="/users/{{user_id}}/events/{{event.id}}/eventDetails" class="row-start-2 row-span-1 col-start-1 col-span-2 grid grid-cols-2 border-2 rounded m-1.5 shadow-md">
         <h2 class="justify-self-end m-1.5 font-bold">Event Date</h2>
         <h3 class="justify-self-start m-1.5">{{format_date event.event_date}}</h3>
     </a>
-    <a href="" class="row-start-2 row-span-1 col-start-3 col-span-2 grid grid-cols-2 border-2 rounded m-1.5 shadow-md">
+    <a href="/users/{{user_id}}/events/{{event.id}}/eventDetails" class="row-start-2 row-span-1 col-start-3 col-span-2 grid grid-cols-2 border-2 rounded m-1.5 shadow-md">
         <h2 class="justify-self-end m-1.5 font-bold">Days Until Event</h2>
         <h3 class="justify-self-start m-1.5">{{days_left event.event_date}}</h3>
     </a>
-    <a href="" class="row-start-3 row-span-1 col-start-1 col-span-2 grid grid-cols-4 border-2 rounded m-1.5 shadow-md">
+    <a href="/users/{{user_id}}/events/{{event.id}}/guestDetails" class="row-start-3 row-span-1 col-start-1 col-span-2 grid grid-cols-4 border-2 rounded m-1.5 shadow-md">
         <div class="col-start-1 col-span-1 grid grid-rows-2 rounded m-1.5">
             <h2 class="justify-self-center m-1.5 font-bold text-center">Guests Invited</h2>
             <h2 class="justify-self-center m-1.5 text-center">{{event.guests.length}}</h2>
@@ -27,12 +27,13 @@
         </div>
 
     </a>
-    <a href="" class="row-start-3 row-end-4 col-start-3 col-end-5 grid grid-cols-2 border-2 rounded m-1.5 shadow-md">
+    <a href="/users/{{user_id}}/events/{{event.id}}/itemDetails" class="row-start-3 row-end-4 col-start-3 col-end-5 grid grid-cols-2 border-2 rounded m-1.5 shadow-md">
         <h2 class="justify-self-start m-1.5">Total Cost here</h2>
         <h3 class="justify-self-end m-1.5">Total count of items</h3>
     </a>
-        <a href="" class="row-start-4 col-span-full grid grid-cols-3 border-2 rounded m-1.5 shadow-md">
+        <a href="/users/{{user_id}}/events/{{event.id}}/eventDetails" class="row-start-4 col-span-full grid grid-cols-3 border-2 rounded m-1.5 shadow-md">
         <h2 class="justify-self-start m-1.5">{{event.location_name}}</h2>
         <h2 class="justify-self-center m-1.5">{{event.location_city}}, {{event.location_state}} {{event.location_zip}}</h2>
     </a>
 </div>
+
