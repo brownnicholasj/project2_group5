@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Event, Guest, Item, User } = require('../models');
+const { sequelize } = require('../models/User');
 const withAuth = require('../util/authorize');
 
 router.get('/', async (req, res) => {
@@ -162,7 +163,7 @@ router.get('/items', async (req, res) => {
 });
 
 // Get an event by id - Data will be in the res.body
-router.get('/events/:id', async (req, res) => {
+router.get('/users/:user_id/events/:id', async (req, res) => {
   try {
     const eventData = await Event.findByPk(req.params.id, {
       include: [
@@ -178,16 +179,71 @@ router.get('/events/:id', async (req, res) => {
       ],
     });
 
+    const guestAccept = await Event.findByPk(req.params.id, {
+      include: [
+        {
+          model: Guest,
+          where: {
+            response: 1,
+          },
+        },
+      ],
+      attributes: [
+        'guests.response',
+        [sequelize.fn('COUNT', sequelize.col('guests.id')), 'GuestAccepted'],
+      ],
+      group: ['guests.response'],
+      raw: true,
+    });
+
+    const guestDecline = await Event.findByPk(req.params.id, {
+      include: [
+        {
+          model: Guest,
+          where: {
+            response: 0,
+          },
+        },
+      ],
+      attributes: [
+        'guests.response',
+        [sequelize.fn('COUNT', sequelize.col('guests.id')), 'GuestDecline'],
+      ],
+      group: ['guests.response'],
+      raw: true,
+    });
+
+    const guestNoResponse = await Event.findByPk(req.params.id, {
+      include: [
+        {
+          model: Guest,
+          where: {
+            response: null,
+          },
+        },
+      ],
+      attributes: [
+        'guests.response',
+        [sequelize.fn('COUNT', sequelize.col('guests.id')), 'GuestNoResp'],
+      ],
+      group: ['guests.response'],
+      raw: true,
+    });
     // res.status(200).json(eventData);
     // return;
-
+    const guestResponse = { guestAccept, guestDecline, guestNoResponse };
+    console.log(guestResponse);
     const event = eventData.get({
       plain: true,
     });
 
+    // res.json(event);
+
     res.render('events', {
-      ...event,
+      event,
       logged_in: req.session.logged_in,
+      user_id: req.session.user_id,
+      guestResponse,
     });
   } catch (err) {
     res.status(500).json({ message: `Error: ${err.message}` });
