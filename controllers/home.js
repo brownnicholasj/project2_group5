@@ -54,6 +54,144 @@ router.get('/dashboard', withAuth, async (req, res) => {
   }
 });
 
+// CREATED AND WORKING BY NIC 6/23
+router.get('/users/:user_id/events/:id', async (req, res) => {
+  try {
+    const eventData = await Event.findByPk(req.params.id, {
+      include: [
+        {
+          model: Guest,
+        },
+        {
+          model: Item,
+        },
+        {
+          model: User,
+        },
+      ],
+    });
+
+    const guestAccept = await Event.findByPk(req.params.id, {
+      include: [
+        {
+          model: Guest,
+          where: {
+            response: 1,
+          },
+        },
+      ],
+      attributes: [
+        'guests.response',
+        [sequelize.fn('COUNT', sequelize.col('guests.id')), 'GuestAccepted'],
+      ],
+      group: ['guests.response'],
+      raw: true,
+    });
+
+    const guestDecline = await Event.findByPk(req.params.id, {
+      include: [
+        {
+          model: Guest,
+          where: {
+            response: 0,
+          },
+        },
+      ],
+      attributes: [
+        'guests.response',
+        [sequelize.fn('COUNT', sequelize.col('guests.id')), 'GuestDecline'],
+      ],
+      group: ['guests.response'],
+      raw: true,
+    });
+
+    const guestNoResponse = await Event.findByPk(req.params.id, {
+      include: [
+        {
+          model: Guest,
+          where: {
+            response: null,
+          },
+        },
+      ],
+      attributes: [
+        'guests.response',
+        [sequelize.fn('COUNT', sequelize.col('guests.id')), 'GuestNoResp'],
+      ],
+      group: ['guests.response'],
+      raw: true,
+    });
+
+    const guestResponse = { guestAccept, guestDecline, guestNoResponse };
+    const event = eventData.get({
+      plain: true,
+    });
+
+    res.render('events', {
+      event,
+      logged_in: req.session.logged_in,
+      user_id: req.session.user_id,
+      guestResponse,
+    });
+  } catch (err) {
+    res.status(500).json({ message: `Error: ${err.message}` });
+  }
+});
+
+// CREATED AND WORKING BY NIC 6/24
+router.get('/users/:user_id/events/:id/eventDetails', async (req, res) => {
+  try {
+    const eventData = await Event.findByPk(req.params.id);
+
+    const event = eventData.get({
+      plain: true,
+    });
+
+    res.render('eventDetail', {
+      event,
+      logged_in: req.session.logged_in,
+      user_id: req.session.user_id,
+    });
+  } catch (err) {
+    res.status(500).json({ message: `Error: ${err.message}` });
+  }
+});
+
+router.get('/users/:user_id/events/:id/guestDetails', async (req, res) => {
+  try {
+    const guests = await Guest.findAll({
+      where: {
+        event_id: req.params.id,
+      },
+      raw: true,
+    });
+
+    res.render('guestDetail', {
+      guests,
+      logged_in: req.session.logged_in,
+      user_id: req.session.user_id,
+    });
+  } catch (err) {
+    res.status(500).json({ message: `Error: ${err.message}` });
+  }
+});
+
+router.get('/guest/:id', async (req, res) => {
+  try {
+    const guests = await Guest.findByPk(req.params.id, {
+      raw: true,
+    });
+
+    res.render('guestDetailEdit', {
+      guests,
+      logged_in: req.session.logged_in,
+      user_id: req.session.user_id,
+    });
+  } catch (err) {
+    res.status(500).json({ message: `Error: ${err.message}` });
+  }
+});
+
 // Get all events - Data will be in the res.body
 router.get('/events', async (req, res) => {
   try {
@@ -164,90 +302,6 @@ router.get('/items', async (req, res) => {
   }
 });
 
-// CREATED AND WORKING BY NIC 6/23
-router.get('/users/:user_id/events/:id', async (req, res) => {
-  try {
-    const eventData = await Event.findByPk(req.params.id, {
-      include: [
-        {
-          model: Guest,
-        },
-        {
-          model: Item,
-        },
-        {
-          model: User,
-        },
-      ],
-    });
-
-    const guestAccept = await Event.findByPk(req.params.id, {
-      include: [
-        {
-          model: Guest,
-          where: {
-            response: 1,
-          },
-        },
-      ],
-      attributes: [
-        'guests.response',
-        [sequelize.fn('COUNT', sequelize.col('guests.id')), 'GuestAccepted'],
-      ],
-      group: ['guests.response'],
-      raw: true,
-    });
-
-    const guestDecline = await Event.findByPk(req.params.id, {
-      include: [
-        {
-          model: Guest,
-          where: {
-            response: 0,
-          },
-        },
-      ],
-      attributes: [
-        'guests.response',
-        [sequelize.fn('COUNT', sequelize.col('guests.id')), 'GuestDecline'],
-      ],
-      group: ['guests.response'],
-      raw: true,
-    });
-
-    const guestNoResponse = await Event.findByPk(req.params.id, {
-      include: [
-        {
-          model: Guest,
-          where: {
-            response: null,
-          },
-        },
-      ],
-      attributes: [
-        'guests.response',
-        [sequelize.fn('COUNT', sequelize.col('guests.id')), 'GuestNoResp'],
-      ],
-      group: ['guests.response'],
-      raw: true,
-    });
-
-    const guestResponse = { guestAccept, guestDecline, guestNoResponse };
-    const event = eventData.get({
-      plain: true,
-    });
-
-    res.render('events', {
-      event,
-      logged_in: req.session.logged_in,
-      user_id: req.session.user_id,
-      guestResponse,
-    });
-  } catch (err) {
-    res.status(500).json({ message: `Error: ${err.message}` });
-  }
-});
-
 // Use withAuth middleware to prevent access to route
 router.get('/user', withAuth, async (req, res) => {
   try {
@@ -272,7 +326,7 @@ router.get('/user', withAuth, async (req, res) => {
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/user');
+    res.redirect('/');
     return;
   }
 
@@ -282,10 +336,10 @@ router.get('/login', (req, res) => {
 // CREATED AND WORKING BY NIC 6/23
 router.get('/signup', (req, res) => {
   // If the user is already logged in, redirect the request to another route
-  if (req.session.logged_in) {
-    res.redirect('/user');
-    return;
-  }
+  // if (req.session.logged_in) {
+  //   res.redirect('/');
+  //   return;
+  // }
 
   res.render('signup');
 });
