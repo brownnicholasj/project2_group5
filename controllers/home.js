@@ -3,6 +3,7 @@ const { Event, Guest, Item, User } = require('../models');
 const { sequelize } = require('../models/User');
 const withAuth = require('../util/authorize');
 
+// CREATED AND WORKING BY NIC 6/23
 router.get('/', async (req, res) => {
   if (!req.session.logged_in) {
     res.render('home', { logged_in: false });
@@ -25,6 +26,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+// CREATED AND WORKING BY NIC 6/23
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
     // Get all events and their associated data
@@ -162,7 +164,7 @@ router.get('/items', async (req, res) => {
   }
 });
 
-// Get an event by id - Data will be in the res.body
+// CREATED AND WORKING BY NIC 6/23
 router.get('/users/:user_id/events/:id', async (req, res) => {
   try {
     const eventData = await Event.findByPk(req.params.id, {
@@ -229,15 +231,11 @@ router.get('/users/:user_id/events/:id', async (req, res) => {
       group: ['guests.response'],
       raw: true,
     });
-    // res.status(200).json(eventData);
-    // return;
+
     const guestResponse = { guestAccept, guestDecline, guestNoResponse };
-    console.log(guestResponse);
     const event = eventData.get({
       plain: true,
     });
-
-    // res.json(event);
 
     res.render('events', {
       event,
@@ -270,6 +268,7 @@ router.get('/user', withAuth, async (req, res) => {
   }
 });
 
+// CREATED AND WORKING BY NIC 6/23
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
@@ -280,6 +279,7 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+// CREATED AND WORKING BY NIC 6/23
 router.get('/signup', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {

@@ -10,4 +10,18 @@ module.exports = {
       date
     ).getDate()}/${new Date(date).getFullYear()} ${hours}:${min}`;
   },
+
+  days_left: (date) => {
+    var eventDate = date.getTime();
+    var currentDate = new Date().getTime();
+
+    var difference = eventDate - currentDate;
+
+    var days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    var hours = Math.floor(
+      (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+
+    return `${days}d ${hours}h`;
+  },
 };
