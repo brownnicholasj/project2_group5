@@ -25,7 +25,7 @@ Item.init(
       type: DataTypes.STRING,
     },
     cost_perunit: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(10, 2),
     },
     event_id: {
       type: DataTypes.INTEGER,

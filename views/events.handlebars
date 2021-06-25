@@ -28,12 +28,22 @@
 
     </a>
     <a href="/users/{{user_id}}/events/{{event.id}}/itemDetails" class="row-start-3 row-end-4 col-start-3 col-end-5 grid grid-cols-2 border-2 rounded m-1.5 shadow-md">
-        <h2 class="justify-self-start m-1.5">Total Cost here</h2>
-        <h3 class="justify-self-end m-1.5">Total count of items</h3>
+        <div class="col-start-1 col-span-1 grid grid-rows-2 rounded m-1.5">
+        <h2 class="justify-self-center m-1.5 font-bold text-center">Total Cost</h2>
+        {{#if itemDetails.[0].total_cost}}
+        <h2 class="justify-self-center m-1.5 text-center">${{itemDetails.[0].total_cost}}</h2>
+        {{/if}}
+        </div>
+        <div class="col-start-2 col-span-1 grid grid-rows-2 rounded m-1.5">
+        <h2 class="justify-self-center m-1.5 font-bold text-center">Total Quantity</h2>
+        <h2 class="justify-self-center m-1.5 text-center">{{itemDetails.[0].SumItemQty}}</h2>
+        </div>
     </a>
         <a href="/users/{{user_id}}/events/{{event.id}}/eventDetails" class="row-start-4 col-span-full grid grid-cols-3 border-2 rounded m-1.5 shadow-md">
         <h2 class="justify-self-start m-1.5">{{event.location_name}}</h2>
+        {{#if event.location_city}}
         <h2 class="justify-self-center m-1.5">{{event.location_city}}, {{event.location_state}} {{event.location_zip}}</h2>
+        {{/if}}
     </a>
 </div>
 

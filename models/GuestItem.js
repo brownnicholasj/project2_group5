@@ -20,6 +20,9 @@ GuestItem.init(
         foreignKey: 'id',
       },
     },
+    selected: {
+      type: DataTypes.BOOLEAN,
+    },
     guest_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
