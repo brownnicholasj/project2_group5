@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Event, Guest, Item, User } = require('../models');
+const { Event, Guest, Item, User, GuestItem } = require('../models');
 const { sequelize } = require('../models/User');
 const withAuth = require('../util/authorize');
 
@@ -192,6 +192,41 @@ router.get('/guest/:id', async (req, res) => {
   }
 });
 
+router.get('/users/:user_id/events/:id/itemDetails', async (req, res) => {
+  try {
+    const items = await Item.findAll({
+      where: {
+        event_id: req.params.id,
+      },
+      raw: true,
+    });
+
+    res.render('itemDetail', {
+      items,
+      logged_in: req.session.logged_in,
+      user_id: req.session.user_id,
+    });
+  } catch (err) {
+    res.status(500).json({ message: `Error: ${err.message}` });
+  }
+});
+
+router.get('/items/:id', async (req, res) => {
+  try {
+    const items = await Item.findByPk(req.params.id, {
+      raw: true,
+    });
+
+    res.render('itemDetailEdit', {
+      items,
+      logged_in: req.session.logged_in,
+      user_id: req.session.user_id,
+    });
+  } catch (err) {
+    res.status(500).json({ message: `Error: ${err.message}` });
+  }
+});
+
 // Get all events - Data will be in the res.body
 router.get('/events', async (req, res) => {
   try {
@@ -342,6 +377,39 @@ router.get('/signup', (req, res) => {
   // }
 
   res.render('signup');
+});
+
+router.get('/guestitems', async (req, res) => {
+  try {
+    // Get all guest/items and their associated data
+    const guestItemData = await GuestItem.findAll({
+      include: [
+        {
+          model: Guest,
+        },
+        {
+          model: Item,
+        },
+      ],
+    });
+
+    res.status(200).json(guestItemData);
+    return;
+
+    // Serialize data so the template can read it
+    const guestItems = guestItemData.map((guestItem) =>
+      guestItem.get({
+        plain: true,
+      })
+    );
+    // Pass serialized data and session flag into template
+    res.render('guestItems', {
+      guestItems,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json({ message: `Error: ${err.message}` });
+  }
 });
 
 module.exports = router;

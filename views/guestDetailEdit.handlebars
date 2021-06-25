@@ -1,78 +1,38 @@
-<div class="content-box border-4 px-4 m-1.5 rounded w-full flex flex-col">
-    <h2 class="col-span-full m-1.5 text-center text-4xl font-bold">Guest Details</h2>
- <form class="block col-span-full row-start-2 row-end-6 grid grid-cols-4 grid-rows-6 border-2 m-1.5">
-      {{!-- FIRST ROW --}}
-      <div class="row-start-1 row-span-1 col-start-1 col-span-1 grid justify-items-center">
-        <label class="font-bold">Guest Type:</label>
-        <input class="m-1.5 w-10/12 text-center" type="text" id="guest-type" value="{{guests.guest_type}}"/>
-      </div>
-      <div class="row-start-1 row-span-1 col-start-2 col-span-3 grid grid-cols-2">
-        <div class="col-start-1 col-span-1 grid justify-items-center">
-          <label class="font-bold">Guest First Name:</label>
-          <input class="m-1 w-10/12 text-center" type="text"  id="guest-first-name" value="{{guests.first_name}}"/>
-        </div>      
-        <div class="col-start-2 col-span-1 grid justify-items-center">
-          <label class="font-bold">Guest Last Name:</label>
-          <input class="m-1 w-10/12 text-center" type="text"  id="guest-last-name" value="{{guests.last_name}}"/>
-        </div>
-      </div>
-      {{!-- SECOND ROW --}}
-      <div class="row-start-2 row-span-1 col-start-1 col-span-2 grid justify-items-center">
-        <label class="font-bold">Guest Address 1:</label>
-        <input class="m-1.5 w-10/12 text-center" type="text" id="guest-addr1" value="{{guests.guest_addr1}}"/>
-      </div>
-      <div class="row-start-2 row-span-1 col-start-3 col-span-2 grid justify-items-center">
-        <label class="font-bold">Guest Address 2:</label>
-        <input class="m-1.5 w-10/12 text-center" type="text" id="guest-addr2" value="{{guests.guest_addr2}}"/>
-      </div>  
-      {{!-- THIRD ROW --}}
-      <div class="row-start-3 row-span-1 col-start-1 col-span-1 grid justify-items-center">
-        <label class="font-bold">Guest City:</label>
-        <input class="m-1.5 w-10/12 text-center" type="text" id="guest-city" value="{{guests.guest_city}}"/>
-      </div>
-      <div class="row-start-3 row-span-1 col-start-2 col-span-1 grid justify-items-center">
-        <label class="font-bold">Guest State:</label>
-        <input class="m-1.5 w-10/12 text-center" type="text" id="guest-state" value="{{guests.guest_state}}"/>
-      </div>      
-      <div class="row-start-3 row-span-1 col-start-3 col-span-1 grid justify-items-center">
-        <label class="font-bold">Guest Zip:</label>
-        <input class="m-1.5 w-10/12 text-center" type="text" id="guest-zip" value="{{guests.guest_zip}}"/>
-      </div>
-      <div class="row-start-3 row-span-1 col-start-4 col-span-1 grid justify-items-center">
-        <label class="font-bold">Guest Country:</label>
-        <input class="m-1.5 w-10/12 text-center" type="text" id="guest-ctry" value="{{guests.guest_country}}"/>
-      </div>    
-      {{!-- FOURTH ROW --}}
-      <div class="row-start-4 row-span-1 col-start-1 col-span-2 grid justify-items-center">
-        <label class="font-bold">Guest Email:</label>
-        <input class="m-1.5 w-10/12 text-center" type="text" id="guest-email" value="{{guests.email}}"/>
-      </div>
-      <div class="row-start-4 row-span-1 col-start-3 col-span-2 grid justify-items-center">
-        <label class="font-bold">Guest Phone:</label>
-        <input class="m-1.5 w-10/12 text-center" type="text" id="guest-phone" value="{{guests.phone}}"/>
-      </div>
-      {{!-- FIFTH ROW --}}
-      <div class="row-start-5 row-span-1 col-start-1 col-span-2 grid justify-items-center">
-        <div class="row-start-5 row-span-1 col-start-1 col-span-1 grid  justify-items-center">
-          <label class="font-bold">Guest Response:</label>
-          <input class="m-1.5 w-10/12 text-center" type="text"  id="guest-response" value="{{guests.response}}"/>
-        </div>
-        <div class="row-start-5 row-span-1 col-start-2 col-span-1 grid  justify-items-center">
-          <label class="font-bold">Sub Guest Of:</label>
-          <input class="m-1.5 w-10/12 text-center" type="text"  id="guest-inviter" value="{{guests.inviter}}"/>
-        </div>
-      </div>
-      <div class="row-start-5 row-span-1 col-start-3 col-span-2 grid justify-items-right">
-      {{!-- SHOULD REPEAT FOR # ITEMS ON EVENT --}}
-      <div class="flex items-center">
-        <label class="font-bold w-1/2 text-right">Item (n):</label>
-        <input class="m-1.5 w-1/2 text-center" type="text" id="guest-items" value="current response here"/>
-      </div>
-      {{!-- END OF REPEAT --}}
-      </div>
-      {{!-- SIXTH ROW --}}
-       <button class="row-start-6 row-span-1 col-start-1 col-span-2 box-border border-2 px-4 rounded m-1.5 font-bold" type="button" id="guest-update-btn">Update</button>
-       <button class="row-start-6 row-span-1 col-start-3 col-span-2 box-border border-2 px-4 rounded m-1.5 font-bold" type="button" id="guest-delete-btn">Delete</button>
+<div class="content-box border-4 px-4 m-1.5 rounded w-1/2 flex flex-col">
+    <h2 class="m-1.5 text-center text-4xl font-bold">Guest Details</h2>
+    <form class="block grid grid-cols-2 grid-rows-14 border-2 m-1.5">
+      <label class="font-bold text-right col-start-1 col-span-1 row-start-1 row-span-1">Guest Type:</label>
+      <input class="m-1.5 w-10/12 text-center col-start-2 col-span-1 row-start-1 row-span-1" type="text" id="guest-type" data-id="{{guests.id}}" data-user_id="{{user_id}}" data-event_id="{{guests.event_id}}" value="{{guests.guest_type}}">
+      <label class="font-bold text-right col-start-1 col-span-1 row-start-2 row-span-1">Guest First Name:</label>
+      <input class="m-1 w-10/12 text-center col-start-2 col-span-1 row-start-2 row-span-1" type="text"  id="guest-first-name" value="{{guests.first_name}}"/>
+      <label class="font-bold text-right col-start-1 col-span-1 row-start-3 row-span-1">Guest Last Name:</label>
+      <input class="m-1 w-10/12 text-center col-start-2 col-span-1 row-start-3 row-span-1" type="text"  id="guest-last-name" value="{{guests.last_name}}"/>
+      <label class="font-bold text-right col-start-1 col-span-1 row-start-4 row-span-1">Guest Address 1:</label>
+      <input class="m-1.5 w-10/12 text-center col-start-2 col-span-1 row-start-4 row-span-1" type="text" id="guest-addr1" value="{{guests.guest_addr1}}"/>
+      <label class="font-bold text-right col-start-1 col-span-1 row-start-5 row-span-1">Guest Address 2:</label>
+      <input class="m-1.5 w-10/12 text-center col-start-2 col-span-1 row-start-5 row-span-1" type="text" id="guest-addr2" value="{{guests.guest_addr2}}"/>
+      <label class="font-bold text-right col-start-1 col-span-1 row-start-6 row-span-1">Guest City:</label>
+      <input class="m-1.5 w-10/12 text-center col-start-2 col-span-1 row-start-6 row-span-1" type="text" id="guest-city" value="{{guests.guest_city}}"/>
+      <label class="font-bold text-right col-start-1 col-span-1 row-start-7 row-span-1">Guest State:</label>
+      <input class="m-1.5 w-10/12 text-center col-start-2 col-span-1 row-start-7 row-span-1" type="text" id="guest-state" value="{{guests.guest_state}}"/>
+      <label class="font-bold text-right col-start-1 col-span-1 row-start-8 row-span-1">Guest Zip:</label>
+      <input class="m-1.5 w-10/12 text-center col-start-2 col-span-1 row-start-8 row-span-1" type="text" id="guest-zip" value="{{guests.guest_zip}}"/>
+      <label class="font-bold text-right col-start-1 col-span-1 row-start-9 row-span-1">Guest Country:</label>
+      <input class="m-1.5 w-10/12 text-center col-start-2 col-span-1 row-start-9 row-span-1" type="text" id="guest-ctry" value="{{guests.guest_country}}"/>
+      <label class="font-bold text-right col-start-1 col-span-1 row-start-10 row-span-1">Guest Email:</label>
+      <input class="m-1.5 w-10/12 text-center col-start-2 col-span-1 row-start-10 row-span-1" type="text" id="guest-email" value="{{guests.email}}"/>
+      <label class="font-bold text-right col-start-1 col-span-1 row-start-11 row-span-1">Guest Phone:</label>
+      <input class="m-1.5 w-10/12 text-center col-start-2 col-span-1 row-start-11 row-span-1" type="text" id="guest-phone" value="{{guests.phone}}"/>
+      <label class="font-bold text-right col-start-1 col-span-1 row-start-12 row-span-1">Guest Response:</label>
+      <select class="m-1.5 w-10/12 text-center col-start-2 col-span-1 row-start-12 row-span-1" type="text" id="guest-response" value="{{guests.response}}">
+        <option value="none">No Response</option>
+        <option value="true">Accepted</option>
+        <option value="false">Declined</option>
+      </select>
+      <label class="font-bold text-right col-start-1 col-span-1 row-start-13 row-span-1">Sub Guest Of:</label>
+      <input class="m-1.5 w-10/12 text-center col-start-2 col-span-1 row-start-13 row-span-1" type="text" id="guest-inviter" value="{{guests.inviter}}"/>
+      <button class="row-start-14 row-span-1 col-start-1 col-span-1 box-border border-2 px-4 rounded m-1.5 font-bold" type="button" id="guest-update-btn">Update</button>
+      <button class="row-start-14 row-span-1 col-start-2 col-span-1 box-border border-2 px-4 rounded m-1.5 font-bold" type="button" id="guest-delete-btn">Delete</button>
     </form>
 </div>
 
