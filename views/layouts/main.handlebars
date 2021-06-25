@@ -1,50 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Event Planning</title>
-  <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </head>
-
 <body class="bg-gray-600">
-
 <header class="flex flex-row justify-between items-center bg-gray-200 h-9 w-screen">
    <nav class="flex flex-row justify-around">
     <a href="/" class=" p-2 hover:bg-gray-600 hover:text-white">Home</a>
-    <a href="/" class="p-2 hover:bg-gray-600 hover:text-white">Dashboard</a>
-    <a href="/" class="p-2 hover:bg-gray-600 hover:text-white">Login</a>
-    <a href="/" class="p-2 hover:bg-gray-600 hover:text-white">Logout</a>
+    <a href="/dashboard" class="p-2 hover:bg-gray-600 hover:text-white">Dashboard</a>
+    <a href="/login" class="p-2 hover:bg-gray-600 hover:text-white">Login</a>
+    <a href="/logout" class="p-2 hover:bg-gray-600 hover:text-white">Logout</a>
   </nav>
-
   <div class="flex flex-row bg-gray-200">
     <form class="text-center align-middle px-4 text-gray-200">
       <input type="text" id="search-field" class="rounded-md" placeholder="Search">
     </form>
   </div>
 </header>
-
-<main class="flex flex-row bg-blue-400 grid grid-cols-12 h-auto w-screen p-0 m-0">
-  <div id='aside' class="flex flex-column grid col-span-4 box-border bg-red-200 w-60 h-60 m-0 p-0">
+<main class="bg-blue-400 grid grid-cols-12 gap-2 grid-rows-1 h-screen w-screen p-0 m-0">
+  
+  <aside id='aside' class="bg-red-400 col-start-1 col-span-2 flex flex-column">
     <div>
-      <h3>Event</h3>
-      <p>Next Event(s)</p>
+      <h3 class="p-2">Event</h3>
+      <p class="p-2">Next Event(s)</p>
+      <button  class="p-2" value="New Event">New Event</button>
+      <button class="p-2" value="Delete Event">Delete Event</button>
     </div>
+  </aside>
+    
+  <section id="main" class="col-start-3 col-span-9 text-center">
+    {{{body}}}
+  </section>
 
-
-    <div class="calendar">
-    <img src="../../public/images/placeholder.jfif">
-    </div>
-
-    <div class="event-buttons">
-      <button value="New Event"></button>
-      <button value="Delete Event"></button>
-    </div>
-  </div>
-
-  <div id="main" class="col-span-8">
-    {{body}}
-  </div>
+</main>
 </body>
 </html>
