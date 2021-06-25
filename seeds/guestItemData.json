@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "event_id": 1,
+    "guest_id": 1,
+    "item_id": 1
+  },
+  {
+    "id": 2,
+    "event_id": 1,
+    "guest_id": 1,
+    "item_id": 2
+  },
+  {
+    "id": 3,
+    "event_id": 1,
+    "guest_id": 1,
+    "item_id": 3
+  },
+  {
+    "id": 4,
+    "event_id": 1,
+    "guest_id": 2,
+    "item_id": 1
+  },
+  {
+    "id": 5,
+    "event_id": 1,
+    "guest_id": 2,
+    "item_id": 2
+  },
+  {
+    "id": 6,
+    "event_id": 1,
+    "guest_id": 3,
+    "item_id": 1
+  },
+  {
+    "id": 7,
+    "event_id": 2,
+    "guest_id": 4,
+    "item_id": 4
+  }
+]
