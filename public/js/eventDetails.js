@@ -82,3 +82,7 @@ document
 document
   .querySelector('#event-delete-btn')
   .addEventListener('click', eventDeleteHandler);
+
+document
+  .querySelector('#event-cancel-btn')
+  .addEventListener('click', eventCancelHandler);
