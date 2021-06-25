@@ -10185,7 +10185,7 @@ video {
 }
 
 .grid-cols-2 {
-  grid-template-columns: repeat(2, minmax(1fr, 3fr));
+  grid-template-columns: repeat(2, minmax(20%, 80%));
 }
 
 .grid-cols-3 {
@@ -41760,7 +41760,7 @@ video {
   }
 
   .sm\:grid-cols-2 {
-    grid-template-columns: repeat(2, minmax(1fr, 3fr));
+    grid-template-columns: repeat(2, minmax(20%, 80%));
   }
 
   .sm\:grid-cols-3 {
@@ -72923,7 +72923,7 @@ video {
   }
 
   .md\:grid-cols-2 {
-    grid-template-columns: repeat(2, minmax(1fr, 3fr));
+    grid-template-columns: repeat(2, minmax(20%, 80%));
   }
 
   .md\:grid-cols-3 {
@@ -104086,7 +104086,7 @@ video {
   }
 
   .lg\:grid-cols-2 {
-    grid-template-columns: repeat(2, minmax(1fr, 3fr));
+    grid-template-columns: repeat(2, minmax(20%, 80%));
   }
 
   .lg\:grid-cols-3 {
@@ -135249,7 +135249,7 @@ video {
   }
 
   .xl\:grid-cols-2 {
-    grid-template-columns: repeat(2, minmax(1fr, 3fr));
+    grid-template-columns: repeat(2, minmax(20%, 80%));
   }
 
   .xl\:grid-cols-3 {
@@ -166412,7 +166412,7 @@ video {
   }
 
   .\32xl\:grid-cols-2 {
-    grid-template-columns: repeat(2, minmax(1fr, 3fr));
+    grid-template-columns: repeat(2, minmax(20%, 80%));
   }
 
   .\32xl\:grid-cols-3 {
