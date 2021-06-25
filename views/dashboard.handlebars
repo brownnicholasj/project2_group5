@@ -1,9 +1,18 @@
-<div class="content-box px-4 m-1.5 w-10/12">
-    <h1 class="font-bold text-3xl text-center">Your Events</h1>
-    {{#each events}}
-    <a href="/users/{{user_id}}/events/{{this.id}}" class="grid grid-cols-2 border-2 rounded m-1.5 shadow-md">
-        <h2 class="justify-self-start m-1.5">{{this.name}}</h2>
-        <h3 class="justify-self-end m-1.5">{{format_date this.event_date}}</h3>
+<div class='content-box px-4 m-1.5 w-10/12'>
+  <h1 class='font-bold text-3xl text-center'>Your Events</h1>
+  {{#each events}}
+    <a
+      href='/users/{{user_id}}/events/{{this.id}}'
+      class='grid grid-cols-2 border-2 rounded m-1.5 shadow-md'
+    >
+      <h2 class='justify-self-start m-1.5'>{{this.name}}</h2>
+      <h3 class='justify-self-end m-1.5'>{{format_date this.event_date}}</h3>
     </a>
-    {{/each}}
+  {{/each}}
+  <br />
+  <a
+    class='shadow-md py-1 px-1 md:py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700 m-6'
+    href='/'
+    role='button'
+  ><i class='fas fa-home'> Home</i></a>
 </div>

@@ -1,34 +1,74 @@
-<!DOCTYPE html>
-<html lang="en" class="w-screen h-screen">
+<html lang='en' class='w-screen h-screen'>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Event Planning</title>
-  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-</head>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>Event Planning</title>
+    <link
+      href='https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css'
+      rel='stylesheet'
+    />
+    {{!-- <link rel="stylesheet" href="./css/style.css"> --}}
+    <link
+      rel='stylesheet'
+      href='https://use.fontawesome.com/releases/v5.8.1/css/all.css'
+      integrity='sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf'
+      crossorigin='anonymous'
+    />
+  </head>
 
-<body class="h-screen w-screen">
-  <header class="flex flex-row justify-between items-center h-9  md:h-12 w-screen bg-gradient-to-r from-blue-800 via-blue-500 to-blue-100">
-    <nav class="object-contain flex flex-row justify-around">
-      <a href="/" class="p-1 hover:bg-gray-600 font-bold text-white hover:text-white text-xs md:text-sm lg:text-lg">Home</a>
-      <a href="/dashboard" class="p-1 hover:bg-gray-600 font-bold text-white hover:text-white md:text-sm lg:text-lg text-xs">Dashboard</a>
-      <a href="/login" class="p-1 hover:bg-gray-600 font-bold text-white hover:text-white md:text-sm lg:text-lg text-xs">Login</a>
-      <a href="/" class="bg-contain p-1 hover:bg-gray-600 font-bold text-white hover:text-white  md:text-sm lg:text-lg text-xs">Logout</a>
-    </nav>
-  </header>
+  <body class='h-screen w-screen'>
+    <header
+      class='flex flex-row justify-between items-center h-9 md:h-12 w-screen bg-gradient-to-r from-blue-800 via-blue-500 to-blue-100'
+    >
+      <nav class='object-contain flex flex-row justify-around'>
+        <a
+          href='/'
+          class='p-1 hover:bg-gray-600 font-bold text-white hover:text-white text-xs md:text-sm lg:text-lg'
+        ><i class='fas fa-home'> Home</i></a>
+        <a
+          href='/dashboard'
+          class='p-1 hover:bg-gray-600 font-bold text-white hover:text-white md:text-sm lg:text-lg text-xs'
+        ><i class='fas fa-cubes'> Dashboard</i></a>
+        <a
+          href='/login'
+          class='p-1 hover:bg-gray-600 font-bold text-white hover:text-white md:text-sm lg:text-lg text-xs'
+        ><i class='fas fa-lock-open'> Login</i></a>
+        <a
+          href='/'
+          class='bg-contain p-1 hover:bg-gray-600 font-bold text-white hover:text-white md:text-sm lg:text-lg text-xs'
+        ><i class='fas fa-lock'> Logout</i></a>
+      </nav>
+    </header>
 
-  <main class="bg-gray-100 grid grid-cols-12 grid-rows-1 h-screen w-screen p-0 m-0">
-    <aside id='aside' class="bg-gray-200 col-start-1 col-span-2  md:col-start-1 md:col-span-1 flex-col justify-between content-center">
-      <div>
-        <h2 class="object-contain p-1 flex-shrink text-xs md:text-sm lg:text-lg">Event</h2>
-        <h3 class="object-contain p-1 flex-shrink text-xs md:text-sm lg:text-lg">Next Event(s)</h3>
-      </div>
-    </aside>
-    <section id="main" class="col-start-3 col-span-9 text-center flex flex-col justify-start content-center">
-      {{{body}}}
-    </section>
-  </main>
-</body>
+    <main
+      class='bg-gray-100 grid grid-cols-12 grid-rows-1 h-screen w-screen p-0 m-0'
+    >
+      <aside
+        id='aside'
+        class='bg-gray-200 col-start-1 col-span-2 md:col-start-1 md:col-span-1 flex-col justify-between content-center'
+      >
+        <div>
+          <h2
+            class='object-contain p-1 flex-shrink text-xs md:text-sm lg:text-lg'
+          >Event</h2>
+          <h3
+            class='object-contain p-1 flex-shrink text-xs md:text-sm lg:text-lg'
+          >Next Event(s)</h3>
+        </div>
+        <div>
+          <a href='/newEvent'>
+          <button class="shadow-md py-1 px-1 md:py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700 m-6"><i class='fa fa-plus' aria-hidden='true'> Create Event</i></button>
+          </a>
+        </div>
+      </aside>
+      <section
+        id='main'
+        class='col-start-3 col-span-9 text-center flex flex-col justify-start content-center'
+      >
+        {{{body}}}
+      </section>
+    </main>
+  </body>
 
 </html>

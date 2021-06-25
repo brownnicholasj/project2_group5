@@ -11,7 +11,23 @@
       <a href="/items/{{this.id}}" class="col-start-2 col-span-1">{{this.name}}</a>
       <a href="/items/{{this.id}}" class="col-start-3 col-span-1">{{this.quantity}}</a>
       <a href="/items/{{this.id}}" class="col-start-4 col-span-1">{{this.qty_uom}}</a>
-      <a href="/items/{{this.id}}" class="col-start-5 col-span-1">{{this.cost_perunit}}</a>
+      <a href="/items/{{this.id}}" class="col-start-5 col-span-1">${{this.cost_perunit}}</a>
     {{/each}}
     </div>
 </div>
+
+{{#if itemDetails.[0].selected}}
+<div class="content-box border-4 px-4 m-1.5 my-3 rounded w-full flex flex-col">
+    <h2 class="col-span-full m-1.5 text-center text-4xl font-bold">{{items.[0].event.name}} Item Summary</h2>
+    <div class="content-box grid grid-col-2 auto-rows-auto">
+      <div class="col-start-1 col-span-1 font-bold">Name</div>
+      <div class="col-start-2 col-span-1 font-bold">Quantity</div>
+      <div class="col-start-3 col-span-1 font-bold">Cost</div>
+    {{#each itemDetails}}
+      <div class="col-start-1 col-span-1">{{this.item.name}}</div>
+      <div class="col-start-2 col-span-1">{{this.SumItemQty}}</div>
+      <div class="col-start-3 col-span-1">${{this.total_cost}}</div>
+    {{/each}}
+    </div>
+</div>
+{{/if}}
