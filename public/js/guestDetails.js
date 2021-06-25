@@ -1,52 +1,62 @@
-const eventFormHandler = async (event) => {
+const guestFormHandler = async (event) => {
   event.preventDefault();
 
   const user_id = document
-    .querySelector('#event-name')
+    .querySelector('#guest-type')
     .getAttribute('data-user_id')
     .trim();
-  const event_id = document
-    .querySelector('#event-name')
+  const guest_id = document
+    .querySelector('#guest-type')
     .getAttribute('data-id')
     .trim();
-  const name = document.querySelector('#event-name').value.trim();
-  const event_type = document.querySelector('#event-type').value.trim();
-  const event_date = document.querySelector('#event-date').value.trim();
-  const location_name = document.querySelector('#event-loc-name').value.trim();
-  const location_addr1 = document
-    .querySelector('#event-loc-addr1')
-    .value.trim();
-  const location_addr2 = document
-    .querySelector('#event-loc-addr2')
-    .value.trim();
-  const location_city = document.querySelector('#event-loc-city').value.trim();
-  const location_state = document
-    .querySelector('#event-loc-state')
-    .value.trim();
-  const location_zip = document.querySelector('#event-loc-zip').value.trim();
-  const location_ctry = document.querySelector('#event-loc-ctry').value.trim();
-  const event_reference = document.querySelector('#event-ref').value.trim();
+  const event_id = document
+    .querySelector('#guest-type')
+    .getAttribute('data-event_id')
+    .trim();
+  const guest_type = document.querySelector('#guest-type').value.trim();
+  const first_name = document.querySelector('#guest-first-name').value.trim();
+  const last_name = document.querySelector('#guest-last-name').value.trim();
+  const guest_addr1 = document.querySelector('#guest-addr1').value.trim();
+  const guest_addr2 = document.querySelector('#guest-addr2').value.trim();
+  const guest_city = document.querySelector('#guest-city').value.trim();
+  const guest_state = document.querySelector('#guest-state').value.trim();
+  const guest_zip = document.querySelector('#guest-zip').value.trim();
+  const guest_country = document.querySelector('#guest-ctry').value.trim();
+  const email = document.querySelector('#guest-email').value.trim();
+  const phone = document.querySelector('#guest-phone').value.trim();
+  const inviter = document.querySelector('#guest-inviter').value.trim();
+  let response = document.querySelector('#guest-response').value.trim();
 
-  if (event_date && event_id && location_name && name) {
-    const response = await fetch(`/api/events/${event_id}`, {
+  if (response === 'none') {
+    response = null;
+  } else if (response === 'true') {
+    response = true;
+  } else {
+    response = false;
+  }
+
+  if (guest_id && guest_type) {
+    const send = await fetch(`/api/guests/${guest_id}`, {
       method: 'PUT',
       body: JSON.stringify({
-        name,
-        event_type,
-        event_date,
-        location_name,
-        location_addr1,
-        location_addr2,
-        location_city,
-        location_state,
-        location_zip,
-        location_ctry,
-        event_reference,
+        guest_type,
+        first_name,
+        last_name,
+        guest_addr1,
+        guest_addr2,
+        guest_city,
+        guest_state,
+        guest_zip,
+        guest_country,
+        email,
+        phone,
+        inviter,
+        response,
       }),
       headers: { 'Content-Type': 'application/json' },
     });
 
-    if (response.ok) {
+    if (send.ok) {
       document.location.replace(`/users/${user_id}/events/${event_id}`);
     } else {
       alert('Failed to update.');
@@ -54,31 +64,35 @@ const eventFormHandler = async (event) => {
   }
 };
 
-const eventDeleteHandler = async (event) => {
+const guestDeleteHandler = async (event) => {
   event.preventDefault();
-  const event_id = document
-    .querySelector('#event-name')
+  const user_id = document
+    .querySelector('#guest-type')
+    .getAttribute('data-user_id')
+    .trim();
+  const guest_id = document
+    .querySelector('#guest-type')
     .getAttribute('data-id')
     .trim();
-  const response = await fetch(`/api/events/${event_id}`, {
+  const send = await fetch(`/api/guests/${guest_id}`, {
     method: 'DELETE',
     body: JSON.stringify({
-      event_id,
+      guest_id,
     }),
     headers: { 'Content-Type': 'application/json' },
   });
 
-  if (response.ok) {
-    document.location.replace(`/dashboard`);
+  if (send.ok) {
+    document.location.replace(`//users/${user_id}/events/${event_id}`);
   } else {
     alert('Failed to delete.');
   }
 };
 
 document
-  .querySelector('#event-update-btn')
-  .addEventListener('click', eventFormHandler);
+  .querySelector('#guest-update-btn')
+  .addEventListener('click', guestFormHandler);
 
 document
-  .querySelector('#event-delete-btn')
-  .addEventListener('click', eventDeleteHandler);
+  .querySelector('#guest-delete-btn')
+  .addEventListener('click', guestDeleteHandler);
