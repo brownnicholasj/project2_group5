@@ -192,6 +192,40 @@ router.get('/guest/:id', async (req, res) => {
   }
 });
 
+router.get('/users/:user_id/events/:id/itemDetails', async (req, res) => {
+  try {
+    const items = await Item.findAll({
+      where: {
+        event_id: req.params.id,
+      },
+      raw: true,
+    });
+
+    res.render('itemDetail', {
+      items,
+      logged_in: req.session.logged_in,
+      user_id: req.session.user_id,
+    });
+  } catch (err) {
+    res.status(500).json({ message: `Error: ${err.message}` });
+  }
+});
+
+router.get('/items/:id', async (req, res) => {
+  try {
+    const items = await Item.findByPk(req.params.id, {
+      raw: true,
+    });
+
+    res.render('itemDetailEdit', {
+      items,
+      logged_in: req.session.logged_in,
+      user_id: req.session.user_id,
+    });
+  } catch (err) {
+    res.status(500).json({ message: `Error: ${err.message}` });
+  }
+});
 // Get all events - Data will be in the res.body
 router.get('/events', async (req, res) => {
   try {

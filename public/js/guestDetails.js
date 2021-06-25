@@ -83,7 +83,7 @@ const guestDeleteHandler = async (event) => {
   });
 
   if (send.ok) {
-    document.location.replace(`//users/${user_id}/events/${event_id}`);
+    document.location.replace(`/users/${user_id}/events/${event_id}`);
   } else {
     alert('Failed to delete.');
   }
