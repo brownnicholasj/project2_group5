@@ -53,4 +53,24 @@ Item.belongsToMany(Guest, {
   },
 });
 
+Item.hasMany(GuestItem, {
+  foreignKey: 'item_id',
+});
+
+Guest.hasMany(GuestItem, {
+  foreignKey: 'guest_id',
+});
+
+GuestItem.belongsTo(Event, {
+  foreignKey: 'event_id',
+});
+
+GuestItem.belongsTo(Guest, {
+  foreignKey: 'guest_id',
+});
+
+GuestItem.belongsTo(Item, {
+  foreignKey: 'item_id',
+});
+
 module.exports = { User, Item, Guest, Event, GuestItem };

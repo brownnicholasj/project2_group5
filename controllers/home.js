@@ -122,16 +122,54 @@ router.get('/users/:user_id/events/:id', async (req, res) => {
       raw: true,
     });
 
+    const itemCost = await GuestItem.findAll({
+      include: [
+        {
+          model: Item,
+        },
+        {
+          model: Guest,
+        },
+      ],
+      attributes: [
+        'selected',
+        'item.cost_perunit',
+        [sequelize.fn('SUM', sequelize.col('item.quantity')), 'SumItemQty'],
+        [
+          sequelize.fn(
+            'SUM',
+            sequelize.where(
+              sequelize.col('item.quantity'),
+              '*',
+              sequelize.col('item.cost_perunit')
+            )
+          ),
+          'total_cost',
+        ],
+      ],
+      where: {
+        event_id: req.params.id,
+        selected: 1,
+      },
+    });
+
+    const itemDetails = itemCost.map((event) =>
+      event.get({
+        plain: true,
+      })
+    );
     const guestResponse = { guestAccept, guestDecline, guestNoResponse };
     const event = eventData.get({
       plain: true,
     });
 
+    // console.log(itemDetails);
     res.render('events', {
       event,
       logged_in: req.session.logged_in,
       user_id: req.session.user_id,
       guestResponse,
+      itemDetails,
     });
   } catch (err) {
     res.status(500).json({ message: `Error: ${err.message}` });
@@ -194,21 +232,77 @@ router.get('/guest/:id', async (req, res) => {
 
 router.get('/users/:user_id/events/:id/itemDetails', async (req, res) => {
   try {
-    const items = await Item.findAll({
+    const item = await Item.findAll({
       where: {
         event_id: req.params.id,
       },
-      raw: true,
+      dialectOptions: { decimalNumbers: true },
+      include: {
+        model: Event,
+      },
     });
 
+    const items = item.map((event) =>
+      event.get({
+        plain: true,
+      })
+    );
+
+    const itemCost = await GuestItem.findAll({
+      include: [
+        {
+          model: Item,
+        },
+        {
+          model: Guest,
+        },
+      ],
+      attributes: [
+        'selected',
+        'item.name',
+        [sequelize.fn('SUM', sequelize.col('item.quantity')), 'SumItemQty'],
+        [
+          sequelize.fn(
+            'SUM',
+            sequelize.where(
+              sequelize.col('item.quantity'),
+              '*',
+              sequelize.col('item.cost_perunit')
+            )
+          ),
+          'total_cost',
+        ],
+      ],
+      group: 'item.id',
+      where: {
+        event_id: req.params.id,
+        selected: 1,
+      },
+    });
+
+    const itemDetails = itemCost.map((event) =>
+      event.get({
+        plain: true,
+      })
+    );
+    // console.log(itemCost);
     res.render('itemDetail', {
       items,
       logged_in: req.session.logged_in,
       user_id: req.session.user_id,
+      itemDetails,
     });
   } catch (err) {
     res.status(500).json({ message: `Error: ${err.message}` });
   }
+});
+
+// UPDATED BY NIC 6/25
+router.get('/newEvent', withAuth, async (req, res) => {
+  res.render('newEvent', {
+    logged_in: req.session.logged_in,
+    user_id: req.session.user_id,
+  });
 });
 
 router.get('/items/:id', async (req, res) => {

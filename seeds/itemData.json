@@ -14,7 +14,7 @@
         "name": "Pepperoni Pizza",
         "quantity": 1,
         "qty_uom": "piece",
-        "cost_perunit": 1.0,
+        "cost_perunit": 1.25,
         "event_id": 1
     },
     {
@@ -23,7 +23,7 @@
         "name": "Hawaiian Pizza",
         "quantity": 1,
         "qty_uom": "piece",
-        "cost_perunit": 1.0,
+        "cost_perunit": 1.50,
         "event_id": 1
     },
     {
@@ -41,7 +41,7 @@
         "name": "Popper",
         "quantity": 1,
         "qty_uom": "piece",
-        "cost_perunit": 0.0,
+        "cost_perunit": 0.25,
         "event_id": 2
     },
     {
@@ -50,7 +50,7 @@
         "name": "Sparkler",
         "quantity": 1,
         "qty_uom": "piece",
-        "cost_perunit": 1.0,
+        "cost_perunit": 1.10,
         "event_id": 2
     },
     {
@@ -68,7 +68,7 @@
         "name": "Twix",
         "quantity": 1,
         "qty_uom": "piece",
-        "cost_perunit": 1.0,
+        "cost_perunit": 1.50,
         "event_id": 3
     },
     {
@@ -86,7 +86,7 @@
         "name": "M&M",
         "quantity": 1,
         "qty_uom": "piece",
-        "cost_perunit": 1.0,
+        "cost_perunit": 0.75,
         "event_id": 3
     },
     {

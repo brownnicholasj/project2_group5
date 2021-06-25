@@ -27,7 +27,32 @@ const eventFormHandler = async (event) => {
   const location_ctry = document.querySelector('#event-loc-ctry').value.trim();
   const event_reference = document.querySelector('#event-ref').value.trim();
 
-  if (event_date && event_id && location_name && name) {
+  if (createBtn === 'create') {
+    const response = await fetch(`/api/events`, {
+      method: 'POST',
+      body: JSON.stringify({
+        name,
+        event_type,
+        event_date,
+        location_name,
+        location_addr1,
+        location_addr2,
+        location_city,
+        location_state,
+        location_zip,
+        location_ctry,
+        event_reference,
+        user_id,
+      }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (response.ok) {
+      document.location.replace(`/dashboard`);
+    } else {
+      alert('Failed to update.');
+    }
+  } else if (event_date && event_id && location_name && name) {
     const response = await fetch(`/api/events/${event_id}`, {
       method: 'PUT',
       body: JSON.stringify({
@@ -75,6 +100,12 @@ const eventDeleteHandler = async (event) => {
   }
 };
 
+const eventCancelHandler = async (event) => {
+  event.preventDefault();
+
+  window.history.back();
+};
+
 document
   .querySelector('#event-update-btn')
   .addEventListener('click', eventFormHandler);
@@ -86,3 +117,11 @@ document
 document
   .querySelector('#event-cancel-btn')
   .addEventListener('click', eventCancelHandler);
+
+document
+  .querySelector('#event-create-btn')
+  .addEventListener('click', eventFormHandler);
+
+const createBtn = document
+  .querySelector('#event-create-btn')
+  .getAttribute('value');
