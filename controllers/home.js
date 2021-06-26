@@ -231,11 +231,25 @@ router.get('/guest/:id', async (req, res) => {
       raw: true,
     });
 
+    const items = await Item.findAll({
+      where: {
+        event_id: guests.event_id,
+      },
+    });
+
+    const itemList = items.map((event) =>
+      event.get({
+        plain: true,
+      })
+    );
+    // console.log(itemList);
+
     res.render('guestDetailEdit', {
       guests,
       logged_in: req.session.logged_in,
       user_id: req.session.user_id,
       guestList,
+      itemList,
     });
   } catch (err) {
     res.status(500).json({ message: `Error: ${err.message}` });
@@ -528,36 +542,26 @@ router.get('/signup', (req, res) => {
   res.render('signup');
 });
 
-router.get('/guestitems', async (req, res) => {
+// FIND SINGLE ITEM TO SEE IF WE NEED TO POST/PUT ACTION
+router.get('/guestitem/:eventid/:guestid/:itemid', async (req, res) => {
   try {
     // Get all guest/items and their associated data
-    const guestItemData = await GuestItem.findAll({
-      include: [
-        {
-          model: Guest,
-        },
-        {
-          model: Item,
-        },
-      ],
+    const entryFound = await GuestItem.findAll({
+      where: {
+        event_id: req.params.eventid,
+        item_id: req.params.itemid,
+        guest_id: req.params.guestid,
+      },
+      raw: true,
     });
 
-    res.status(200).json(guestItemData);
-    return;
-
-    // Serialize data so the template can read it
-    const guestItems = guestItemData.map((guestItem) =>
-      guestItem.get({
-        plain: true,
-      })
-    );
-    // Pass serialized data and session flag into template
-    res.render('guestItems', {
-      guestItems,
-      logged_in: req.session.logged_in,
-    });
+    if (entryFound[0].id) {
+      res.status(200).send('FOUND');
+    } else {
+      res.status(200).send('UNFOUND');
+    }
   } catch (err) {
-    res.status(500).json({ message: `Error: ${err.message}` });
+    res.status(500).send('UNFOUND');
   }
 });
 
