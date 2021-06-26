@@ -24,4 +24,8 @@ module.exports = {
 
     return `${days}d ${hours}h`;
   },
+
+  isPrimary: (guest_type) => {
+    return guest_type === 'Primary';
+  },
 };

@@ -204,10 +204,13 @@ router.get('/users/:user_id/events/:id/guestDetails', async (req, res) => {
       raw: true,
     });
 
+    const eventId = req.params.id;
+
     res.render('guestDetail', {
       guests,
       logged_in: req.session.logged_in,
       user_id: req.session.user_id,
+      eventId,
     });
   } catch (err) {
     res.status(500).json({ message: `Error: ${err.message}` });
@@ -220,10 +223,61 @@ router.get('/guest/:id', async (req, res) => {
       raw: true,
     });
 
+    const guestList = await Guest.findAll({
+      where: {
+        event_id: guests.event_id,
+        guest_type: 'Primary',
+      },
+      raw: true,
+    });
+
     res.render('guestDetailEdit', {
       guests,
       logged_in: req.session.logged_in,
       user_id: req.session.user_id,
+      guestList,
+    });
+  } catch (err) {
+    res.status(500).json({ message: `Error: ${err.message}` });
+  }
+});
+
+// CREATED AND WORKING BY NIC 6/25
+router.get('/users/:user_id/events/:id/guest', async (req, res) => {
+  try {
+    const guests = await Guest.findAll({
+      where: {
+        event_id: req.params.id,
+        guest_type: 'Primary',
+      },
+      raw: true,
+    });
+
+    res.render('guests', {
+      guests,
+      logged_in: req.session.logged_in,
+      user_id: req.session.user_id,
+      eventId: req.params.id,
+    });
+  } catch (err) {
+    res.status(500).json({ message: `Error: ${err.message}` });
+  }
+});
+
+router.get('/users/:user_id/events/:id/item', async (req, res) => {
+  try {
+    const item = await Item.findAll({
+      where: {
+        event_id: req.params.id,
+      },
+      raw: true,
+    });
+
+    res.render('items', {
+      item,
+      logged_in: req.session.logged_in,
+      user_id: req.session.user_id,
+      eventId: req.params.id,
     });
   } catch (err) {
     res.status(500).json({ message: `Error: ${err.message}` });
@@ -290,6 +344,7 @@ router.get('/users/:user_id/events/:id/itemDetails', async (req, res) => {
       items,
       logged_in: req.session.logged_in,
       user_id: req.session.user_id,
+      event_id: req.params.id,
       itemDetails,
     });
   } catch (err) {
