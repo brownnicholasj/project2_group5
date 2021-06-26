@@ -1,18 +1,25 @@
-<div class='content-box border-4 px-4 m-1.5 rounded w-1/2 flex flex-col'>
+<div class='content-box border-4 px-4 m-1.5 rounded w-1/2 flex flex-col self-center'>
   <h2 class='m-1.5 text-center text-4xl font-bold'>Guest Details</h2>
   <form class='block grid grid-cols-2 grid-rows-14 border-2 m-1.5'>
     <label
       class='font-bold text-right col-start-1 col-span-1 row-start-1 row-span-1'
     >Guest Type:</label>
-    <input
+    <select
       class='m-1.5 w-10/12 text-center col-start-2 col-span-1 row-start-1 row-span-1'
       type='text'
       id='guest-type'
       data-id='{{guests.id}}'
       data-user_id='{{user_id}}'
       data-event_id='{{guests.event_id}}'
-      value='{{guests.guest_type}}'
-    />
+      value='{{guests.guest_type}}'>
+        {{#if (isPrimary guests.guest_type)}}
+        <option value='Primary' selected>Primary</option>
+        <option value='Secondary'>Secondary</option>
+        {{else}}
+         <option value='Primary'>Primary</option>
+        <option value='Secondary' selected>Secondary</option>
+        {{/if}}       
+    </select>
     <label
       class='font-bold text-right col-start-1 col-span-1 row-start-2 row-span-1'
     >Guest First Name:</label>
@@ -119,12 +126,25 @@
     <label
       class='font-bold text-right col-start-1 col-span-1 row-start-13 row-span-1'
     >Sub Guest Of:</label>
+    {{#if guests.inviter}}
     <input
       class='m-1.5 w-10/12 text-center col-start-2 col-span-1 row-start-13 row-span-1'
       type='text'
       id='guest-inviter'
-      value='{{guests.inviter}}'
-    />
+      value='{{guests.inviter}}'>
+    {{else}}
+    <select
+      class='m-1.5 w-10/12 text-center col-start-2 col-span-1 row-start-13 row-span-1'
+      type='text'
+      id='guest-inviter'
+      value='{{guests.inviter}}'>
+        <option value=''></option>  
+    {{#each guestList}}
+    <option value='{{this.id}}'>{{this.first_name}} {{this.last_name}}</option>
+    {{/each}}
+    {{/if}}
+    </select>
+    <div class='row-start-14 row-span-1 col-start-1 col-span-2 px-4 rounded grid justify-items-stretch grid-col-4 auto-row-auto '>
     <button
       class='row-start-14 row-span-1 col-start-1 col-span-1 box-border border-2 px-4 rounded m-1.5 font-bold'
       type='button'
@@ -135,14 +155,22 @@
       type='button'
       id='guest-delete-btn'
     >Delete</button>
-    <button
-      class='row-start-14 row-span-1 col-start-2 col-span-1 box-border border-2 px-4 rounded m-1.5 font-bold'
+   <button
+      class='col-start-3 col-span-1 box-border border-2 px-4 rounded m-1.5 font-bold'
       type='button'
-      id='guest-delete-btn'
-    >
-      <a href='/' role='button'><i class='fas fa-home'> Home</i></a>
+      value='cancel'
+      id='guest-cancel-btn'
+    >Cancel</button>
     </button>
+    </div>
   </form>
 </div>
+
+    <button
+      class='invisible'
+      type='button'
+      value='create'
+      id='guest-create-btn'
+    >Create</button>
 
 <script type='text/javascript' src='/js/guestDetails.js'></script>
