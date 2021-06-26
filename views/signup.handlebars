@@ -1,4 +1,4 @@
-<div class="content-box border-4 px-4 m-1.5 rounded w-4/12">
+<div class="w-8/12 content-box border-4 px-4 m-1.5 rounded w-4/12 self-center">
   <h2 class="m-1.5 text-center text-4xl font-bold">Sign Up</h2>
   <form class="block" id="signup-form">
     <div class="box-border w-full text-right">
@@ -13,9 +13,10 @@
       <label for="password-signup"class="font-bold m-1.5 w-1/4">Password:</label>
       <input class="m-1.5 w-3/4" type="password" id="password-signup" />
     </div>
-    <div class="block w-full text-center">
-      <button class="box-border border-2 px-4 rounded m-1.5 font-bold" type="submit">Sign Up</button>
-    </div>
+      <div class="block w-full text-center grid grid-cols-4">
+        <button class="row-start-1 row-span-1 col-start-2 col-span-1 box-border border-2 px-4 rounded m-1 py-1 px-1 md:py-2 px-3 m-1 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700" type="submit">Submit</button>
+        <a href="/login" class="row-start-1 row-span-1 col-start-3 col-span-1 box-border border-2 px-4 rounded m-1 py-1 px-1 md:py-2 px-3 m-1 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700" >Cancel</a>
+      </div>
   </form>
 </div>
 
