@@ -66,32 +66,32 @@ const guestFormHandler = async (event) => {
       } else {
         alert('Failed to create.');
       }
-    } else if (guest_id && guest_type) {
-      const send = await fetch(`/api/guests/${guest_id}`, {
-        method: 'PUT',
-        body: JSON.stringify({
-          guest_type,
-          first_name,
-          last_name,
-          guest_addr1,
-          guest_addr2,
-          guest_city,
-          guest_state,
-          guest_zip,
-          guest_country,
-          email,
-          phone,
-          inviter,
-          response,
-        }),
-        headers: { 'Content-Type': 'application/json' },
-      });
+    }
+  } else if (guest_id && guest_type) {
+    const send = await fetch(`/api/guests/${guest_id}`, {
+      method: 'PUT',
+      body: JSON.stringify({
+        guest_type,
+        first_name,
+        last_name,
+        guest_addr1,
+        guest_addr2,
+        guest_city,
+        guest_state,
+        guest_zip,
+        guest_country,
+        email,
+        phone,
+        inviter,
+        response,
+      }),
+      headers: { 'Content-Type': 'application/json' },
+    });
 
-      if (send.ok) {
-        document.location.replace(`/users/${user_id}/events/${event_id}`);
-      } else {
-        alert('Failed to update.');
-      }
+    if (send.ok) {
+      document.location.replace(`/users/${user_id}/events/${event_id}`);
+    } else {
+      alert('Failed to update.');
     }
   }
 
