@@ -6,15 +6,32 @@ const { GuestItem } = require('../../models');
 const withAuth = require('../../util/authorize');
 
 // Post a guest/item - Data is in the req.body and req.session
-router.post('/', withAuth, async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const guestItemData = await GuestItem.create({
       ...req.body,
-      user_id: req.session.user_id,
     });
 
     res.status(200).json({
       message: 'GuestItem created successfully!',
+    });
+  } catch (err) {
+    res.status(400).json({ message: `Error: ${err.message}` });
+  }
+});
+
+router.put('/', async (req, res) => {
+  try {
+    const guestItemData = await GuestItem.update(req.body, {
+      where: {
+        event_id: req.body.event_id,
+        item_id: req.body.item_id,
+        guest_id: req.body.guest_id,
+      },
+    });
+
+    res.status(200).json({
+      message: 'GuestItem updated successfully!',
     });
   } catch (err) {
     res.status(400).json({ message: `Error: ${err.message}` });

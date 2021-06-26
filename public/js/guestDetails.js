@@ -94,6 +94,65 @@ const guestFormHandler = async (event) => {
       }
     }
   }
+
+  const item_select = [...document.querySelectorAll('[id=items]')];
+
+  for (let i = 0; i < item_select.length; i++) {
+    if (item_select[i].checked) {
+      var selected = true;
+    } else {
+      var selected = false;
+    }
+    var item_id = item_select[i].getAttribute('name');
+
+    const isCreated = await fetch(
+      `/guestitem/${event_id}/${guest_id}/${item_id}`,
+      {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      }
+    );
+    if (isCreated.ok) {
+      var result = await isCreated.text();
+    }
+
+    console.log(result);
+    if (result === 'FOUND') {
+      const send = await fetch(`/api/guestitems`, {
+        method: 'PUT',
+        body: JSON.stringify({
+          event_id,
+          selected,
+          guest_id,
+          item_id,
+        }),
+        headers: { 'Content-Type': 'application/json' },
+      });
+
+      if (send.ok) {
+        document.location.replace(`/users/${user_id}/events/${event_id}`);
+      } else {
+        alert('Failed to update.');
+      }
+    } else {
+      const send = await fetch(`/api/guestitems`, {
+        method: 'POST',
+        body: JSON.stringify({
+          event_id,
+          selected,
+          guest_id,
+          item_id,
+        }),
+        headers: { 'Content-Type': 'application/json' },
+      });
+
+      if (send.ok) {
+        document.location.replace(`/users/${user_id}/events/${event_id}`);
+      } else {
+        alert('Failed to update.');
+      }
+    }
+  }
 };
 
 const guestDeleteHandler = async (event) => {
