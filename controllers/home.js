@@ -242,6 +242,7 @@ router.get('/guest/:id', async (req, res) => {
   }
 });
 
+// CREATED AND WORKING BY NIC 6/25
 router.get('/users/:user_id/events/:id/guest', async (req, res) => {
   try {
     const guests = await Guest.findAll({
@@ -254,6 +255,26 @@ router.get('/users/:user_id/events/:id/guest', async (req, res) => {
 
     res.render('guests', {
       guests,
+      logged_in: req.session.logged_in,
+      user_id: req.session.user_id,
+      eventId: req.params.id,
+    });
+  } catch (err) {
+    res.status(500).json({ message: `Error: ${err.message}` });
+  }
+});
+
+router.get('/users/:user_id/events/:id/item', async (req, res) => {
+  try {
+    const item = await Item.findAll({
+      where: {
+        event_id: req.params.id,
+      },
+      raw: true,
+    });
+
+    res.render('items', {
+      item,
       logged_in: req.session.logged_in,
       user_id: req.session.user_id,
       eventId: req.params.id,
@@ -323,6 +344,7 @@ router.get('/users/:user_id/events/:id/itemDetails', async (req, res) => {
       items,
       logged_in: req.session.logged_in,
       user_id: req.session.user_id,
+      event_id: req.params.id,
       itemDetails,
     });
   } catch (err) {
