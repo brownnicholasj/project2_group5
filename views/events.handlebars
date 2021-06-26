@@ -1,38 +1,36 @@
-<div class='content-box px-4 m-1.5 w-10/12 grid grid-cols-4 gap-4'>
-  <h1 class='font-bold text-3xl col-span-full text-center'>{{event.name}}</h1>
-  <a
-    href='/users/{{user_id}}/events/{{event.id}}/eventDetails'
-    class='row-start-2 row-span-1 col-start-1 col-span-2 grid grid-cols-2 border-2 rounded m-1.5 shadow-md'
-  >
-    <h2 class='justify-self-end m-1.5 font-bold'>Event Date</h2>
-    <h3 class='justify-self-start m-1.5'>{{format_date event.event_date}}</h3>
+<div class='content-box px-4 m-1.5 w-10/12 grid grid-cols-4 gap-1'>
+  <h1 class='font-bold text-lg md:text-3xl col-span-full text-center'>{{event.name}}</h1>
+ 
+ 
+ 
+ <div class="row-start-2 row-span-1 col-start-1 col-span-2 flex flex-col flex-start content-center m-1.5 rounded-md shadow-lg">
+    <a href='/users/{{user_id}}/events/{{event.id}}/eventDetails'>
+      <h2 class='mx-0 my-1 font-bold text-sm'>Event Date</h2>
+      <p class='m-0 text-xs'>{{format_date event.event_date}}</p>
+    </a>
+  </div>
+
+<div class="row-start row-span-1 col-start-3 col-span-2 flex flex-col flex-start content-center m-1.5 rounded-md shadow-lg">
+  <a href='/users/{{user_id}}/events/{{event.id}}/eventDetails'  >
+    <h2 class='mx-0 my-1 font-bold text-sm'>Days Until Event</h2>
+    <p class='m-0 text-xs'>{{days_left event.event_date}}</p>
   </a>
-  <a
-    href='/users/{{user_id}}/events/{{event.id}}/eventDetails'
-    class='row-start-2 row-span-1 col-start-3 col-span-2 grid grid-cols-2 border-2 rounded m-1.5 shadow-md'
-  >
-    <h2 class='justify-self-end m-1.5 font-bold'>Days Until Event</h2>
-    <h3 class='justify-self-start m-1.5'>{{days_left event.event_date}}</h3>
-  </a>
-  <a
-    href='/users/{{user_id}}/events/{{event.id}}/guestDetails'
-    class='row-start-3 row-span-1 col-start-1 col-span-2 grid grid-cols-4 border-2 rounded m-1.5 shadow-md'
-  >
-    <div class='col-start-1 col-span-1 grid grid-rows-2 rounded m-1.5'>
-      <h2 class='justify-self-center m-1.5 font-bold text-center'>Guests Invited</h2>
-      <h2
-        class='justify-self-center m-1.5 text-center'
-      >{{event.guests.length}}</h2>
+</div>
+
+<div class="row-start-3 row-span-1 col-start-1 col-span-2 flex flex-col flex-start content-center m-1.5 rounded-md shadow-lg">
+  <a href='/users/{{user_id}}/events/{{event.id}}/guestDetails'>
+    <div class='mx-0 my-1'>
+      <h2 class='mx-0 my-1 font-bold text-sm'>Guests Invited</h2>
+      <p class='m-0 font-semibold text-xs'>{{event.guests.length}}</p>
     </div>
-    <div class='col-start-2 col-span-1 grid grid-rows-2 rounded m-1.5'>
-      <h2 class='justify-self-center m-1.5 font-bold text-center'>Guests
-        Accepted</h2>
-      <h2
-        class='justify-self-center m-1.5 text-center'
-      >{{guestResponse.guestAccept.GuestAccepted}}</h2>
+    
+    <div class='mx-0 my-1'>
+      <h2 class='mx-0 my-1 font-bold text-sm'>Guests Accepted</h2>
+      <p class='m-0 font-semibold text-xs text-green-500'>{{guestResponse.guestAccept.GuestAccepted}}</p>
     </div>
-    <div class='col-start-3 col-span-1 grid grid-rows-2 rounded m-1.5'>
-      <h2 class='justify-self-center m-1.5 font-bold text-center'>Guests
+
+    <div class='mx-0 my-1'>
+      <h2 class='mx-0 my-1 font-bold'>Guests
         Declined</h2>
       <h2
         class='justify-self-center m-1.5 text-center'
@@ -46,6 +44,7 @@
     </div>
 
     </a>
+</div>
     <a href="/users/{{user_id}}/events/{{event.id}}/itemDetails" class="row-start-3 row-end-4 col-start-3 col-end-5 grid grid-cols-2 border-2 rounded m-1.5 shadow-md">
         <div class="col-start-1 col-span-1 grid grid-rows-2 rounded m-1.5">
         <h2 class="justify-self-center m-1.5 font-bold text-center">Total Cost</h2>
