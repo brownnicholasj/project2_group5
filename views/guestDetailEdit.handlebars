@@ -1,6 +1,6 @@
 <div class='content-box border-4 px-4 m-1.5 rounded w-1/2 flex flex-col self-center'>
   <h2 class='m-1.5 text-center text-4xl font-bold'>Guest Details</h2>
-  <form class='block grid grid-cols-2 grid-rows-14 border-2 m-1.5'>
+  <form class='block grid grid-cols-2 grid-rows-15 border-2 m-1.5'>
     <label
       class='font-bold text-right col-start-1 col-span-1 row-start-1 row-span-1'
     >Guest Type:</label>
@@ -144,14 +144,24 @@
     {{/each}}
     {{/if}}
     </select>
-    <div class='row-start-14 row-span-1 col-start-1 col-span-2 px-4 rounded grid justify-items-stretch grid-col-4 auto-row-auto '>
+    <div class='row-start-14 row-span-1 col-start-1 col-span-2 px-4 rounded flex flex-wrap justify-center items-center'>
+      <label
+      class='font-bold text-right col-start-1 col-span-1 row-start-13 row-span-1'
+    >Item Selection:</label>
+      {{#each itemList}}
+        <input class='m-1' type="checkbox" id="items" name="{{this.id}}" value="{{this.name}}"><label class='m-1' for="{{this.id}}">{{this.name}}</label>
+      {{/each}}
+    </div>
+
+
+    <div class='row-start-15 row-span-1 col-start-1 col-span-2 px-4 rounded grid justify-items-stretch grid-col-4 auto-row-auto '>
     <button
-      class='row-start-14 row-span-1 col-start-1 col-span-1 box-border border-2 px-4 rounded m-1.5 font-bold'
+      class='col-start-1 col-span-1 box-border border-2 px-4 rounded m-1.5 font-bold'
       type='button'
       id='guest-update-btn'
     >Update</button>
     <button
-      class='row-start-14 row-span-1 col-start-2 col-span-1 box-border border-2 px-4 rounded m-1.5 font-bold'
+      class='col-start-2 col-span-1 box-border border-2 px-4 rounded m-1.5 font-bold'
       type='button'
       id='guest-delete-btn'
     >Delete</button>
@@ -169,7 +179,7 @@
     <button
       class='invisible'
       type='button'
-      value='create'
+      value='create-disabled'
       id='guest-create-btn'
     >Create</button>
 

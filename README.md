@@ -1,6 +1,9 @@
-# Event Planner ![MIT](https://img.shields.io/badge/license-MIT-blue.svg)
+# The Event Planning ![MIT]
+
+![Screenshot](dashboard.png)
+
   # Description
-   This application is a Event planner that helps organize data when planning an event. This app helps the user keep track of guests and items and can help send invintations.
+   This application is a Event planner that helps organize data when planning an event. This app helps the user keep track of guests and items.
   # Table of Contents
   * [Installation](#installation)
   * [Usage](#usage)
@@ -9,19 +12,28 @@
   * [Questions](#questions)
   # Installation  
   npm install
-  # Usage  
-  
+  # Usage
+  Node.js, Express.js, handlebars.js
   # Contributed
-  Contributers: Nic Brown, Rigo A Pinell, Melvin Finn, Jose Orozco 
+  Contributers: 
+  * Nic Brown 
+  * Rigo A Pinell 
+  * Melvin Finn
+  * Jose Orozco 
   # License
   This application is protected under conditions of the MIT license.
   # Questions
   Our Github Profile: 
-  http://www.github.com/brownnicholasj
-  http://www.github.com/japinell
-  http://www.github.com/campe0n
-  http://www.github.com/Jose8160
+  * http://www.github.com/brownnicholasj
+  * http://www.github.com/japinell
+  * http://www.github.com/campe0n
+  * http://www.github.com/Jose8160
 
-  If there are any questions contact 
+  If there are any questions email: 
   
+  * brownnicholasj.dev@gmail.com
+  * japinell@yahoo.com
+  * melvinrf@Outlook.com
+  * jose816orozco@gmail.com
+
 
