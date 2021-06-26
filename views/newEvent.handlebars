@@ -1,142 +1,143 @@
-<div class='content-box border-1 w-auto h-auto '>
-  <h2 class='align-middle col-start-1 col-span-1 row-start-1 row-span-1 text-center text-lg md:text-4xl font-bold'>New Event Details</h2>
-  <form id='event-form'
->
-    {{! FIRST ROW }}
-    <div class='flex flex-col justify-center content-center'>
-        <label class='mx-0 my-1 font-bold text-sm md:text-lg font-bold text-center'>Event Name:</label>
-        <input
-          class='w-1/2 self-center'
-          type='text'
-          id='event-name'
-          data-id=''
-          data-user_id='{{user_id}}'
-          value=''
-          required
-        />
+<div class='content-box w-auto h-auto mx-2 md:mx-10 lg:mx-auto'>
+  <form id='event-form' class='px-1 my-3 mx-0 space-y-6'>
+    <div>
+      <h1 class='text-center text-md md:text-4xl font-semibold'>Event Details</h1>
+      <p class='text-center text-sm md:text-md text-gray-600'>Add your event details</p>
+    <div>
 
-        <label class='mx-0 my-1 font-bold text-sm md:text-lg font-bold text-center'>Event Type:</label>
+    <div class='flex space-x-2'>
+      <div class='w-1/3 text-xs md:text-lg'>
+      <label for='event-name'>Event Name</label>
+      <input
+        class='border border-gray-400 block py-1 px-4 w-full rounded-md focus:outline-none focus:border-blue-500'
+        type='text'
+        id='event-name'
+        data-id=''
+        data-user_id='{{user_id}}'
+        value=''
+        required
+        />
+      </div>
+      <div class='w-1/3 text-xs md:text-lg'>
+        <label for='event-type'>Event Type</label>
         <input
-          class='w-1/2 self-center'
+          class='border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500'
           type='text'
           id='event-type'
           value=''
         />
-
-        <label class='mx-0 my-1 font-bold text-sm md:text-lg font-bold text-center'>Event Date:</label>
+      </div>
+      <div class='w-1/3 text-xs md:text-lg'>
+        <label for='event-date'>Event Date</label>
         <input
-          class='w-1/2 self-center'
+          class='border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500'
           type='text'
           id='event-date'
           value=''
         />
+      </div>
     </div>
 
-    {{! SECOND ROW }}
-    <div class='flex flex-col justify-center content-center'>
-      <label class='mx-0 my-1 font-bold text-sm md:text-lg font-bold text-center'>Location Name:</label>
+    <div class='text-xs md:text-lg'>
+      <label for='location-name'>Location Name</label>
       <input
-        class='w-1/2 self-center'
+        class='border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500'
         type='text'
         id='event-loc-name'
         value=''
       />
     </div>
-
-    {{! THIRD ROW }}
-    <div class='flex flex-col justify-center content-center'>
-      <label class='mx-0 my-1 font-bold text-sm md:text-lg font-bold text-center'>Location Address 1:</label>
+    <div class='text-xs md:text-lg'>
+      <label for='location-address1'>Location Address 1</label>
       <input
-        class='w-1/2 self-center'
+        class='border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500'
         type='text'
         id='event-loc-addr1'
         value=''
       />
     </div>
-
-    <div class='flex flex-col justify-center content-center'>
-      <label class='mx-0 my-1 font-bold text-sm md:text-lg font-bold text-center'>Location Address 2:</label>
+    <div class='text-xs md:text-lg'>
+      <label for='locationb-adress2'>Location Address 2</label>
       <input
-        class='w-1/2 self-center'
+        class='border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500'
         type='text'
         id='event-loc-addr2'
         value=''
       />
     </div>
 
-    {{! FOURTH ROW }}
-    <div class='flex flex-col justify-center content-center'>
-      <label class='mx-0 my-1 font-bold text-sm md:text-lg font-bold text-center'>Location City:</label>
+
+<div class='flex space-x-4 text-xs md:text-lg'>
+  <div class='w-1/4'>
+      <label for='location-city'>Location City</label>
       <input
-        class='w-1/2 self-center'
+        class='border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500'
         type='text'
         id='event-loc-city'
         value=''
       />
     </div>
 
-    <div class='flex flex-col justify-center content-center'>
-      <label class='mx-0 my-1 font-bold text-sm md:text-lg font-bold text-center'>Location State:</label>
+    <div class='w-1/4 text-xs md:text-lg'>
+      <label for='location-state'>Location State</label>
       <input
-        class='w-1/2 self-center'
+        class='border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500'
         type='text'
         id='event-loc-state'
         value=''
       />
     </div>
 
-    <div class='flex flex-col justify-center content-center'>
-      <label class='mx-0 my-1 font-bold text-sm md:text-lg font-bold text-center'>Location Zip:</label>
+    <div class='w-1/4 text-xs md:text-lg'>
+      <label for='location-zip'>Location Zip</label>
       <input
-        class='w-1/2 self-center'
+        class='border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500'
         type='text'
         id='event-loc-zip'
         value=''
       />
     </div>
 
-    <div class='flex flex-col justify-center content-center'>
-      <label class='mx-0 my-1 font-bold text-sm md:text-lg font-bold text-center'>Location Country:</label>
+    <div class='w-1/4 text-xs md:text-lg'>
+      <label for='location-country'>Location Country</label>
       <input
-        class='w-1/2 self-center'
+        class='border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500'
         type='text'
         id='event-loc-ctry'
         value=''
       />
     </div>
-
-    {{! FIFTH ROW }}
-    <div class='flex flex-col justify-center content-center'>
-      <label class='mx-0 my-1 font-bold text-sm md:text-lg font-bold text-center'>Event Reference/links:</label>
+  </div>
+    
+    <div class='text-xs md:text-lg'>
+      <label for='event-reference'>Event Reference/links</label>
       <input
-        class='w-1/2 self-center'
+        class='border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500'
         type='text'
         id='event-ref'
         value=''
       />
     </div>
 
-    {{! SIXTH ROW }}
-    <div class='flex flex-row justify-center content-center m-5'>
-    <button
-      class='col-start-1 col-span-1 box-border border-2 py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700'
-      type='button'
-      value='create'
-      id='event-create-btn'
-    >Create</button>
-    <button
-      class='col-start-3 col-span-1 box-border border-2 py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-red-500 hover:bg-red-700'
-      type='button'
-      value='cancel'
-      id='event-cancel-btn'
-    >Cancel</button>
- 
+    <div class='flex flex-row justify-center content-center'>
+      <button
+        class='m-1 box-border border-2 py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700'
+        type='button'
+        value='create'
+        id='event-create-btn'
+      >Create</button>
+      <button
+        class='m-1 box-border border-2 py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-red-500 hover:bg-red-700'
+        type='button'
+        value='cancel'
+        id='event-cancel-btn'
+      >Cancel</button>
     </div>
   </form>
-
 </div>
 
-<button
+<div class='flex flex-row justify-center content-center'>
+  <button
       class='invisible'
       type='button'
       value='delete'
@@ -148,5 +149,6 @@
       value='update'
       id='event-update-btn'
     >Update</button>
-
+</div>
+  
 <script type='text/javascript' src='/js/eventDetails.js'></script>
