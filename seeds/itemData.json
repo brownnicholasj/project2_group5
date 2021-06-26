@@ -1,0 +1,110 @@
+[
+    {
+        "id": 1,
+        "category": "Food",
+        "name": "Cheese Pizza",
+        "quantity": 1,
+        "qty_uom": "piece",
+        "cost_perunit": 1.0,
+        "event_id": 1
+    },
+    {
+        "id": 2,
+        "category": "Food",
+        "name": "Pepperoni Pizza",
+        "quantity": 1,
+        "qty_uom": "piece",
+        "cost_perunit": 1.25,
+        "event_id": 1
+    },
+    {
+        "id": 3,
+        "category": "Food",
+        "name": "Hawaiian Pizza",
+        "quantity": 1,
+        "qty_uom": "piece",
+        "cost_perunit": 1.50,
+        "event_id": 1
+    },
+    {
+        "id": 4,
+        "category": "Fireworks",
+        "name": "Bottle Rocket",
+        "quantity": 1,
+        "qty_uom": "piece",
+        "cost_perunit": 1.0,
+        "event_id": 2
+    },
+    {
+        "id": 5,
+        "category": "Fireworks",
+        "name": "Popper",
+        "quantity": 1,
+        "qty_uom": "piece",
+        "cost_perunit": 0.25,
+        "event_id": 2
+    },
+    {
+        "id": 6,
+        "category": "Fireworks",
+        "name": "Sparkler",
+        "quantity": 1,
+        "qty_uom": "piece",
+        "cost_perunit": 1.10,
+        "event_id": 2
+    },
+    {
+        "id": 7,
+        "category": "Candy",
+        "name": "Snickers",
+        "quantity": 1,
+        "qty_uom": "piece",
+        "cost_perunit": 1.0,
+        "event_id": 3
+    },
+    {
+        "id": 8,
+        "category": "Candy",
+        "name": "Twix",
+        "quantity": 1,
+        "qty_uom": "piece",
+        "cost_perunit": 1.50,
+        "event_id": 3
+    },
+    {
+        "id": 9,
+        "category": "Candy",
+        "name": "Reeses",
+        "quantity": 1,
+        "qty_uom": "piece",
+        "cost_perunit": 1.0,
+        "event_id": 3
+    },
+    {
+        "id": 10,
+        "category": "Candy",
+        "name": "M&M",
+        "quantity": 1,
+        "qty_uom": "piece",
+        "cost_perunit": 0.75,
+        "event_id": 3
+    },
+    {
+        "id": 11,
+        "category": "Tissue",
+        "name": "Kleenex",
+        "quantity": 1,
+        "qty_uom": "piece",
+        "cost_perunit": 0.0,
+        "event_id": 4
+    },
+    {
+        "id": 12,
+        "category": "Tissue",
+        "name": "Toilet Paper",
+        "quantity": 1,
+        "qty_uom": "piece",
+        "cost_perunit": 0.0,
+        "event_id": 4
+    }
+]
