@@ -50,22 +50,22 @@ Guest.init(
     phone: {
       type: DataTypes.STRING,
       allowNull: true,
-      unique: true,
-      validate: {
-        isValidPhoneNo: function (value) {
-          if (!value) return value;
+      // unique: true,
+      // validate: {
+      //   isValidPhoneNo: function (value) {
+      //     if (!value) return value;
 
-          var regexp = /^[0-9]+$/;
-          var values = Array.isArray(value) ? value : [value];
+      //     var regexp = /^[0-9]+$/;
+      //     var values = Array.isArray(value) ? value : [value];
 
-          values.forEach(function (val) {
-            if (!regexp.test(val)) {
-              throw new Error('Number only is allowed.');
-            }
-          });
-          return value;
-        },
-      },
+      //     values.forEach(function (val) {
+      //       if (!regexp.test(val)) {
+      //         throw new Error('Number only is allowed.');
+      //       }
+      //     });
+      //     return value;
+      //   },
+      // },
     },
     //   Primary guest plus 1 or extra guests
     inviter: {
