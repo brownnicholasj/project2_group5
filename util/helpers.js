@@ -30,4 +30,48 @@ module.exports = {
   isPrimary: (guest_type) => {
     return guest_type === 'Primary';
   },
+
+  isAttending: (response) => {
+    if (response === 1) {
+      return 'selected';
+    } else {
+      return null;
+    }
+  },
+
+  isDeclining: (response) => {
+    if (response === 0) {
+      return 'selected';
+    } else {
+      return null;
+    }
+  },
+
+  isGuest: (guest, mainGuest) => {
+    if (guest === mainGuest) {
+      return true;
+    } else {
+      return false;
+    }
+  },
+
+  isItem: (item, mainItem) => {
+    if (item === mainItem) {
+      return true;
+    } else {
+      return false;
+    }
+  },
+
+  isSelected: (selected) => {
+    if (selected === true) {
+      return true;
+    } else {
+      return false;
+    }
+  },
+
+  ansStored: (guest, item, selected) => {
+    return true;
+  },
 };
