@@ -33,7 +33,8 @@ router.get('/', async (req, res) => {
       logged_in: req.session.logged_in,
     });
   } catch (err) {
-    res.status(500).json(err);
+    //res.status(500).json(err);
+    res.render('message', { type: 'Error', message: `${err.message}` });
   }
 });
 
@@ -67,7 +68,8 @@ router.get('/:id', async (req, res) => {
     //   logged_in: req.session.logged_in,
     // });
   } catch (err) {
-    res.status(500).json(err);
+    //res.status(500).json(err);
+    res.render('message', { type: 'Error', message: `${err.message}` });
   }
 });
 
@@ -80,10 +82,14 @@ router.post('/', async (req, res) => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
 
-      res.status(200).json(userData);
+      //res.status(200).json(userData);
+      res.status(200).json({
+        message: 'User created successfully!',
+      });
     });
   } catch (err) {
-    res.status(400).json(err);
+    //res.status(400).json(err);
+    res.render('message', { type: 'Error', message: `${err.message}` });
   }
 });
 
@@ -103,9 +109,13 @@ router.put('/', async (req, res) => {
       });
       return;
     }
-    res.status(200).json(user);
+    //res.status(200).json(user);
+    res.status(200).json({
+      message: 'User updated successfully!',
+    });
   } catch (err0r) {
-    res.status(500).json(error);
+    //res.status(500).json(error);
+    res.render('message', { type: 'Error', message: `${err.message}` });
   }
 });
 
@@ -124,9 +134,13 @@ router.delete('/:id', async (req, res) => {
       });
       return;
     }
-    res.status(200).json(user);
-  } catch (error) {
-    res.status(500).json(error);
+    //res.status(200).json(user);
+    res.status(200).json({
+      message: 'Event deleted successfully!',
+    });
+  } catch (err) {
+    //res.status(500).json(error);
+    res.render('message', { type: 'Error', message: `${err.message}` });
   }
 });
 
@@ -165,7 +179,8 @@ router.post('/login', async (req, res) => {
       });
     });
   } catch (err) {
-    res.status(400).json(err);
+    //res.status(400).json(err);
+    res.render('message', { type: 'Error', message: `${err.message}` });
   }
 });
 

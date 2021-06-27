@@ -30,4 +30,12 @@ module.exports = {
   isPrimary: (guest_type) => {
     return guest_type === 'Primary';
   },
+
+  isError: (type) => {
+    return type === 'Error';
+  },
+
+  isSuccess: (type) => {
+    return type !== 'Error';
+  },
 };
