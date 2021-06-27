@@ -34,6 +34,16 @@ router.put('/:id', async (req, res) => {
   }
 });
 
+router.get('/guestMatch/:id', async (req, res) => {
+  try {
+    const guest = await Guest.findByPk(req.params.id);
+
+    res.status(200).json(guest);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
 router.delete('/:id', async (req, res) => {
   try {
     const guest = await Guest.destroy({
