@@ -1,67 +1,67 @@
 <div class='content-box p-0 m-2 w-auto h-auto grid grid-cols-4 gap-1'>
   <h1 class='font-bold text-lg md:text-4xl col-span-full text-center'>{{event.name}}</h1>
  
- <div class="row-start-2 row-span-1 col-start-1 col-span-2 flex flex-col flex-start content-center m-1.5 border-1 rounded-md shadow-md hover:shadow-xl">
+ <div class="bg-white row-start-2 row-span-1 col-start-1 col-span-2  m-1.5 border-1 rounded-md shadow-md hover:shadow-xl">
     <a href='/users/{{user_id}}/events/{{event.id}}/eventDetails'>
-      <h2 class='mx-0 my-1 font-bold text-sm md:text-lg'>Event Date</h2>
-      <p class='m-0 text-xs md:text-sm'>{{format_date event.event_date}}</p>
+      <h2 class='text-center mx-0 my-1 font-bold text-sm md:text-lg'>Event Date</h2>
+      <p class='text-center m-0 text-xs md:text-sm'>{{format_date event.event_date}}</p>
     </a>
   </div>
 
-<div class="row-start row-span-1 col-start-3 col-span-2 flex flex-col flex-start content-center m-1.5 border-1 rounded-md shadow-md hover:shadow-xl">
+<div class="bg-white row-start row-span-1 col-start-3 col-span-2 flex flex-col flex-start content-center m-1.5 border-1 rounded-md shadow-md hover:shadow-xl">
   <a href='/users/{{user_id}}/events/{{event.id}}/eventDetails'  >
-    <h2 class='mx-0 my-1 font-bold text-sm md:text-lg'>Days Until Event</h2>
-    <p class='m-0 text-xs md:text-sm'>{{days_left event.event_date}}</p>
+    <h2 class='mx-0 my-1 font-bold text-sm md:text-lg text-center'>Days Until Event</h2>
+    <p class='m-0 text-xs md:text-sm text-center'>{{days_left event.event_date}}</p>
   </a>
 </div>
 
-<div class="row-start-3 row-span-1 col-start-1 col-span-2 flex flex-col flex-start content-center m-1.5 border-1 rounded-md shadow-md hover:shadow-xl">
+<div class="bg-white row-start-3 row-span-1 col-start-1 col-span-2 flex flex-col flex-start content-center m-1.5 border-1 rounded-md shadow-md hover:shadow-xl">
   <a href='/users/{{user_id}}/events/{{event.id}}/guestDetails'>
     <div class='mx-0 my-1'>
-      <h2 class='mx-0 my-1 font-bold text-sm md:text-lg'>Guests Invited</h2>
-      <p class='m-0 font-semibold text-xs md:text-sm'>{{event.guests.length}}</p>
+      <h2 class='mx-0 my-1 font-bold text-sm md:text-lg text-center'>Guests Invited</h2>
+      <p class='m-0 font-semibold text-xs md:text-sm text-center'>{{event.guests.length}}</p>
     </div>
     
     <div class='mx-0 my-1'>
-      <h2 class='mx-0 my-1 font-bold text-sm md:text-lg'>Guests Accepted</h2>
-      <p class='m-0 font-semibold text-xs md:text-sm text-green-500'>{{guestResponse.guestAccept.GuestAccepted}}</p>
+      <h2 class='mx-0 my-1 font-bold text-sm md:text-lg text-center'>Guests Accepted</h2>
+      <p class='m-0 font-semibold text-xs md:text-sm text-green-500 text-center'>{{guestResponse.guestAccept.GuestAccepted}}</p>
     </div>
 
     <div class='mx-0 my-1'>
-      <h2 class='mx-0 my-1 font-bold text-sm md:text-lg'>Guests Declined</h2>
-      <p class='m-0 font-semibold text-xs md:text-sm text-red-500'>{{guestResponse.guestDecline.GuestDecline}}</p>
+      <h2 class='mx-0 my-1 font-bold text-sm md:text-lg text-center'>Guests Declined</h2>
+      <p class='m-0 font-semibold text-xs md:text-sm text-red-500 text-center'>{{guestResponse.guestDecline.GuestDecline}}</p>
     </div>
 
     <div class='mx-0 my-1'>
-      <h2 class='mx-0 my-1 font-bold text-sm md:text-lg'>No Response</h2>
-      <p class='m-0 font-semibold text-xs md:text-sm'>{{guestResponse.guestNoResponse.GuestNoResp}}</p>
+      <h2 class='mx-0 my-1 font-bold text-sm md:text-lg text-center'>No Response</h2>
+      <p class='m-0 font-semibold text-xs md:text-sm text-center'>{{guestResponse.guestNoResponse.GuestNoResp}}</p>
     </div>
   </a>
 </div>
 
-<div class="row-start-3 row-span-1 col-start-3 col-span-2 flex flex-col flex-start content-center border-1 rounded-md m-1.5 shadow-md hover:shadow-xl">
+<div class="bg-white row-start-3 row-span-1 col-start-3 col-span-2 flex flex-col flex-start content-center border-1 rounded-md m-1.5 shadow-md hover:shadow-xl">
     <a href="/users/{{user_id}}/events/{{event.id}}/itemDetails">
         <div class="mx-0 mb-5">
-          <h2 class="mx-0 my-1 font-bold text-sm md:text-lg">Total Cost</h2>
+          <h2 class="mx-0 my-1 font-bold text-sm md:text-lg text-center">Total Cost</h2>
           {{#if itemDetails.[0].total_cost}}
-          <p class="m-0 font-semibold text-xs md:text-sm">${{itemDetails.[0].total_cost}}</p>
+          <p class="m-0 font-semibold text-xs md:text-sm text-center">${{itemDetails.[0].total_cost}}</p>
           {{/if}}
         </div>
 
         <div class="mx-0 my-2">
-          <h2 class="mx-0 my-1 font-bold text-sm md:text-lg">Total Quantity</h2>
-          <p class="m-0 font-semibold text-xs md:text-sm">{{itemDetails.[0].SumItemQty}}</p>
+          <h2 class="mx-0 my-1 font-bold text-sm md:text-lg text-center">Total Quantity</h2>
+          <p class="m-0 font-semibold text-xs md:text-sm text-center">{{itemDetails.[0].SumItemQty}}</p>
         </div>
     </a>
 </div>
 
-<div class="row-start-4 row-span-1 col-start-1 col-span-4 flex flex-col flex-start content-center border-1 rounded-md m-1.5 shadow-md hover:shadow-xl">
+<div class="bg-white row-start-4 row-span-1 col-start-1 col-span-4  border-1 rounded-md m-1.5 shadow-md hover:shadow-xl">
     <a href="/users/{{user_id}}/events/{{event.id}}/eventDetails">
       <div class="mx-0">
-          <h2 class="mx-0 my-1 font-bold text-sm md:text-lg">Location</h2>
-          <p class="m-0 font-semibold text-xs md:text-sm">{{event.location_name}}</p>
+          <h2 class="mx-0 my-1 font-bold text-sm md:text-lg text-center">Location</h2>
+          <p class="m-0 font-semibold text-xs md:text-sm text-center">{{event.location_name}}</p>
           {{#if event.location_city}}
-          <p class="m-0 font-semibold text-xs md:text-sm">{{event.location_city}}, {{event.location_state}} {{event.location_zip}}</p>
+          <p class="m-0 font-semibold text-xs md:text-sm text-center">{{event.location_city}}, {{event.location_state}} {{event.location_zip}}</p>
           {{/if}}
       </div>
     </a>

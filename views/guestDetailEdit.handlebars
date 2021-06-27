@@ -1,61 +1,65 @@
-<div class='content-box border-4 px-4 m-1.5 rounded w-1/2 flex flex-col self-center'>
-  <h2 class='m-1.5 text-center text-4xl font-bold'>Guest Details</h2>
-  <form class='block grid grid-cols-2 grid-rows-15 border-2 m-1.5'>
-    <label
-      class='font-bold text-right col-start-1 col-span-1 row-start-1 row-span-1'
-    >Guest Type:</label>
-    <select
-      class='m-1.5 w-10/12 text-center col-start-2 col-span-1 row-start-1 row-span-1'
-      type='text'
-      id='guest-type'
-      data-id='{{guests.id}}'
-      data-user_id='{{user_id}}'
-      data-event_id='{{guests.event_id}}'
-      value='{{guests.guest_type}}'>
-        {{#if (isPrimary guests.guest_type)}}
-        <option value='Primary' selected>Primary</option>
-        <option value='Secondary'>Secondary</option>
-        {{else}}
-         <option value='Primary'>Primary</option>
-        <option value='Secondary' selected>Secondary</option>
-        {{/if}}       
-    </select>
-    <label
-      class='font-bold text-right col-start-1 col-span-1 row-start-2 row-span-1'
-    >Guest First Name:</label>
-    <input
-      class='m-1 w-10/12 text-center col-start-2 col-span-1 row-start-2 row-span-1'
-      type='text'
-      id='guest-first-name'
-      value='{{guests.first_name}}'
-    />
-    <label
-      class='font-bold text-right col-start-1 col-span-1 row-start-3 row-span-1'
-    >Guest Last Name:</label>
-    <input
-      class='m-1 w-10/12 text-center col-start-2 col-span-1 row-start-3 row-span-1'
-      type='text'
-      id='guest-last-name'
-      value='{{guests.last_name}}'
-    />
-    <label
-      class='font-bold text-right col-start-1 col-span-1 row-start-4 row-span-1'
-    >Guest Address 1:</label>
+<div class='content-box w-auto h-auto mx-2 md:mx-10 lg:mx-auto'>
+  <form class='block grid grid-cols-2 grid-rows-15 border-2 m-1.5'></form>
+    <div>
+      <h1 class='text-center text-md md:text-4xl font-semibold'>Guest Details</h1>
+      <p>Edit guest details</p>
+    </div>
+    <div>
+      <div>
+        <label class='font-bold text-right col-start-1 col-span-1 row-start-1 row-span-1'>Guest Type:</label>
+        <select
+          class='m-1.5 w-10/12 text-center col-start-2 col-span-1 row-start-1 row-span-1'
+          type='text'
+          id='guest-type'
+          data-id='{{guests.id}}'
+          data-user_id='{{user_id}}'
+          data-event_id='{{guests.event_id}}'
+          value='{{guests.guest_type}}'>
+            {{#if (isPrimary guests.guest_type)}}
+            <option value='Primary' selected>Primary</option>
+            <option value='Secondary'>Secondary</option>
+            {{else}}
+            <option value='Primary'>Primary</option>
+            <option value='Secondary' selected>Secondary</option>
+            {{/if}}       
+          </select>
+      </div>
+      <div>
+        <label class='font-bold text-right col-start-1 col-span-1 row-start-2 row-span-1'>Guest First Name:</label>
+        <input
+          class='m-1 w-10/12 text-center col-start-2 col-span-1 row-start-2 row-span-1'
+          type='text'
+          id='guest-first-name'
+          value='{{guests.first_name}}'
+        >
+      </div>
+      <div>
+        <label class='font-bold text-right col-start-1 col-span-1 row-start-3 row-span-1'>Guest Last Name:</label>
+        <input
+          class='m-1 w-10/12 text-center col-start-2 col-span-1 row-start-3 row-span-1'
+          type='text'
+          id='guest-last-name'
+          value='{{guests.last_name}}'
+        >
+      </div>
+    </div>
+      
+    <label class='font-bold text-right col-start-1 col-span-1 row-start-4 row-span-1'>Guest Address 1:</label>
     <input
       class='m-1.5 w-10/12 text-center col-start-2 col-span-1 row-start-4 row-span-1'
       type='text'
       id='guest-addr1'
       value='{{guests.guest_addr1}}'
     />
-    <label
-      class='font-bold text-right col-start-1 col-span-1 row-start-5 row-span-1'
-    >Guest Address 2:</label>
+    <label class='font-bold text-right col-start-1 col-span-1 row-start-5 row-span-1'>Guest Address 2:</label>
     <input
       class='m-1.5 w-10/12 text-center col-start-2 col-span-1 row-start-5 row-span-1'
       type='text'
       id='guest-addr2'
       value='{{guests.guest_addr2}}'
     />
+
+    <div></div>
     <label
       class='font-bold text-right col-start-1 col-span-1 row-start-6 row-span-1'
     >Guest City:</label>

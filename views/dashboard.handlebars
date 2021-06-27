@@ -1,18 +1,20 @@
-<div class='content-box p-0 m-2 w-auto h-auto grid grid-cols-1 gap-1'>
-  <h1 class='font-bold text-3xl text-center'>Your Events</h1>
-  {{#each events}}
+<div class='content-box w-auto h-auto grid grid-cols-4 gap-1'>
+    <h1 class='col-start-2 col-span-2 row-start-1 row-span-1 font-bold text-lg md:text-4xl text-center pb-5'>Your Events</h1>
+    <div class='col-start-2 col-span-2 row-start-2 bg-white row-span-1 flex flex-col justify-center content-center m-1.5 border-1 rounded-md shadow-md hover:shadow-xl'>
+      {{#each events}}
+        <a href='/users/{{user_id}}/events/{{this.id}}'>
+          <h2 class='mx-0 my-1 font-bold text-sm md:text-lg text-center hover:text-blue-500'>{{this.name}}</h2>
+          <p class='text-center m-0 text-xs md:text-sm hover:text-blue-500'>{{format_date this.event_date}}</h3>
+        </a>
+    {{/each}}
+    </div>
+
+    <div class="col-start-2 col-span-2 row-start-3 row-span-1 flex flex-col justify-start content-center">
     <a
-      href='/users/{{user_id}}/events/{{this.id}}'
-      class='grid grid-cols-2 border-2 rounded m-1.5 shadow-md'
-    >
-      <h2 class='justify-self-start m-1.5'>{{this.name}}</h2>
-      <h3 class='justify-self-end m-1.5'>{{format_date this.event_date}}</h3>
+      class='text-center shadow-md w-25 h-25 md:p-2 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700 m-5'
+      href='/'
+      role='button'
+    ><button class="text-center"><i class='fas fa-home'> Home</i></button>
     </a>
-  {{/each}}
-  <br />
-  <a
-    class='shadow-md py-1 px-1 md:py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700 m-6'
-    href='/'
-    role='button'
-  ><i class='fas fa-home'> Home</i></a>
+    </div>
 </div>
