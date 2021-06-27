@@ -1,14 +1,14 @@
 <div class='content-box w-auto h-auto mx-2 md:mx-10 lg:mx-auto'>
-  <form class='block grid grid-cols-2 grid-rows-15 border-2 m-1.5'></form>
+  <form for='guest-details' class='px-1 my-3 mx-0 space-y-1'>
     <div>
       <h1 class='text-center text-md md:text-4xl font-semibold'>Guest Details</h1>
-      <p>Edit guest details</p>
+      <p class='text-center text-sm md:text-md text-gray-600'>Edit guest details</p>
     </div>
-    <div>
-      <div>
-        <label class='font-bold text-right col-start-1 col-span-1 row-start-1 row-span-1'>Guest Type:</label>
+    <div class='flex content-center space-x-2'>
+      <div class='w-1/3 text-xs md:text-lg'>
+        <label for='guest-type'>Guest Type</label>
         <select
-          class='m-1.5 w-10/12 text-center col-start-2 col-span-1 row-start-1 row-span-1'
+          class='border border-gray-400 block py-1 px-4 w-full rounded-md focus:outline-none focus:border-blue-500'
           type='text'
           id='guest-type'
           data-id='{{guests.id}}'
@@ -24,153 +24,164 @@
             {{/if}}       
           </select>
       </div>
-      <div>
-        <label class='font-bold text-right col-start-1 col-span-1 row-start-2 row-span-1'>Guest First Name:</label>
+      <div class='w-1/3 text-xs md:text-lg'>
+        <label for='guest-fname'>Guest First Name</label>
         <input
-          class='m-1 w-10/12 text-center col-start-2 col-span-1 row-start-2 row-span-1'
+          class='border border-gray-400 block py-1 px-4 w-full rounded-md focus:outline-none focus:border-blue-500'
           type='text'
           id='guest-first-name'
           value='{{guests.first_name}}'
         >
       </div>
-      <div>
-        <label class='font-bold text-right col-start-1 col-span-1 row-start-3 row-span-1'>Guest Last Name:</label>
+      <div class='w-1/3 text-xs md:text-lg'>
+        <label for='guest-lname'>Guest Last Name</label>
         <input
-          class='m-1 w-10/12 text-center col-start-2 col-span-1 row-start-3 row-span-1'
+          class='border border-gray-400 block py-1 px-4 w-full rounded-md focus:outline-none focus:border-blue-500'
           type='text'
           id='guest-last-name'
           value='{{guests.last_name}}'
         >
       </div>
     </div>
-      
-    <label class='font-bold text-right col-start-1 col-span-1 row-start-4 row-span-1'>Guest Address 1:</label>
-    <input
-      class='m-1.5 w-10/12 text-center col-start-2 col-span-1 row-start-4 row-span-1'
-      type='text'
-      id='guest-addr1'
-      value='{{guests.guest_addr1}}'
-    />
-    <label class='font-bold text-right col-start-1 col-span-1 row-start-5 row-span-1'>Guest Address 2:</label>
-    <input
-      class='m-1.5 w-10/12 text-center col-start-2 col-span-1 row-start-5 row-span-1'
-      type='text'
-      id='guest-addr2'
-      value='{{guests.guest_addr2}}'
-    />
+    
+    <div class='w-auto text-xs md:text-lg'>
+      <label for='gadress1'>Guest Address 1</label>
+      <input
+        class='border border-gray-400 block py-1 px-4 w-full rounded-md focus:outline-none focus:border-blue-500'
+        type='text'
+        id='guest-addr1'
+        value='{{guests.guest_addr1}}'
+      />
+    </div>
+    <div class='w-auto text-xs md:text-lg'>
+      <label for='gadress2'>Guest Address 2</label>
+      <input
+        class='border border-gray-400 block py-1 px-4 w-full rounded-md focus:outline-none focus:border-blue-500'
+        type='text'
+        id='guest-addr2'
+        value='{{guests.guest_addr2}}'
+      />
+    </div>
+    
 
-    <div></div>
-    <label
-      class='font-bold text-right col-start-1 col-span-1 row-start-6 row-span-1'
-    >Guest City:</label>
-    <input
-      class='m-1.5 w-10/12 text-center col-start-2 col-span-1 row-start-6 row-span-1'
-      type='text'
-      id='guest-city'
-      value='{{guests.guest_city}}'
-    />
-    <label
-      class='font-bold text-right col-start-1 col-span-1 row-start-7 row-span-1'
-    >Guest State:</label>
-    <input
-      class='m-1.5 w-10/12 text-center col-start-2 col-span-1 row-start-7 row-span-1'
-      type='text'
-      id='guest-state'
-      value='{{guests.guest_state}}'
-    />
-    <label
-      class='font-bold text-right col-start-1 col-span-1 row-start-8 row-span-1'
-    >Guest Zip:</label>
-    <input
-      class='m-1.5 w-10/12 text-center col-start-2 col-span-1 row-start-8 row-span-1'
-      type='text'
-      id='guest-zip'
-      value='{{guests.guest_zip}}'
-    />
-    <label
-      class='font-bold text-right col-start-1 col-span-1 row-start-9 row-span-1'
-    >Guest Country:</label>
-    <input
-      class='m-1.5 w-10/12 text-center col-start-2 col-span-1 row-start-9 row-span-1'
-      type='text'
-      id='guest-ctry'
-      value='{{guests.guest_country}}'
-    />
-    <label
-      class='font-bold text-right col-start-1 col-span-1 row-start-10 row-span-1'
-    >Guest Email:</label>
-    <input
-      class='m-1.5 w-10/12 text-center col-start-2 col-span-1 row-start-10 row-span-1'
-      type='text'
-      id='guest-email'
-      value='{{guests.email}}'
-    />
-    <label
-      class='font-bold text-right col-start-1 col-span-1 row-start-11 row-span-1'
-    >Guest Phone:</label>
-    <input
-      class='m-1.5 w-10/12 text-center col-start-2 col-span-1 row-start-11 row-span-1'
-      type='text'
-      id='guest-phone'
-      value='{{guests.phone}}'
-    />
-    <label
-      class='font-bold text-right col-start-1 col-span-1 row-start-12 row-span-1'
-    >Guest Response:</label>
-    <select
-      class='m-1.5 w-10/12 text-center col-start-2 col-span-1 row-start-12 row-span-1'
-      type='text'
-      id='guest-response'
-      value='{{guests.response}}'
-    >
-      <option value='none'>No Response</option>
-      <option value='true'>Accepted</option>
-      <option value='false'>Declined</option>
-    </select>
-    <label
-      class='font-bold text-right col-start-1 col-span-1 row-start-13 row-span-1'
-    >Sub Guest Of:</label>
-    {{#if guests.inviter}}
-    <input
-      class='m-1.5 w-10/12 text-center col-start-2 col-span-1 row-start-13 row-span-1'
-      type='text'
-      id='guest-inviter'
-      value='{{guests.inviter}}'>
-    {{else}}
-    <select
-      class='m-1.5 w-10/12 text-center col-start-2 col-span-1 row-start-13 row-span-1'
-      type='text'
-      id='guest-inviter'
-      value='{{guests.inviter}}'>
-        <option value=''></option>  
-    {{#each guestList}}
-    <option value='{{this.id}}'>{{this.first_name}} {{this.last_name}}</option>
-    {{/each}}
-    {{/if}}
-    </select>
+    <div class='flex space-x-4 text-xs md:text-lg'>
+      <div class='text-xs md:text-lg'>
+        <label for='guest-city'>Guest City</label>
+        <input
+          class='border border-gray-400 block py-1 px-4 w-full rounded-md focus:outline-none focus:border-blue-500'
+          type='text'
+          id='guest-city'
+          value='{{guests.guest_city}}'
+        />
+      </div>
+      <div class='text-xs md:text-lg'>
+        <label for='guest-state'>Guest State:</label>
+        <input
+          class='border border-gray-400 block py-1 px-4 w-full rounded-md focus:outline-none focus:border-blue-500'
+          type='text'
+          id='guest-state'
+          value='{{guests.guest_state}}'
+        />
+      </div>
+      <div class='text-xs md:text-lg'>
+        <label for='guest-zip'>Guest Zip:</label>
+        <input
+          class='border border-gray-400 block py-1 px-4 w-full rounded-md focus:outline-none focus:border-blue-500'
+          type='text'
+          id='guest-zip'
+          value='{{guests.guest_zip}}'
+        />
+      </div>
+      <div class='text-xs md:text-lg'>
+        <label for='guest-country'>Guest Country:</label>
+        <input
+          class='border border-gray-400 block py-1 px-4 w-full rounded-md focus:outline-none focus:border-blue-500'
+          type='text'
+          id='guest-ctry'
+          value='{{guests.guest_country}}'
+        />
+      </div>
+    </div>
+
+    <div class='flex space-x-4 text-xs md:text-lg'>
+      <div class='w-1/2 text-xs md:text-lg'>
+        <label for='guest-email'>Guest Email:</label>
+        <input
+          class='border border-gray-400 block py-1 px-4 w-full rounded-md focus:outline-none focus:border-blue-500'
+          type='text'
+          id='guest-email'
+          value='{{guests.email}}'
+        />
+      </div>
+      <div class='w-1/2 text-xs md:text-lg'>
+        <label for='guest-phone'>Guest Phone:</label>
+        <input
+          class='border border-gray-400 block py-1 px-4 w-full rounded-md focus:outline-none focus:border-blue-500'
+          type='text'
+          id='guest-phone'
+          value='{{guests.phone}}'
+        />
+      </div>
+    </div>
+
+    <div class='flex space-x-4 text-xs md:text-lg'>
+      <div class='w-1/2 text-xs md:text-lg'>
+        <label for='guest-response'>Guest Response:</label>
+        <select
+          class='border border-gray-400 block py-1 px-4 w-full rounded-md focus:outline-none focus:border-blue-500'
+          type='text'
+          id='guest-response'
+          value='{{guests.response}}'
+        >
+          <option value='none'>No Response</option>
+          <option value='true'>Accepted</option>
+          <option value='false'>Declined</option>
+        </select>
+      </div>
+      <div class='w-1/2 text-xs md:text-lg'>
+        <label for='sub-guest'>Sub Guest Of:</label>
+        {{#if guests.inviter}}
+        <input
+          class='border border-gray-400 block py-1 px-4 w-full rounded-md focus:outline-none focus:border-blue-500'
+          type='text'
+          id='guest-inviter'
+          value='{{guests.inviter}}'>
+        {{else}}
+        <select
+          class='border border-gray-400 block py-1 px-4 w-full rounded-md focus:outline-none focus:border-blue-500'
+          type='text'
+          id='guest-inviter'
+          value='{{guests.inviter}}'>
+            <option value=''></option>  
+            {{#each guestList}}
+            <option value='{{this.id}}'>{{this.first_name}} {{this.last_name}}</option>
+            {{/each}}
+            {{/if}}
+        </select>
+      </div>
+    </div>
+
     <div class='row-start-14 row-span-1 col-start-1 col-span-2 px-4 rounded flex flex-wrap justify-center items-center'>
-      <label
-      class='font-bold text-right col-start-1 col-span-1 row-start-13 row-span-1'
-    >Item Selection:</label>
+      <label for='item-selection' class='font-bold text-xs md:text-lg'>Item Selection:</label>
       {{#each itemList}}
-        <input class='m-1' type="checkbox" id="items" name="{{this.id}}" value="{{this.name}}"><label class='m-1' for="{{this.id}}">{{this.name}}</label>
+        <input class='m-2 border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500' type="checkbox" id="items" name="{{this.id}}" value="{{this.name}}"><label class='m-1' for="{{this.id}}">{{this.name}}</label>
       {{/each}}
     </div>
 
 
-    <div class='row-start-15 row-span-1 col-start-1 col-span-2 px-4 rounded grid justify-items-stretch grid-col-4 auto-row-auto '>
+    <div class='flex flex-row justify-center content-center mt-5'>
     <button
-      class='col-start-1 col-span-1 shadow-md py-1 px-1 md:py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700 m-6'
+      class='box-border border-2 px-4 rounded m-1 py-1 px-1 md:py-2 px-3 m-1 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700'
       type='button'
       id='guest-update-btn'
     >Update</button>
     <button
-      class='col-start-2 col-span-1 shadow-md py-1 px-1 md:py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700 m-6'
+      class='box-border border-2 px-4 rounded m-1 py-1 px-1 md:py-2 px-3 m-1 font-semibold rounded-lg shadow-md text-white bg-red-500 hover:bg-red-700'
       type='button'
       id='guest-delete-btn'
     >Delete</button>
    <button
-      class='col-start-3 col-span-1 shadow-md py-1 px-1 md:py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700 m-6'
+      class='box-border border-2 px-4 rounded m-1 py-1 px-1 md:py-2 px-3 m-1 font-semibold rounded-lg shadow-md text-white bg-red-500 hover:bg-red-700'
       type='button'
       value='cancel'
       id='guest-cancel-btn'
