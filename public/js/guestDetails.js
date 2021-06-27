@@ -91,7 +91,9 @@ const guestFormHandler = async (event) => {
     });
 
     if (send.ok) {
-      document.location.replace(`/users/${user_id}/events/${event_id}`);
+      document.location.replace(
+        `/users/${user_id}/events/${event_id}/guestDetails`
+      );
     } else {
       alert('Failed to update.');
     }
@@ -132,7 +134,9 @@ const guestFormHandler = async (event) => {
       });
 
       if (send.ok) {
-        document.location.replace(`/users/${user_id}/events/${event_id}`);
+        document.location.replace(
+          `/users/${user_id}/events/${event_id}/guestDetails`
+        );
       } else {
         alert('Failed to update.');
       }
@@ -181,7 +185,9 @@ const guestDeleteHandler = async (event) => {
   });
 
   if (send.ok) {
-    document.location.replace(`/users/${user_id}/events/${event_id}`);
+    document.location.replace(
+      `/users/${user_id}/events/${event_id}/guestDetails`
+    );
   } else {
     alert('Failed to delete.');
   }
