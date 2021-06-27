@@ -84,4 +84,12 @@ module.exports = {
       return null;
     }
   },
+
+  isError: (type) => {
+    return type === 'Error';
+  },
+
+  isSuccess: (type) => {
+    return type !== 'Error';
+  },
 };
