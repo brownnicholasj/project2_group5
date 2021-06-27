@@ -62,7 +62,9 @@ const guestFormHandler = async (event) => {
       });
 
       if (send.ok) {
-        document.location.replace(`/dashboard`);
+        document.location.replace(
+          `/users/${user_id}/events/${event_id}/guestDetails`
+        );
       } else {
         alert('Failed to create.');
       }

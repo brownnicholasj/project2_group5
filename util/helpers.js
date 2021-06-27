@@ -74,4 +74,14 @@ module.exports = {
   ansStored: (guest, item, selected) => {
     return true;
   },
+
+  response: (response) => {
+    if (response == true) {
+      return 'A';
+    } else if (response == false) {
+      return 'D';
+    } else {
+      return null;
+    }
+  },
 };
