@@ -30,11 +30,14 @@
           href='/dashboard'
           class='p-1 hover:bg-gray-600 font-bold text-white hover:text-white md:text-lg lg:text-lg text-xs'
         ><i class='fas fa-cubes'> Dashboard</i></a>
-        <a
+        {{#if logged_in}}
+          <a href='/' class='bg-contain p-1 hover:bg-gray-600 font-bold text-white hover:text-white md:text-lg lg:text-lg text-xs' id='logout' ><i class='fas fa-lock'> Logout</i></a>
+        {{else}}
+           <a
           href='/login'
           class='p-1 hover:bg-gray-600 font-bold text-white hover:text-white md:text-lg  lg:text-lg text-xs'
         ><i class='fas fa-lock-open'> Login</i></a>
-        <a href='/' class='bg-contain p-1 hover:bg-gray-600 font-bold text-white hover:text-white md:text-lg lg:text-lg text-xs' id='logout' ><i class='fas fa-lock'> Logout</i></a>
+        {{/if}}
       </nav>
     </header>
 

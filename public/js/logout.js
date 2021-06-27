@@ -14,6 +14,10 @@ const logoutHandler = async (event) => {
   }
 };
 
+if (document.querySelector('#logout')) {
+  document.querySelector('#logout').addEventListener('click', logoutHandler);
+}
+
 // Handles Go Back action
 const goBack = async (event) => {
   event.preventDefault();
@@ -21,4 +25,3 @@ const goBack = async (event) => {
   document.history.back();
 };
 
-document.querySelector('#logout').addEventListener('click', logoutHandler);
