@@ -87,7 +87,7 @@
           id='guest-ctry'
           value=''>
         </div>
-    </div>'
+    </div>
 
     <div class='flex space-x-4 text-xs md:text-lg'>
       <div class='w-1/2 text-xs md:text-lg'>
@@ -108,53 +108,43 @@
       </div>
     </div>
 
+    <div class='flex space-x-4 text-xs md:text-lg'>
+      <div class='w-1/2 text-xs md:text-lg'>
+        <label class='guest-response'>Guest Response:</label>
+        <select
+          class='border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500'
+          type='text'
+          id='guest-response'
+          value=''>
+            <option value='none'>No Response</option>
+            <option value='true'>Accepted</option>
+            <option value='false'>Declined</option>
+        </select>
+      </div>
+      <div class='w-1/2 text-xs md:text-lg'>
+        <label for='guest-off'>Sub Guest Of:</label>
+        <select
+          class='border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500'
+          type='text'
+          id='guest-inviter'
+          value=''>
+            <option value=''></option>  
+            {{#each guests}}
+            <option value='{{this.id}}'>{{this.first_name}} {{this.last_name}}</option>
+            {{/each}}
+        </select>
+      </div>
+    </div>
 
-
-
-
-
-
-
-    
-    
-    
-    
-    
-    
-    <label
-      class='font-bold text-right col-start-1 col-span-1 row-start-12 row-span-1'
-    >Guest Response:</label>
-    <select
-      class='m-1.5 w-10/12 text-center col-start-2 col-span-1 row-start-12 row-span-1'
-      type='text'
-      id='guest-response'
-      value=''>
-      <option value='none'>No Response</option>
-      <option value='true'>Accepted</option>
-      <option value='false'>Declined</option>
-    </select>
-    <label
-      class='font-bold text-right col-start-1 col-span-1 row-start-13 row-span-1'
-    >Sub Guest Of:</label>
-    <select
-      class='m-1.5 w-10/12 text-center col-start-2 col-span-1 row-start-13 row-span-1'
-      type='text'
-      id='guest-inviter'
-      value=''>
-    <option value=''></option>  
-    {{#each guests}}
-    <option value='{{this.id}}'>{{this.first_name}} {{this.last_name}}</option>
-    {{/each}}
-    </select>
-    <div class='row-start-14 row-span-1 col-start-1 col-span-2 px-4 rounded grid justify-items-stretch grid-col-4 auto-row-auto '>
+    <div class='flex flex-row justify-center content-center mt-5'>
     <button
-      class='col-start-1 col-span-1 box-border border-2 px-4 rounded m-1.5 font-bold'
+      class='box-border border-2 px-4 rounded m-1 py-1 px-1 md:py-2 px-3 m-1 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700'
       type='button'
       value='create'
       id='guest-create-btn'
     >Create</button>
     <button
-      class='col-start-3 col-span-1 box-border border-2 px-4 rounded m-1.5 font-bold'
+      class='box-border border-2 px-4 rounded m-1 py-1 px-1 md:py-2 px-3 m-1 font-semibold rounded-lg shadow-md text-white bg-red-500 hover:bg-red-700'
       type='button'
       value='cancel'
       id='guest-cancel-btn'
