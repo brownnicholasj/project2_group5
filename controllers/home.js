@@ -3,7 +3,7 @@ const { Event, Guest, Item, User, GuestItem } = require('../models');
 const { sequelize } = require('../models/User');
 const withAuth = require('../util/authorize');
 
-// CREATED AND WORKING BY NIC 6/23
+// Home page loading with event date sort
 router.get('/', async (req, res) => {
   if (!req.session.logged_in) {
     res.render('home', { logged_in: false });
@@ -14,6 +14,10 @@ router.get('/', async (req, res) => {
       res.json(err);
     });
     try {
+      eventData.sort(function (a, b) {
+        return a.event_date - b.event_date;
+      });
+
       const events = eventData.map((event) => event.get({ plain: true }));
       res.render('home', {
         events,
@@ -26,7 +30,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// CREATED AND WORKING BY NIC 6/23
+// Dashboard loading with event date sort
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
     // Get all events and their associated data
@@ -34,8 +38,9 @@ router.get('/dashboard', withAuth, async (req, res) => {
       where: { user_id: req.session.user_id },
     });
 
-    // res.status(200).json(eventData);
-    // return;
+    eventData.sort(function (a, b) {
+      return a.event_date - b.event_date;
+    });
 
     // Serialize data so the template can read it
     const events = eventData.map((event) =>
@@ -43,6 +48,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
         plain: true,
       })
     );
+
     // Pass serialized data and session flag into template
     res.render('dashboard', {
       events,
@@ -54,7 +60,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
   }
 });
 
-// CREATED AND WORKING BY NIC 6/23
+// Event Summary with event sort for aside
 router.get('/users/:user_id/events/:id', async (req, res) => {
   try {
     const eventData = await Event.findByPk(req.params.id, {
@@ -163,6 +169,21 @@ router.get('/users/:user_id/events/:id', async (req, res) => {
       plain: true,
     });
 
+    const eventDatas = await Event.findAll({
+      where: { user_id: req.session.user_id },
+    });
+
+    eventDatas.sort(function (a, b) {
+      return a.event_date - b.event_date;
+    });
+
+    // Serialize data so the template can read it
+    const events = eventDatas.map((event) =>
+      event.get({
+        plain: true,
+      })
+    );
+
     // console.log(itemDetails);
     res.render('events', {
       event,
@@ -170,13 +191,14 @@ router.get('/users/:user_id/events/:id', async (req, res) => {
       user_id: req.session.user_id,
       guestResponse,
       itemDetails,
+      events,
     });
   } catch (err) {
     res.status(500).json({ message: `Error: ${err.message}` });
   }
 });
 
-// CREATED AND WORKING BY NIC 6/24
+// EventDetails with event sort for aside
 router.get('/users/:user_id/events/:id/eventDetails', async (req, res) => {
   try {
     const eventData = await Event.findByPk(req.params.id);
@@ -185,16 +207,33 @@ router.get('/users/:user_id/events/:id/eventDetails', async (req, res) => {
       plain: true,
     });
 
+    const eventDatas = await Event.findAll({
+      where: { user_id: req.session.user_id },
+    });
+
+    eventDatas.sort(function (a, b) {
+      return a.event_date - b.event_date;
+    });
+
+    // Serialize data so the template can read it
+    const events = eventDatas.map((event) =>
+      event.get({
+        plain: true,
+      })
+    );
+
     res.render('eventDetail', {
       event,
       logged_in: req.session.logged_in,
       user_id: req.session.user_id,
+      events,
     });
   } catch (err) {
     res.status(500).json({ message: `Error: ${err.message}` });
   }
 });
 
+// GuestDetails with event sort for aside
 router.get('/users/:user_id/events/:id/guestDetails', async (req, res) => {
   try {
     const guests = await Guest.findAll({
@@ -205,18 +244,34 @@ router.get('/users/:user_id/events/:id/guestDetails', async (req, res) => {
     });
 
     const eventId = req.params.id;
+    const eventDatas = await Event.findAll({
+      where: { user_id: req.session.user_id },
+    });
+
+    eventDatas.sort(function (a, b) {
+      return a.event_date - b.event_date;
+    });
+
+    // Serialize data so the template can read it
+    const events = eventDatas.map((event) =>
+      event.get({
+        plain: true,
+      })
+    );
 
     res.render('guestDetail', {
       guests,
       logged_in: req.session.logged_in,
       user_id: req.session.user_id,
       eventId,
+      events,
     });
   } catch (err) {
     res.status(500).json({ message: `Error: ${err.message}` });
   }
 });
 
+//edit guest with events sort for aside
 router.get('/guest/:id', async (req, res) => {
   try {
     const guests = await Guest.findByPk(req.params.id, {
@@ -244,19 +299,35 @@ router.get('/guest/:id', async (req, res) => {
     );
     // console.log(itemList);
 
+    const eventDatas = await Event.findAll({
+      where: { user_id: req.session.user_id },
+    });
+
+    eventDatas.sort(function (a, b) {
+      return a.event_date - b.event_date;
+    });
+
+    // Serialize data so the template can read it
+    const events = eventDatas.map((event) =>
+      event.get({
+        plain: true,
+      })
+    );
+
     res.render('guestDetailEdit', {
       guests,
       logged_in: req.session.logged_in,
       user_id: req.session.user_id,
       guestList,
       itemList,
+      events,
     });
   } catch (err) {
     res.status(500).json({ message: `Error: ${err.message}` });
   }
 });
 
-// CREATED AND WORKING BY NIC 6/25
+// List of event guests with event sort for aside
 router.get('/users/:user_id/events/:id/guest', async (req, res) => {
   try {
     const guests = await Guest.findAll({
@@ -267,17 +338,34 @@ router.get('/users/:user_id/events/:id/guest', async (req, res) => {
       raw: true,
     });
 
+    const eventDatas = await Event.findAll({
+      where: { user_id: req.session.user_id },
+    });
+
+    eventDatas.sort(function (a, b) {
+      return a.event_date - b.event_date;
+    });
+
+    // Serialize data so the template can read it
+    const events = eventDatas.map((event) =>
+      event.get({
+        plain: true,
+      })
+    );
+
     res.render('guests', {
       guests,
       logged_in: req.session.logged_in,
       user_id: req.session.user_id,
       eventId: req.params.id,
+      events,
     });
   } catch (err) {
     res.status(500).json({ message: `Error: ${err.message}` });
   }
 });
 
+//event item list with event sort for aside
 router.get('/users/:user_id/events/:id/item', async (req, res) => {
   try {
     const item = await Item.findAll({
@@ -287,17 +375,34 @@ router.get('/users/:user_id/events/:id/item', async (req, res) => {
       raw: true,
     });
 
+    const eventDatas = await Event.findAll({
+      where: { user_id: req.session.user_id },
+    });
+
+    eventDatas.sort(function (a, b) {
+      return a.event_date - b.event_date;
+    });
+
+    // Serialize data so the template can read it
+    const events = eventDatas.map((event) =>
+      event.get({
+        plain: true,
+      })
+    );
+
     res.render('items', {
       item,
       logged_in: req.session.logged_in,
       user_id: req.session.user_id,
       eventId: req.params.id,
+      events,
     });
   } catch (err) {
     res.status(500).json({ message: `Error: ${err.message}` });
   }
 });
 
+//event item details with event sort for aside
 router.get('/users/:user_id/events/:id/itemDetails', async (req, res) => {
   try {
     const item = await Item.findAll({
@@ -353,6 +458,21 @@ router.get('/users/:user_id/events/:id/itemDetails', async (req, res) => {
         plain: true,
       })
     );
+
+    const eventDatas = await Event.findAll({
+      where: { user_id: req.session.user_id },
+    });
+
+    eventDatas.sort(function (a, b) {
+      return a.event_date - b.event_date;
+    });
+
+    // Serialize data so the template can read it
+    const events = eventDatas.map((event) =>
+      event.get({
+        plain: true,
+      })
+    );
     // console.log(itemCost);
     res.render('itemDetail', {
       items,
@@ -360,30 +480,63 @@ router.get('/users/:user_id/events/:id/itemDetails', async (req, res) => {
       user_id: req.session.user_id,
       event_id: req.params.id,
       itemDetails,
+      events,
     });
   } catch (err) {
     res.status(500).json({ message: `Error: ${err.message}` });
   }
 });
 
-// UPDATED BY NIC 6/25
+// create new event with event aside
 router.get('/newEvent', withAuth, async (req, res) => {
+  const eventDatas = await Event.findAll({
+    where: { user_id: req.session.user_id },
+  });
+
+  eventDatas.sort(function (a, b) {
+    return a.event_date - b.event_date;
+  });
+
+  // Serialize data so the template can read it
+  const events = eventDatas.map((event) =>
+    event.get({
+      plain: true,
+    })
+  );
   res.render('newEvent', {
     logged_in: req.session.logged_in,
     user_id: req.session.user_id,
+    events,
   });
 });
 
+// edit item page with event aside
 router.get('/items/:id', async (req, res) => {
   try {
     const items = await Item.findByPk(req.params.id, {
       raw: true,
     });
 
+    const eventDatas = await Event.findAll({
+      where: { user_id: req.session.user_id },
+    });
+
+    eventDatas.sort(function (a, b) {
+      return a.event_date - b.event_date;
+    });
+
+    // Serialize data so the template can read it
+    const events = eventDatas.map((event) =>
+      event.get({
+        plain: true,
+      })
+    );
+
     res.render('itemDetailEdit', {
       items,
       logged_in: req.session.logged_in,
       user_id: req.session.user_id,
+      events,
     });
   } catch (err) {
     res.status(500).json({ message: `Error: ${err.message}` });
@@ -411,7 +564,9 @@ router.get('/events', async (req, res) => {
 
     // res.status(200).json(eventData);
     // return;
-
+    eventData.sort(function (a, b) {
+      return a.event_date - b.event_date;
+    });
     // Serialize data so the template can read it
     const events = eventData.map((event) =>
       event.get({
@@ -445,8 +600,9 @@ router.get('/guests', async (req, res) => {
       ],
     });
 
-    // res.status(200).json(eventData);
-    // return;
+    eventData.sort(function (a, b) {
+      return a.event_date - b.event_date;
+    });
 
     // Serialize data so the template can read it
     const events = eventData.map((event) =>
@@ -481,8 +637,9 @@ router.get('/items', async (req, res) => {
       ],
     });
 
-    // res.status(200).json(eventData);
-    // return;
+    eventData.sort(function (a, b) {
+      return a.event_date - b.event_date;
+    });
 
     // Serialize data so the template can read it
     const events = eventData.map((event) =>
