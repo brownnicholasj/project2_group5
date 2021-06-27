@@ -13,7 +13,6 @@
     <div class='col-start-10 col-span-1 font-bold'>Email</div>
     <div class='col-start-11 col-span-1 font-bold'>Phone</div>
     <div class='col-start-12 col-span-1 font-bold'>Response</div>
-    <div class='col-start-13 col-span-1 font-bold'>Guest Of</div>
     {{#each guests}}
       <a
         href='/guest/{{this.id}}'
@@ -63,11 +62,6 @@
         href='/guest/{{this.id}}'
         class='col-start-12 col-span-1'
       >{{this.response}}</a>
-      <a
-        href='/guest/{{this.id}}'
-        class='col-start-13 col-span-1'
-      >
-      {{isGuest this.inviter}}</a>
     {{/each}}
   </div>
   <br>
