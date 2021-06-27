@@ -17,7 +17,8 @@ router.post('/', withAuth, async (req, res) => {
       message: 'Event created successfully!',
     });
   } catch (err) {
-    res.status(400).json({ message: `Error: ${err.message}` });
+    //res.status(400).json({ message: `Error: ${err.message}` });
+    res.render('message', { type: 'Error', message: `${err.message}` });
   }
 });
 
@@ -42,7 +43,8 @@ router.put('/:id', withAuth, async (req, res) => {
       message: 'Event updated successfully!',
     });
   } catch (err) {
-    res.status(500).json({ message: `Error: ${err.message}` });
+    //res.status(500).json({ message: `Error: ${err.message}` });
+    res.render('message', { type: 'Error', message: `${err.message}` });
   }
 });
 
@@ -66,7 +68,8 @@ router.delete('/:id', withAuth, async (req, res) => {
       message: 'Event deleted successfully!',
     });
   } catch (err) {
-    res.status(500).json({ message: `Error: ${err.message}` });
+    //res.status(500).json({ message: `Error: ${err.message}` });
+    res.render('message', { type: 'Error', message: `${err.message}` });
   }
 });
 
