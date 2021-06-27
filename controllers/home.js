@@ -194,7 +194,8 @@ router.get('/users/:user_id/events/:id', async (req, res) => {
       events,
     });
   } catch (err) {
-    res.status(500).json({ message: `Error: ${err.message}` });
+    //res.status(500).json({ message: `Error: ${err.message}` });
+    res.render('message', { type: 'Error', message: `${err.message}` });
   }
 });
 
