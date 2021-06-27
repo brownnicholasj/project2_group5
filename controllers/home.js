@@ -25,7 +25,7 @@ router.get('/', async (req, res) => {
         logged_in: req.session.logged_in,
         user_id: req.session.user_id,
       });
-    } catch (error) {
+    } catch (err) {
       //res.status(500).json(error);
       res.render('message', { type: 'Error', message: `${err.message}` });
     }
