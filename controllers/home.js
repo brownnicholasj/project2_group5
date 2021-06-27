@@ -11,7 +11,8 @@ router.get('/', async (req, res) => {
     const eventData = await Event.findAll({
       where: { user_id: req.session.user_id },
     }).catch((err) => {
-      res.json(err);
+      //res.json(err);
+      res.render('message', { type: 'Error', message: `${err.message}` });
     });
     try {
       eventData.sort(function (a, b) {
@@ -24,8 +25,9 @@ router.get('/', async (req, res) => {
         logged_in: req.session.logged_in,
         user_id: req.session.user_id,
       });
-    } catch (error) {
-      res.status(500).json(error);
+    } catch (err) {
+      //res.status(500).json(error);
+      res.render('message', { type: 'Error', message: `${err.message}` });
     }
   }
 });
@@ -56,7 +58,8 @@ router.get('/dashboard', withAuth, async (req, res) => {
       user_id: req.session.user_id,
     });
   } catch (err) {
-    res.status(500).json({ message: `Error: ${err.message}` });
+    //res.status(500).json({ message: `Error: ${err.message}` });
+    res.render('message', { type: 'Error', message: `${err.message}` });
   }
 });
 
@@ -194,7 +197,8 @@ router.get('/users/:user_id/events/:id', async (req, res) => {
       events,
     });
   } catch (err) {
-    res.status(500).json({ message: `Error: ${err.message}` });
+    //res.status(500).json({ message: `Error: ${err.message}` });
+    res.render('message', { type: 'Error', message: `${err.message}` });
   }
 });
 
@@ -229,7 +233,8 @@ router.get('/users/:user_id/events/:id/eventDetails', async (req, res) => {
       events,
     });
   } catch (err) {
-    res.status(500).json({ message: `Error: ${err.message}` });
+    //res.status(500).json({ message: `Error: ${err.message}` });
+    res.render('message', { type: 'Error', message: `${err.message}` });
   }
 });
 
@@ -267,7 +272,8 @@ router.get('/users/:user_id/events/:id/guestDetails', async (req, res) => {
       events,
     });
   } catch (err) {
-    res.status(500).json({ message: `Error: ${err.message}` });
+    //res.status(500).json({ message: `Error: ${err.message}` });
+    res.render('message', { type: 'Error', message: `${err.message}` });
   }
 });
 
@@ -323,7 +329,8 @@ router.get('/guest/:id', async (req, res) => {
       events,
     });
   } catch (err) {
-    res.status(500).json({ message: `Error: ${err.message}` });
+    //res.status(500).json({ message: `Error: ${err.message}` });
+    res.render('message', { type: 'Error', message: `${err.message}` });
   }
 });
 
@@ -361,7 +368,8 @@ router.get('/users/:user_id/events/:id/guest', async (req, res) => {
       events,
     });
   } catch (err) {
-    res.status(500).json({ message: `Error: ${err.message}` });
+    //res.status(500).json({ message: `Error: ${err.message}` });
+    res.render('message', { type: 'Error', message: `${err.message}` });
   }
 });
 
@@ -398,7 +406,8 @@ router.get('/users/:user_id/events/:id/item', async (req, res) => {
       events,
     });
   } catch (err) {
-    res.status(500).json({ message: `Error: ${err.message}` });
+    //res.status(500).json({ message: `Error: ${err.message}` });
+    res.render('message', { type: 'Error', message: `${err.message}` });
   }
 });
 
@@ -483,7 +492,8 @@ router.get('/users/:user_id/events/:id/itemDetails', async (req, res) => {
       events,
     });
   } catch (err) {
-    res.status(500).json({ message: `Error: ${err.message}` });
+    //res.status(500).json({ message: `Error: ${err.message}` });
+    res.render('message', { type: 'Error', message: `${err.message}` });
   }
 });
 
@@ -539,7 +549,8 @@ router.get('/items/:id', async (req, res) => {
       events,
     });
   } catch (err) {
-    res.status(500).json({ message: `Error: ${err.message}` });
+    //res.status(500).json({ message: `Error: ${err.message}` });
+    res.render('message', { type: 'Error', message: `${err.message}` });
   }
 });
 
@@ -579,7 +590,8 @@ router.get('/events', async (req, res) => {
       logged_in: req.session.logged_in,
     });
   } catch (err) {
-    res.status(500).json({ message: `Error: ${err.message}` });
+    //res.status(500).json({ message: `Error: ${err.message}` });
+    res.render('message', { type: 'Error', message: `${err.message}` });
   }
 });
 
@@ -616,7 +628,8 @@ router.get('/guests', async (req, res) => {
       logged_in: req.session.logged_in,
     });
   } catch (err) {
-    res.status(500).json({ message: `Error: ${err.message}` });
+    //res.status(500).json({ message: `Error: ${err.message}` });
+    res.render('message', { type: 'Error', message: `${err.message}` });
   }
 });
 
@@ -653,7 +666,8 @@ router.get('/items', async (req, res) => {
       logged_in: req.session.logged_in,
     });
   } catch (err) {
-    res.status(500).json({ message: `Error: ${err.message}` });
+    //res.status(500).json({ message: `Error: ${err.message}` });
+    res.render('message', { type: 'Error', message: `${err.message}` });
   }
 });
 
@@ -673,7 +687,8 @@ router.get('/user', withAuth, async (req, res) => {
       logged_in: true,
     });
   } catch (err) {
-    res.status(500).json(err);
+    //res.status(500).json(err);
+    res.render('message', { type: 'Error', message: `${err.message}` });
   }
 });
 
