@@ -28,4 +28,19 @@ module.exports = {
   isPrimary: (guest_type) => {
     return guest_type === 'Primary';
   },
+
+  isGuest: (inviter) => {
+    if (inviter > 0) {
+      fetch(`/api/guestMatch/${inviter}`).then(
+        function (data) {
+          console.log(`got here with ${data}`);
+        }.catch(function (err) {
+          console.log(err);
+        })
+      );
+      return 'Guest';
+    } else {
+      return null;
+    }
+  },
 };
