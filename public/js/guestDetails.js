@@ -97,9 +97,12 @@ const guestFormHandler = async (event) => {
       headers: { 'Content-Type': 'application/json' },
     });
 
-    if (!send.ok) {
+    if (send.ok) {
+      document.location.replace(
+        `/users/${user_id}/events/${event_id}/guestDetails`
+      );
+    } else {
       alert('Failed to update.');
-    }
   }
 
   /*
