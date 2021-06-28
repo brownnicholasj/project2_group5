@@ -152,6 +152,7 @@ const guestFormHandler = async (event) => {
       alert('Failed to update.');
     }
   }
+}
 };
 
 /*
