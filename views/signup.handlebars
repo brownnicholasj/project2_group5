@@ -1,22 +1,32 @@
-<div class="w-8/12 content-box border-4 px-4 m-1.5 rounded w-4/12 self-center">
-  <h2 class="m-1.5 text-center text-4xl font-bold">Sign Up</h2>
+<div class="content-box w-auto h-auto mx-2 md:mx-10 lg:mx-auto">
   <form class="block" id="signup-form">
-    <div class="box-border w-full text-right">
-      <label for="user-signup" class=" font-bold m-1.5 w-1/4">Username:</label>
-      <input class="m-1.5 w-3/4" type="text" id="user-signup" />
+    <div>
+      <h2 class="text-center text-md md:text-4xl font-semibold">Sign Up</h2>
+      <p class='text-center text-sm md:text-md text-gray-600'>Password must be 8 characters long</p>
     </div>
-    <div class="box-border w-full text-right">
-      <label for="email-signup" class=" font-bold m-1.5 w-1/4">Email:</label>
-      <input class="m-1.5 w-3/4" type="text" id="email-signup" />
-    </div>
-    <div class="block w-full text-right">
-      <label for="password-signup"class="font-bold m-1.5 w-1/4">Password:</label>
-      <input class="m-1.5 w-3/4" type="password" id="password-signup" />
-    </div>
-      <div class="block w-full text-center grid grid-cols-4">
-        <button class="row-start-1 row-span-1 col-start-2 col-span-1 box-border border-2 px-4 rounded m-1 py-1 px-1 md:py-2 px-3 m-1 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700" type="submit">Submit</button>
-        <a href="/login" class="row-start-1 row-span-1 col-start-3 col-span-1 box-border border-2 px-4 rounded m-1 py-1 px-1 md:py-2 px-3 m-1 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700" >Cancel</a>
+  
+   <div class="bg-white row-start-2 row-span-1 col-start-1 col-span-2 p-4 m-1.5 border-1 rounded-md shadow-md hover:shadow-xl">
+    <div class='flex flex-col'>
+      <div class="w-auto text-xs md:text-lg self-center">
+        <label for='username'>Username</label>
+        <input class='self-center border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500' type="text" id="user-signup"/>
       </div>
+      <div class="w-auto text-xs md:text-lg self-center">
+        <label for='email'>Email</label>
+        <input class="self-center border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500" type="text" id="email-signup" />
+      </div>
+      <div class="w-auto text-xs md:text-lg self-center">
+        <label for='password'>Password</label>
+        <input class="self-center border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500" type="password" id="password-signup" />
+      </div>
+    </div>
+    <div class='flex flex-row justify-center content-center mt-5'>
+      <div>
+        <button class="row-start-1 row-span-1 col-start-2 col-span-1 box-border border-2 px-4 rounded m-1 py-1 px-1 md:py-2 px-3 m-1 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700" type="submit">Submit</button>
+        <a href="/login" class="row-start-1 row-span-1 col-start-3 col-span-1 box-border border-2 px-4 rounded m-1 py-1 px-1 md:py-2 px-3 m-1 font-semibold rounded-lg shadow-md text-white bg-red-500 hover:bg-red-700" >Cancel</a>
+      </div>
+    </div>  
+    </div>
   </form>
 </div>
 

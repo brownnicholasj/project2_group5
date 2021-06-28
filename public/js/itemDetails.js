@@ -1,3 +1,7 @@
+/*
+    Reads the user input for items data through an HTML form
+    Performs the necessary validations
+*/
 const itemFormHandler = async (event) => {
   event.preventDefault();
 
@@ -19,6 +23,7 @@ const itemFormHandler = async (event) => {
   const qty_uom = document.querySelector('#item-uom').value.trim();
   const cost_perunit = document.querySelector('#item-cost').value.trim();
 
+  // If button = create, post a call to the /api/events end point
   if (createBtn === 'create') {
     const send = await fetch(`/api/items`, {
       method: 'POST',
@@ -33,12 +38,16 @@ const itemFormHandler = async (event) => {
       headers: { 'Content-Type': 'application/json' },
     });
 
+    // Redirect the user to enter/view the item details
     if (send.ok) {
-      document.location.replace(`/users/${user_id}/events/${event_id}`);
+      document.location.replace(
+        `/users/${user_id}/events/${event_id}/itemDetails`
+      );
     } else {
       alert('Failed to create.');
     }
   } else if (item_id) {
+    //   Update the item
     const send = await fetch(`/api/items/${item_id}`, {
       method: 'PUT',
       body: JSON.stringify({
@@ -51,14 +60,20 @@ const itemFormHandler = async (event) => {
       headers: { 'Content-Type': 'application/json' },
     });
 
+    // Redirect the user to enter/view the item details
     if (send.ok) {
-      document.location.replace(`/users/${user_id}/events/${event_id}`);
+      document.location.replace(
+        `/users/${user_id}/events/${event_id}/itemDetails`
+      );
     } else {
       alert('Failed to update.');
     }
   }
 };
 
+/*
+   Reads the user input and performs the item deletion 
+*/
 const itemDeleteHandler = async (event) => {
   event.preventDefault();
   const user_id = document
@@ -81,13 +96,19 @@ const itemDeleteHandler = async (event) => {
     headers: { 'Content-Type': 'application/json' },
   });
 
+  // Redirect the user to enter/view the item details
   if (send.ok) {
-    document.location.replace(`/users/${user_id}/events/${event_id}`);
+    document.location.replace(
+      `/users/${user_id}/events/${event_id}/itemDetails`
+    );
   } else {
     alert('Failed to delete.');
   }
 };
 
+/*
+   Returns the control to the calling sub-application
+*/
 const itemCancelHandler = async (event) => {
   event.preventDefault();
 
@@ -98,6 +119,9 @@ const createBtn = document
   .querySelector('#item-create-btn')
   .getAttribute('value');
 
+/*
+    Creates event listeners
+*/
 document
   .querySelector('#item-update-btn')
   .addEventListener('click', itemFormHandler);

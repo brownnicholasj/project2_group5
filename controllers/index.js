@@ -1,3 +1,6 @@
+/* 
+    Valid APIs used by the application
+*/
 const router = require('express').Router();
 
 const api = require('./api');

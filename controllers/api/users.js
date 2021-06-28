@@ -1,10 +1,12 @@
-//
-// Handles CRUD operations for User model
-//
+/*
+    Handles CRUD operations for User model
+*/
 const router = require('express').Router();
 const { User } = require('../../models');
-
-// Get all users - Data will be in the res.body
+const withAuth = require('../../util/authorize');
+/*
+    Get all users - Data will be in the res.body
+*/
 router.get('/', async (req, res) => {
   try {
     // Get all users with their related data
@@ -33,11 +35,14 @@ router.get('/', async (req, res) => {
       logged_in: req.session.logged_in,
     });
   } catch (err) {
-    res.status(500).json(err);
+    //res.status(500).json(err);
+    res.render('message', { type: 'Error', message: `${err.message}` });
   }
 });
 
-// Get a user by id - Data will be in the res.body
+/*
+    Get a user by id - Data will be in the res.body
+*/
 router.get('/:id', async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id);
@@ -67,12 +72,16 @@ router.get('/:id', async (req, res) => {
     //   logged_in: req.session.logged_in,
     // });
   } catch (err) {
-    res.status(500).json(err);
+    //res.status(500).json(err);
+    res.render('message', { type: 'Error', message: `${err.message}` });
   }
 });
 
-// Post a user - Data is in the req.body and req.session
-router.post('/', async (req, res) => {
+/*
+    Create a user - Data is in the req.body and req.session
+    Requires authentation
+*/
+router.post('/', withAuth, async (req, res) => {
   try {
     const userData = await User.create(req.body);
 
@@ -80,15 +89,22 @@ router.post('/', async (req, res) => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
 
-      res.status(200).json(userData);
+      //res.status(200).json(userData);
+      res.status(200).json({
+        message: 'User created successfully!',
+      });
     });
   } catch (err) {
-    res.status(400).json(err);
+    //res.status(400).json(err);
+    res.render('message', { type: 'Error', message: `${err.message}` });
   }
 });
 
-// Update a user  - Data is in the req.body and req.session
-router.put('/', async (req, res) => {
+/*
+    Update a user  - Data is in the req.body and req.session
+    Requires authentation
+*/
+router.put('/', withAuth, async (req, res) => {
   // Update a user by its `email` value
   try {
     const user = await User.update(req.body, {
@@ -103,14 +119,21 @@ router.put('/', async (req, res) => {
       });
       return;
     }
-    res.status(200).json(user);
+    //res.status(200).json(user);
+    res.status(200).json({
+      message: 'User updated successfully!',
+    });
   } catch (err0r) {
-    res.status(500).json(error);
+    //res.status(500).json(error);
+    res.render('message', { type: 'Error', message: `${err.message}` });
   }
 });
 
-// Delete a user - Data is in the req.body and req.session
-router.delete('/:id', async (req, res) => {
+/* 
+    Delete a user - Data is in the req.body and req.session
+    Requires authentation
+*/
+router.delete('/:id', withAuth, async (req, res) => {
   // Delete a user by its `email` value
   try {
     const user = await User.destroy({
@@ -124,13 +147,19 @@ router.delete('/:id', async (req, res) => {
       });
       return;
     }
-    res.status(200).json(user);
-  } catch (error) {
-    res.status(500).json(error);
+    //res.status(200).json(user);
+    res.status(200).json({
+      message: 'Event deleted successfully!',
+    });
+  } catch (err) {
+    //res.status(500).json(error);
+    res.render('message', { type: 'Error', message: `${err.message}` });
   }
 });
 
-// Post a login request - Data is in the req.body and req.session
+/* 
+    Handles login requests - Data is in the req.body and req.session
+*/
 router.post('/login', async (req, res) => {
   try {
     const userData = await User.findOne({
@@ -165,11 +194,14 @@ router.post('/login', async (req, res) => {
       });
     });
   } catch (err) {
-    res.status(400).json(err);
+    //res.status(400).json(err);
+    res.render('message', { type: 'Error', message: `${err.message}` });
   }
 });
 
-// Post a logout request - Data is in the req.body and req.session
+/*
+    Handles logout requests - Data is in the req.body and req.session
+*/
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {

@@ -1,4 +1,4 @@
-<html lang='en' class='w-screen h-screen'>
+<html lang='en' class='w-screen h-full'>
 
   <head>
     <meta charset='UTF-8' />
@@ -30,16 +30,14 @@
           href='/dashboard'
           class='p-1 hover:bg-gray-600 font-bold text-white hover:text-white md:text-lg lg:text-lg text-xs'
         ><i class='fas fa-cubes'> Dashboard</i></a>
-        <a
+        {{#if logged_in}}
+          <a href='/' class='bg-contain p-1 hover:bg-gray-600 font-bold text-white hover:text-white md:text-lg lg:text-lg text-xs' id='logout' ><i class='fas fa-lock'> Logout</i></a>
+        {{else}}
+           <a
           href='/login'
           class='p-1 hover:bg-gray-600 font-bold text-white hover:text-white md:text-lg  lg:text-lg text-xs'
         ><i class='fas fa-lock-open'> Login</i></a>
-        <a
-          href='/'
-
-          class='bg-contain p-1 hover:bg-gray-600 font-bold text-white hover:text-white md:text-lg lg:text-lg text-xs'
-
-        ><i class='fas fa-lock'> Logout</i></a>
+        {{/if}}
       </nav>
     </header>
 
@@ -48,32 +46,29 @@
     >
       <aside
         id='aside'
-        class='bg-gray-200 col-start-1 col-span-2 md:col-start-1 md:col-span-2 flex flex-col justify-start content-center'
+        class='bg-gray-200 col-start-1 col-span-2 md:col-start-1 md:col-span-2 lg:col-start-1 lg:col-span-1 flex flex-col justify-start content-center bg-gradient-to-b from-gray-200 to-gray-300'
       >
         <div>
-          <div class="mx-0 my-2 flex flex-col justify-start content-center">
-            <h2 class='my-1 mx-0 font-bold text-sm md:text-xl text-center'>Event</h2>
-            <p class="text-xs md:text-md text-center">Birthday Party</p>
-          </div>
-          
           <div class="mx-0 my-2 flex flex-col justify-start content-center"> 
             <h2 class='my-1 mx-0 font-bold text-center text-sm  md:text-xl'>Next Event(s)</h2>
+           
               <ol class='text-xs md:tex-md'>
-                <li class="text-xs md:text-md text-center">Birthday Party</li>
-                <li class="text-xs md:text-md text-center">Wedding</li>
-                <li class="text-xs md:text-md text-center">Cook out</li>
+                {{#each nextEvents}}
+                <a href="/users/{{../user_id}}/events/{{this.id}}""><li class="text-xs md:text-md text-center">{{this.name}}</li></a>
+                {{/each}}
               </ol>
           </div>
         </div>
 
+        <div class="text-center">
           <a href='/newEvent'>
-            <button class="py-1 px-1 text-xs font-semibold md:text-lg md:py-2 md:px-2.5  rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700">Create Event</button>
+            <button class="py-0.5 px-0.5 text-xs md:text-md md:py-2 md:px-4 font-semibold rounded shadow-md text-white bg-green-500 hover:bg-green-700">Create Event</button>
           </a>
-
+        <div>
       </aside>
       <section
         id='main'
-        class='col-start-3 col-span-9 text-center flex flex-col justify-start content-center'
+        class='w-auto h-screen col-start-3 col-span-10 flex flex-col justify-start content-center'
       >
         {{{body}}}
       </section>

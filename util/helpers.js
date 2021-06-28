@@ -1,3 +1,8 @@
+/*
+    Utility functions used in handlebars layouts
+*/
+const fetch = require('node-fetch');
+
 module.exports = {
   // date format helper in MM/DD/YYYY HH:MM format
   format_date: (date) => {
@@ -27,5 +32,67 @@ module.exports = {
 
   isPrimary: (guest_type) => {
     return guest_type === 'Primary';
+  },
+
+  isAttending: (response) => {
+    if (response === 1) {
+      return 'selected';
+    } else {
+      return null;
+    }
+  },
+
+  isDeclining: (response) => {
+    if (response === 0) {
+      return 'selected';
+    } else {
+      return null;
+    }
+  },
+
+  isGuest: (guest, mainGuest) => {
+    if (guest === mainGuest) {
+      return true;
+    } else {
+      return false;
+    }
+  },
+
+  isItem: (item, mainItem) => {
+    if (item === mainItem) {
+      return true;
+    } else {
+      return false;
+    }
+  },
+
+  isSelected: (selected) => {
+    if (selected === true) {
+      return true;
+    } else {
+      return false;
+    }
+  },
+
+  ansStored: (guest, item, selected) => {
+    return true;
+  },
+
+  response: (response) => {
+    if (response == true) {
+      return 'A';
+    } else if (response == false) {
+      return 'D';
+    } else {
+      return null;
+    }
+  },
+
+  isError: (type) => {
+    return type === 'Error';
+  },
+
+  isSuccess: (type) => {
+    return type !== 'Error';
   },
 };

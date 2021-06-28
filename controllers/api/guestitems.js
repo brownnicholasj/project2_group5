@@ -1,12 +1,15 @@
-//
-// Handles CRUD operations for GuestItem model
-//
+/*
+    Handles CRUD operations for GuestItem model
+*/
 const router = require('express').Router();
 const { GuestItem } = require('../../models');
 const withAuth = require('../../util/authorize');
 
-// Post a guest/item - Data is in the req.body and req.session
-router.post('/', async (req, res) => {
+/*
+    Create a guest/item - Data is in the req.body and req.session
+    Requires authentation
+*/
+router.post('/', withAuth, async (req, res) => {
   try {
     const guestItemData = await GuestItem.create({
       ...req.body,
@@ -16,11 +19,16 @@ router.post('/', async (req, res) => {
       message: 'GuestItem created successfully!',
     });
   } catch (err) {
-    res.status(400).json({ message: `Error: ${err.message}` });
+    //res.status(400).json({ message: `Error: ${err.message}` });
+    res.render('message', { type: 'Error', message: `${err.message}` });
   }
 });
 
-router.put('/', async (req, res) => {
+/* 
+    Update a guest/item - Data is in the req.body and req.session
+    Requires authentation
+*/
+router.put('/', withAuth, async (req, res) => {
   try {
     const guestItemData = await GuestItem.update(req.body, {
       where: {
@@ -34,11 +42,15 @@ router.put('/', async (req, res) => {
       message: 'GuestItem updated successfully!',
     });
   } catch (err) {
-    res.status(400).json({ message: `Error: ${err.message}` });
+    //res.status(400).json({ message: `Error: ${err.message}` });
+    res.render('message', { type: 'Error', message: `${err.message}` });
   }
 });
 
-// Update a guest/item - Data is in the req.body and req.session
+/* 
+    Update a guest/item by id - Data is in the req.body and req.session
+    Requires authentation
+*/
 router.put('/:id', withAuth, async (req, res) => {
   try {
     const guestItemData = await GuestItem.update(req.body, {
@@ -58,11 +70,15 @@ router.put('/:id', withAuth, async (req, res) => {
       message: 'GuestItem updated successfully!',
     });
   } catch (err) {
-    res.status(500).json({ message: `Error: ${err.message}` });
+    //res.status(500).json({ message: `Error: ${err.message}` });
+    res.render('message', { type: 'Error', message: `${err.message}` });
   }
 });
 
-// Delete an GuestItem - Data is in the req.body and req.session
+/* 
+    Delete a guest/item by id - Data is in the req.body and req.session
+    Requires authentation
+*/
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const guestItemData = await GuestItem.destroy({
@@ -82,7 +98,8 @@ router.delete('/:id', withAuth, async (req, res) => {
       message: 'GuestItem deleted successfully!',
     });
   } catch (err) {
-    res.status(500).json({ message: `Error: ${err.message}` });
+    //res.status(500).json({ message: `Error: ${err.message}` });
+    res.render('message', { type: 'Error', message: `${err.message}` });
   }
 });
 

@@ -1,3 +1,6 @@
+/*
+    Performs the user disconnect from the application
+*/
 const logoutHandler = async (event) => {
   event.preventDefault();
 
@@ -14,4 +17,18 @@ const logoutHandler = async (event) => {
   }
 };
 
-document.querySelector('#logout').addEventListener('click', logoutHandler);
+/*
+    Creates event listeners
+*/
+if (document.querySelector('#logout')) {
+  document.querySelector('#logout').addEventListener('click', logoutHandler);
+}
+
+/*
+    Handles Go Back action
+*/
+const goBack = async (event) => {
+  event.preventDefault();
+
+  document.history.back();
+};

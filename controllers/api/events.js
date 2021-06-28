@@ -1,11 +1,14 @@
-//
-// Handles CRUD operations for Event model
-//
+/*
+    Handles CRUD operations for Event model
+*/
 const router = require('express').Router();
 const { Event } = require('../../models');
 const withAuth = require('../../util/authorize');
 
-// Post an event - Data is in the req.body and req.session
+/*
+    Create an event - Data is in the req.body and req.session
+    Requires authentation
+*/
 router.post('/', withAuth, async (req, res) => {
   try {
     const eventData = await Event.create({
@@ -17,14 +20,17 @@ router.post('/', withAuth, async (req, res) => {
       message: 'Event created successfully!',
     });
   } catch (err) {
-    res.status(400).json({ message: `Error: ${err.message}` });
+    //res.status(400).json({ message: `Error: ${err.message}` });
+    res.render('message', { type: 'Error', message: `${err.message}` });
   }
 });
 
-// Update an event - Data is in the req.body and req.session
+/* 
+    Update an event - Data is in the req.body and req.session
+    Requires authentation
+*/
 router.put('/:id', withAuth, async (req, res) => {
   try {
-    console.log(req.body);
     const eventData = await Event.update(req.body, {
       where: {
         id: req.params.id,
@@ -42,11 +48,15 @@ router.put('/:id', withAuth, async (req, res) => {
       message: 'Event updated successfully!',
     });
   } catch (err) {
-    res.status(500).json({ message: `Error: ${err.message}` });
+    //res.status(500).json({ message: `Error: ${err.message}` });
+    res.render('message', { type: 'Error', message: `${err.message}` });
   }
 });
 
-// Delete an event - Data is in the req.body and req.session
+/*
+    Delete an event - Data is in the req.body and req.session
+    Requires authentation
+*/
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const eventData = await Event.destroy({
@@ -66,7 +76,8 @@ router.delete('/:id', withAuth, async (req, res) => {
       message: 'Event deleted successfully!',
     });
   } catch (err) {
-    res.status(500).json({ message: `Error: ${err.message}` });
+    //res.status(500).json({ message: `Error: ${err.message}` });
+    res.render('message', { type: 'Error', message: `${err.message}` });
   }
 });
 

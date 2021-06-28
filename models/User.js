@@ -1,3 +1,7 @@
+/* 
+   User model = Defines the abstraction that represents the user table
+   Defines hooks (triggers) and validation functions
+*/
 const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');

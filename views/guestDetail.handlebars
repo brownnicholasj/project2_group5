@@ -1,76 +1,75 @@
-<div class='content-box border-4 px-4 pb-4 m-1.5 rounded w-full flex flex-col'>
-  <h2 class='col-span-full m-1.5 text-center text-4xl font-bold'>Guest Details</h2>
-  <div class='content-box grid grid-cols-15 auto-rows-auto'>
-    <div class='col-start-1 col-span-1 font-bold'>Guest Type</div>
-    <div class='col-start-2 col-span-1 font-bold'>First Name</div>
-    <div class='col-start-3 col-span-1 font-bold'>Last Name</div>
-    <div class='col-start-4 col-span-1 font-bold'>Address 1</div>
-    <div class='col-start-5 col-span-1 font-bold'>Address 2</div>
-    <div class='col-start-6 col-span-1 font-bold'>City</div>
-    <div class='col-start-7 col-span-1 font-bold'>State</div>
-    <div class='col-start-8 col-span-1 font-bold'>Zip</div>
-    <div class='col-start-9 col-span-1 font-bold'>Country</div>
-    <div class='col-start-10 col-span-1 font-bold'>Email</div>
-    <div class='col-start-11 col-span-1 font-bold'>Phone</div>
-    <div class='col-start-12 col-span-1 font-bold'>Response</div>
-    <div class='col-start-13 col-span-1 font-bold'>Guest Of</div>
+<div class='content-box w-auto h-auto grid grid-cols-4 gap-1'>
+  <h1 class='col-start-2 col-span-2 row-start-1 row-span-1 font-bold text-lg md:text-4xl text-center pb-5'>Guest Details</h1>
+  <div class='col-start-1 col-span-full row-start-2 bg-white row-span-1 grid grid-cols-12 auto-rows-auto justify-center content-center m-1.5 border-1 rounded-md shadow-md hover:shadow-xl'>
+    <div class='col-start-1 col-span-1 mx-0 my-1 font-bold text-sm md:tex-md text-center'>Guest Type</div>
+    <div class='col-start-2 col-span-1 mx-0 my-1 font-bold text-sm md:tex-md text-center'>First Name</div>
+    <div class='col-start-3 col-span-1 mx-0 my-1 font-bold text-sm md:tex-md text-center'>Last Name</div>
+    <div class='col-start-4 col-span-1 mx-0 my-1 font-bold text-sm md:tex-md text-center'>Address 1</div>
+    <div class='col-start-5 col-span-1 mx-0 my-1 font-bold text-sm md:tex-md text-center'>Address 2</div>
+    <div class='col-start-6 col-span-1 mx-0 my-1 font-bold text-sm md:tex-md text-center'>City</div>
+    <div class='col-start-7 col-span-1 mx-0 my-1 font-bold text-sm md:tex-md text-center'>State</div>
+    <div class='col-start-8 col-span-1 mx-0 my-1 font-bold text-sm md:tex-md text-center'>Zip</div>
+    <div class='col-start-9 col-span-1 mx-0 my-1 font-bold text-sm md:tex-md text-center'>Country</div>
+    <div class='col-start-10 col-span-1 mx-0 my-1 font-bold text-sm md:tex-md text-center'>Email</div>
+    <div class='col-start-11 col-span-1 mx-0 my-1 font-bold text-sm md:tex-md text-center'>Phone</div>
+    <div class='col-start-12 col-span-1 mx-0 my-1 font-bold text-sm md:tex-md text-center'>Response</div>
     {{#each guests}}
       <a
         href='/guest/{{this.id}}'
-        class='col-start-1 col-span-1'
+        class='col-start-1 col-span-1 text-center m-0 text-xs md:text-sm hover:text-blue-500'
       >{{this.guest_type}}</a>
       <a
         href='/guest/{{this.id}}'
-        class='col-start-2 col-span-1'
+        class='col-start-2 col-span-1 text-center m-0 text-xs md:text-sm hover:text-blue-500'
       >{{this.first_name}}</a>
       <a
         href='/guest/{{this.id}}'
-        class='col-start-3 col-span-1'
+        class='col-start-3 col-span-1 text-center m-0 text-xs md:text-sm hover:text-blue-500'
       >{{this.last_name}}</a>
       <a
         href='/guest/{{this.id}}'
-        class='col-start-4 col-span-1'
+        class='col-start-4 col-span-1 text-center m-0 text-xs md:text-sm hover:text-blue-500'
       >{{this.guest_addr1}}</a>
       <a
         href='/guest/{{this.id}}'
-        class='col-start-5 col-span-1'
+        class='col-start-5 col-span-1 text-center m-0 text-xs md:text-sm hover:text-blue-500'
       >{{this.guest_addr2}}</a>
       <a
         href='/guest/{{this.id}}'
-        class='col-start-6 col-span-1'
+        class='col-start-6 col-span-1 text-center m-0 text-xs md:text-sm hover:text-blue-500'
       >{{this.guest_city}}</a>
       <a
         href='/guest/{{this.id}}'
-        class='col-start-7 col-span-1'
+        class='col-start-7 col-span-1 text-center m-0 text-xs md:text-sm hover:text-blue-500'
       >{{this.guest_state}}</a>
       <a
         href='/guest/{{this.id}}'
-        class='col-start-8 col-span-1'
+        class='col-start-8 col-span-1 text-center m-0 text-xs md:text-sm hover:text-blue-500'
       >{{this.guest_zip}}</a>
       <a
         href='/guest/{{this.id}}'
-        class='col-start-9 col-span-1'
+        class='col-start-9 col-span-1 text-center m-0 text-xs md:text-sm hover:text-blue-500'
       >{{this.guest_country}}</a>
       <a
-        href='/guest/{{this.id}}'
-        class='col-start-10 col-span-1'
+        href='mailto:{{this.email}}'
+        target='_blank'
+        class='col-start-10 col-span-1 text-center m-0 text-xs md:text-sm hover:text-blue-500'
       >{{this.email}}</a>
       <a
         href='/guest/{{this.id}}'
-        class='col-start-11 col-span-1'
-      >{{this.phone}}</a>
+        class='col-start-11 col-span-1 text-center m-0 text-xs md:text-sm hover:text-blue-500'
+      >{{#if this.phone}}
+      {{this.phone}}
+      {{/if}}</a>
       <a
         href='/guest/{{this.id}}'
-        class='col-start-12 col-span-1'
-      >{{this.response}}</a>
-      <a
-        href='/guest/{{this.id}}'
-        class='col-start-13 col-span-1'
-      >{{this.inviter}}</a>
+        class='col-start-12 col-span-1 text-center m-0 text-xs md:text-sm hover:text-blue-500'
+      >{{response this.response}}
+      </a>
     {{/each}}
   </div>
   <br>
-  <div class="col-start-1 col-span-4">
+  <div class="row-start-5 row-span-1 col-start-1 col-span-4 flex justify-center content-center">
   <a
     class='shadow-md py-1 px-1 md:py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700 m-1'
     href='/users/{{user_id}}/events/{{eventId}}/guest'
@@ -78,7 +77,7 @@
   ><i class='fas fa-plus'> New Guest</i></a>
   <a
     class='shadow-md py-1 px-1 md:py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700 m-1'
-    href='/dashboard'
+    href='/users/{{user_id}}/events/{{eventId}}'
     role='button'
   ><i class='fas fa-home'> Back</i></a>
 </div>

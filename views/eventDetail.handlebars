@@ -1,168 +1,154 @@
-<div
-  class='content-box border-4 px-4 m-1.5 rounded w-10/12 grid grid-cols-1 grid-rows-5 gap-4'
->
-  <h2 class='col-span-full m-1.5 text-center text-4xl font-bold'>Event Details</h2>
-  <form
-    class='block col-span-full row-start-2 row-end-6 grid grid-cols-4 grid-rows-6'
-    id='event-form'
-  >
-    {{! FIRST ROW }}
-    <div
-      class='row-start-1 row-span-1 col-start-1 col-span-1 grid justify-items-center'
-    >
-      <label class='font-bold'>Event Name:</label>
-      <input
-        class='m-1.5 w-10/12 text-center'
-        type='text'
-        id='event-name'
-        data-id='{{event.id}}'
-        data-user_id='{{user_id}}'
-        value='{{event.name}}'
-        required
-      />
+<div class='content-box w-auto h-auto mx-2 md:mx-10 lg:mx-auto'>
+  <form class='px-1 my-3 mx-0 space-y-1'id='event-form'>
+    <div>
+      <h1 class='text-center text-md md:text-4xl font-semibold'>Event Details</h1>
+      <p class='text-center text-sm md:text-md text-gray-600'>Update or delete your event details</p>
     </div>
-    <div
-      class='row-start-1 row-span-1 col-start-2 col-span-1 grid justify-items-center'
-    >
-      <label class='font-bold'>Event Type:</label>
-      <input
-        class='m-1.5 w-10/12 text-center'
-        type='text'
-        id='event-type'
-        value='{{event.event_type}}'
-      />
+    <div class="bg-white row-start-2 row-span-1 col-start-1 col-span-2 p-4 m-1.5 border-1 rounded-md shadow-md hover:shadow-xl">
+    <div class='flex space-x-2'>
+      <div class='w-1/4 text-xs md:text-lg'>
+        <label for='event-name'>Event Name:</label>
+        <input
+          class='border border-gray-400 block py-1 px-4 w-full rounded-md focus:outline-none focus:border-blue-500'
+          type='text'
+          id='event-name'
+          data-id='{{event.id}}'
+          data-user_id='{{user_id}}'
+          value='{{event.name}}'
+          required
+        />
+        </div>
+      <div class='w-1/4 text-xs md:text-lg'>
+        <label for='event-type'>Event Type:</label>
+        <input
+          class='border border-gray-400 block py-1 px-4 w-full rounded-md focus:outline-none focus:border-blue-500'
+          type='text'
+          id='event-type'
+          value='{{event.event_type}}'
+        />
+      </div>
+      <div class='w-1/4 text-xs md:text-lg'>
+        <label for='event-date'>Event Date:</label>
+        <input
+          class='border border-gray-400 block py-1 px-4 w-full rounded-md focus:outline-none focus:border-blue-500'
+          type='text'
+          id='event-date'
+          value='{{format_date event.event_date}}'
+        />
+      </div>
+      <div class='w-1/4 text-xs md:text-lg'>
+        <label for='days-until'>Days Until Event:</label>
+        <h2 class='border border-gray-400 block py-1 px-4 w-full rounded-md focus:outline-none focus:border-blue-500'>{{days_left event.event_date}}</h2>
+      </div>
     </div>
-    <div
-      class='row-start-1 row-span-1 col-start-3 col-span-1 grid justify-items-center'
-    >
-      <label class='font-bold'>Event Date:</label>
+
+    <div class='text-xs md:text-lg'>
+      <label for='location-name'>Location Name:</label>
       <input
-        class='m-1.5 w-10/12 text-center'
-        type='text'
-        id='event-date'
-        value='{{format_date event.event_date}}'
-      />
-    </div>
-    <div
-      class='row-start-1 row-span-1 col-start-4 col-span-1 grid justify-items-center'
-    >
-      <label class='font-bold'>Days Until Event:</label>
-      <h2 class='m-1.5 w-10/12 text-center'>{{days_left event.event_date}}</h2>
-    </div>
-    {{! SECOND ROW }}
-    <div
-      class='row-start-2 row-span-1 col-start-1 col-span-4 grid justify-items-center'
-    >
-      <label class='font-bold'>Location Name:</label>
-      <input
-        class='m-1.5 w-10/12 text-center'
+        class='border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500'
         type='text'
         id='event-loc-name'
         value='{{event.location_name}}'
       />
     </div>
-    {{! THIRD ROW }}
-    <div
-      class='row-start-3 row-span-1 col-start-1 col-span-2 grid justify-items-center'
-    >
-      <label class='font-bold'>Location Address 1:</label>
+    <div class='text-xs md:text-lg'>
+      <label for='location-address1'>Location Address 1</label>
       <input
-        class='m-1.5 w-10/12 text-center'
+        class='border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500'
         type='text'
         id='event-loc-addr1'
         value='{{event.location_addr1}}'
       />
     </div>
-    <div
-      class='row-start-3 row-span-1 col-start-3 col-span-2 grid justify-items-center'
-    >
-      <label class='font-bold'>Location Address 2:</label>
+    <div class='text-xs md:text-lg'>
+      <label for='location-adress-2'>Location Address 2</label>
       <input
-        class='m-1.5 w-10/12 text-center'
+        class='border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500'
         type='text'
         id='event-loc-addr2'
         value='{{event.location_addr2}}'
       />
     </div>
-    {{! FOURTH ROW }}
-    <div
-      class='row-start-4 row-span-1 col-start-1 col-span-1 grid justify-items-center'
-    >
-      <label class='font-bold'>Location City:</label>
-      <input
-        class='m-1.5 w-10/12 text-center'
-        type='text'
-        id='event-loc-city'
-        value='{{event.location_city}}'
-      />
+
+    <div class="flex space-x-2">
+      <div class='w-1/4 text-xs md:text-lg'>
+        <label for='location-city'>Location City</label>
+        <input
+          class='border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500'
+          type='text'
+          id='event-loc-city'
+          value='{{event.location_city}}'
+        />
+      </div>
+      <div class='w-1/4 text-xs md:text-lg'>
+        <label for='location-state'>Location State</label>
+        <input
+          class='border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500'
+          type='text'
+          id='event-loc-state'
+          value='{{event.location_state}}'
+      / >
+      </div>
+      <div class='w-1/4 text-xs md:text-lg'>
+        <label for='location-zip'>Location Zip</label>
+        <input
+          class='border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500'
+          type='text'
+          id='event-loc-zip'
+          value='{{event.location_zip}}'
+        />
+      </div>
+      <div class='w-1/4 text-xs md:text-lg'>
+        <label for='location-country'>Location Country</label>
+        <input
+          class='border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500'
+          type='text'
+          id='event-loc-ctry'
+          value='{{event.location_country}}'
+        />
+      </div>
     </div>
-    <div
-      class='row-start-4 row-span-1 col-start-2 col-span-1 grid justify-items-center'
-    >
-      <label class='font-bold'>Location State:</label>
+
+    <div class='text-xs md:text-lg'>
+      <label for='event-reference'>Event Reference/links:</label>
       <input
-        class='m-1.5 w-10/12 text-center'
-        type='text'
-        id='event-loc-state'
-        value='{{event.location_state}}'
-      />
-    </div>
-    <div
-      class='row-start-4 row-span-1 col-start-3 col-span-1 grid justify-items-center'
-    >
-      <label class='font-bold'>Location Zip:</label>
-      <input
-        class='m-1.5 w-10/12 text-center'
-        type='text'
-        id='event-loc-zip'
-        value='{{event.location_zip}}'
-      />
-    </div>
-    <div
-      class='row-start-4 row-span-1 col-start-4 col-span-1 grid justify-items-center'
-    >
-      <label class='font-bold'>Location Country:</label>
-      <input
-        class='m-1.5 w-10/12 text-center'
-        type='text'
-        id='event-loc-ctry'
-        value='{{event.location_country}}'
-      />
-    </div>
-    {{! FIFTH ROW }}
-    <div
-      class='row-start-5 row-span-1 col-start-1 col-span-4 grid justify-items-center'
-    >
-      <label class='font-bold'>Event Reference/links:</label>
-      <input
-        class='m-1.5 w-10/12 text-center'
+        class='border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500'
         type='text'
         id='event-ref'
         value='{{event.event_reference}}'
       />
     </div>
-    {{! SIXTH ROW }}
-    <div class='row-start-6 row-span-1 col-start-1 col-span-4 px-4 rounded grid justify-items-stretch grid-col-3 auto-row-auto '>
-    <button
-      class='col-start-1 col-span-1 box-border border-2 px-4 rounded m-1.5 font-bold'
-      type='button'
-      value='update'
-      id='event-update-btn'
-    >Update</button>
-    <button
-      class='col-start-2 col-span-1 box-border border-2 px-4 rounded m-1.5 font-bold'
-      type='button'
-      value='delete'
-      id='event-delete-btn'
-    >Delete</button>
-    <button
-      class='col-start-3 col-span-1 box-border border-2 px-4 rounded m-1.5 font-bold'
-      type='button'
-      value='cancel'
-      id='event-cancel-btn'
-    >Cancel</button>
+    
+    <div class='flex flex-row justify-center content-center'>
+      <button
+        class='m-1 box-border border-2 py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700'
+        type='button'
+        value='update'
+        id='event-update-btn'
+      >Update</button>
+      <button
+        class='m-1 box-border border-2 py-1 px-2 md:py-2 md:px-4 font-semibold rounded-lg shadow-md text-white bg-red-500 hover:bg-red-700'
+        type='button'
+        value='delete'
+        id='event-delete-btn'
+      >Delete</button>
+      <button
+        class='m-1 box-border border-2 py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-red-500 hover:bg-red-700'
+        type='button'
+        value='cancel'
+        id='event-cancel-btn'
+      >Cancel</button>
+
+    </div>
     </div>
   </form>
 </div>
+
+    <button
+      class='invisible'
+      type='button'
+      value='create-disabled'
+      id='event-create-btn'
+    >Create</button>
 
 <script type='text/javascript' src='/js/eventDetails.js'></script>

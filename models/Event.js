@@ -1,3 +1,6 @@
+/* 
+   Event model = Defines the abstraction that represents the event table
+*/
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 

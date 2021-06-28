@@ -1,19 +1,31 @@
-<div class="w-8/12 h-auto border-4 px-4 m-1.5 rounded self-center">
-    <h2 class="m-2 text-center text-4xl font-bold">Login</h2>
-    <form class="block" id="login-form">
-      <div class="box-border w-full text-right">
-        <label for="email-login" class=" font-bold m-1.5 w-1/4">Email:</label>
-        <input class="m-1.5 w-3/4" type="text" id="email-login" />
+<div class="content-box w-auto h-auto mx-2 md:mx-10 lg:mx-auto">
+  <form id='login-form' class='px-1 my-3 mx-0 space-y-6'>
+    <div>
+        <h1 class='text-center text-md md:text-4xl font-semibold'>Login</h1>
+        <p class='text-center text-sm md:text-md text-gray-600'>Login or sign up</p>
+    </div>
+  
+   <div class="bg-white row-start-2 row-span-1 col-start-1 col-span-2 p-4 m-1.5 border-1 rounded-md shadow-md hover:shadow-xl">
+    <div class='flex flex-col'>
+      <div class='w-auto text-xs md:text-lg self-center'>
+        <label for='email'>Email</label>
+        <input class='self-center border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500' id="email-login"/>
       </div>
-      <div class="block w-full text-right">
-        <label for="password-login"class="font-bold m-1.5 w-1/4">Password:</label>
-        <input class="m-1.5 w-3/4" type="password" id="password-login" />
+      <div class='w-auto text-xs md:text-lg self-center'>
+        <label for='password'>Password</label>
+        <input class='border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500' id="password-login" type="password"/>
+        <div class='text-xs mt-2 text-center'>
+        <input type="checkbox" onclick="showPassword()"> Show Password
+        </div>
       </div>
-      <div class="block w-full text-center grid grid-cols-4 grid-rows-2">
-        <button class="row-start-1 row-span-1 col-start-2 col-span-2 box-border border-2 px-4 rounded m-1 py-1 px-1 md:py-2 px-3 m-1 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700" type="submit">Login</button>
-        <a href="/signup" class="row-start-2 row-span-1 col-start-2 col-span-2 box-border border-2 px-4 rounded m-1 py-1 px-1 md:py-2 px-3 m-1 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700" >Sign Up</a>
-      </div>
-    </form>
+    </div>
+
+    <div class='flex flex-row justify-center content-center mt-5'>
+      <button class="box-border border-2 px-4 rounded m-1 py-1 px-1 md:py-2 px-3 m-1 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700" type="submit">Login</button>
+      <a href="/signup" class="box-border border-2 px-4 rounded m-1 py-1 px-1 md:py-2 px-3 m-1 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700" >Sign Up</a>
+    </div>
+    </div>
+  </form>
 </div>
 
-  <script src="./js/login.js"></script>
+<script src="./js/login.js"></script>
