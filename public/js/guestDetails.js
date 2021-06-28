@@ -1,3 +1,7 @@
+/*
+    Reads the user input for guests data through an HTML form
+    Performs the necessary validations
+*/
 const guestFormHandler = async (event) => {
   event.preventDefault();
 
@@ -38,6 +42,7 @@ const guestFormHandler = async (event) => {
     response = false;
   }
 
+  // If button = create, post a call to the /api/guest end point
   if (createBtn === 'create') {
     if (guest_type) {
       const send = await fetch(`/api/guests`, {
@@ -61,6 +66,7 @@ const guestFormHandler = async (event) => {
         headers: { 'Content-Type': 'application/json' },
       });
 
+      // If successful, show the guest details form
       if (send.ok) {
         document.location.replace(
           `/users/${user_id}/events/${event_id}/guestDetails`
@@ -70,6 +76,7 @@ const guestFormHandler = async (event) => {
       }
     }
   } else if (guest_id && guest_type) {
+    //   Update the guest
     const send = await fetch(`/api/guests/${guest_id}`, {
       method: 'PUT',
       body: JSON.stringify({
@@ -95,6 +102,10 @@ const guestFormHandler = async (event) => {
     }
   }
 
+  /*
+      Saves the guest's item selection to the database 
+      (Checked items)
+  */
   const item_select = [...document.querySelectorAll('[id=items]')];
 
   for (let i = 0; i < item_select.length; i++) {
@@ -112,6 +123,7 @@ const guestFormHandler = async (event) => {
       var result = await isCreated.text();
     }
 
+    // If found, update the guest/item record
     if (result === 'FOUND') {
       const send = await fetch(`/api/guestitems`, {
         method: 'PUT',
@@ -124,6 +136,7 @@ const guestFormHandler = async (event) => {
         headers: { 'Content-Type': 'application/json' },
       });
 
+      // Redirect the user to enter/view the guest details
       if (send.ok) {
         document.location.replace(
           `/users/${user_id}/events/${event_id}/guestDetails`
@@ -132,6 +145,7 @@ const guestFormHandler = async (event) => {
         alert('Failed to update.');
       }
     } else {
+      // If not found, create the guest/item record
       const send = await fetch(`/api/guestitems`, {
         method: 'POST',
         body: JSON.stringify({
@@ -143,6 +157,7 @@ const guestFormHandler = async (event) => {
         headers: { 'Content-Type': 'application/json' },
       });
 
+      // Redirect the user to enter/view the guest details
       if (send.ok) {
         document.location.replace(
           `/users/${user_id}/events/${event_id}/guestDetails`
@@ -154,6 +169,9 @@ const guestFormHandler = async (event) => {
   }
 };
 
+/*
+   Reads the user input and performs the guest deletion 
+*/
 const guestDeleteHandler = async (event) => {
   event.preventDefault();
   const user_id = document
@@ -186,6 +204,9 @@ const guestDeleteHandler = async (event) => {
   }
 };
 
+/*
+   Returns the control to the calling sub-application
+*/
 const guestCancelHandler = async (event) => {
   event.preventDefault();
 
@@ -196,6 +217,9 @@ const createBtn = document
   .querySelector('#guest-create-btn')
   .getAttribute('value');
 
+/*
+    Creates event listeners
+*/
 document
   .querySelector('#guest-update-btn')
   .addEventListener('click', guestFormHandler);
