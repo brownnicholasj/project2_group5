@@ -81,7 +81,7 @@ router.get('/:id', async (req, res) => {
     Create a user - Data is in the req.body and req.session
     Requires authentation
 */
-router.post('/', withAuth, async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const userData = await User.create(req.body);
 
