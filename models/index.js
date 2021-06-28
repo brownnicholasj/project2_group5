@@ -1,3 +1,6 @@
+/* 
+   Model relationships - Defines an abstraction representing the relationships between the application tables
+*/
 const User = require('./User');
 const Item = require('./Item');
 const Guest = require('./Guest');

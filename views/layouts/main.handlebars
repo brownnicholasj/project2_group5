@@ -49,18 +49,11 @@
         class='bg-gray-200 col-start-1 col-span-2 md:col-start-1 md:col-span-2 lg:col-start-1 lg:col-span-1 flex flex-col justify-start content-center bg-gradient-to-b from-gray-200 to-gray-300'
       >
         <div>
-
-          <div class="mx-0 my-2 flex flex-col justify-start content-center">
-            <h2 class='my-1 mx-0 font-bold text-sm md:text-xl lg:text-2xl text-center'>Event</h2>
-
-            <p class="text-xs md:text-md text-center">Birthday Party</p>
-          </div>
-          
           <div class="mx-0 my-2 flex flex-col justify-start content-center"> 
             <h2 class='my-1 mx-0 font-bold text-center text-sm  md:text-xl'>Next Event(s)</h2>
            
               <ol class='text-xs md:tex-md'>
-                {{#each events}}
+                {{#each nextEvents}}
                 <a href="/users/{{../user_id}}/events/{{this.id}}""><li class="text-xs md:text-md text-center">{{this.name}}</li></a>
                 {{/each}}
               </ol>

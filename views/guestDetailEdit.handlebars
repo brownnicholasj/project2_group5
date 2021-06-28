@@ -134,18 +134,18 @@
           value='{{guests.response}}'
         >
           <option value='none'>No Response</option>
-          <option value='true'>Accepted</option>
-          <option value='false'>Declined</option>
+          <option value='true' {{isAttending guests.response}}>Accepted</option>
+          <option value='false'{{isDeclining guests.response}}>Declined</option>
         </select>
       </div>
       <div class='w-1/2 text-xs md:text-lg'>
-        <label for='sub-guest'>Sub Guest Of:</label>
-        {{#if guests.inviter}}
-        <input
+         <label for='sub-guest'>Sub Guest Of:</label>
+         {{#if (isPrimary guests.guest_type)}}
+          <input
           class='border border-gray-400 block py-1 px-4 w-full rounded-md focus:outline-none focus:border-blue-500'
           type='text'
           id='guest-inviter'
-          value='{{guests.inviter}}'>
+          value=''>
         {{else}}
         <select
           class='border border-gray-400 block py-1 px-4 w-full rounded-md focus:outline-none focus:border-blue-500'
@@ -164,7 +164,17 @@
     <div class='row-start-14 row-span-1 col-start-1 col-span-2 px-4 rounded flex flex-wrap justify-center items-center'>
       <label for='item-selection' class='font-bold text-xs md:text-lg'>Item Selection:</label>
       {{#each itemList}}
-        <input class='m-2 border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500' type="checkbox" id="items" name="{{this.id}}" value="{{this.name}}"><label class='m-1' for="{{this.id}}">{{this.name}}</label>
+        <input class='m-2 border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500' type="checkbox" id="items" name="{{this.id}}" value="{{this.name}}"
+              {{#each this.guestitems}}
+         {{#if (isGuest guest_id ../../guests.id)}}
+          {{#if (isItem item_id ../id)}}
+          {{#if selected}}
+          checked
+          {{/if}}
+          {{/if}}
+         {{/if}}
+        {{/each}}
+        ><label class='m-1' for="{{this.id}}">{{this.name}}</label>
       {{/each}}
     </div>
 

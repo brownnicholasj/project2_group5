@@ -1,3 +1,6 @@
+/* 
+   Item model = Defines the abstraction that represents the item table
+*/
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 

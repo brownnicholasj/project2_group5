@@ -1,9 +1,13 @@
-//
-// Handles CRUD operations for Item model
-//
+/*
+    Handles CRUD operations for Item model
+*/
 const router = require('express').Router();
 const { Item } = require('../../models');
 
+/*
+    Create an item - Data is in the req.body and req.session
+    Requires authentation
+*/
 router.post('/', async (req, res) => {
   try {
     const itemData = await Item.create(req.body);
@@ -18,6 +22,10 @@ router.post('/', async (req, res) => {
   }
 });
 
+/* 
+    Update an item - Data is in the req.body and req.session
+    Requires authentation
+*/
 router.put('/:id', async (req, res) => {
   try {
     const item = await Item.update(req.body, {
@@ -42,6 +50,10 @@ router.put('/:id', async (req, res) => {
   }
 });
 
+/* 
+    Delete an item - Data is in the req.body and req.session
+    Requires authentationn
+*/
 router.delete('/:id', async (req, res) => {
   try {
     const item = await Item.destroy({

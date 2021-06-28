@@ -1,3 +1,6 @@
+/* 
+   Guest/Item model = Defines the abstraction that represents the guestitem table
+*/
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
