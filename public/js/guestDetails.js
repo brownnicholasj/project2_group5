@@ -170,6 +170,7 @@ const guestFormHandler = async (event) => {
       }
     }
   }
+}
 };
 
 /*
