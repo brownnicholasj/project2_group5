@@ -1,11 +1,14 @@
-//
-// Handles CRUD operations for Event model
-//
+/*
+    Handles CRUD operations for Event model
+*/
 const router = require('express').Router();
 const { Event } = require('../../models');
 const withAuth = require('../../util/authorize');
 
-// Post an event - Data is in the req.body and req.session
+/*
+    Create an event - Data is in the req.body and req.session
+    Requires authentation
+*/
 router.post('/', withAuth, async (req, res) => {
   try {
     const eventData = await Event.create({
@@ -22,7 +25,10 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
-// Update an event - Data is in the req.body and req.session
+/* 
+    Update an event - Data is in the req.body and req.session
+    Requires authentation
+*/
 router.put('/:id', withAuth, async (req, res) => {
   try {
     const eventData = await Event.update(req.body, {
@@ -47,7 +53,10 @@ router.put('/:id', withAuth, async (req, res) => {
   }
 });
 
-// Delete an event - Data is in the req.body and req.session
+/*
+    Delete an event - Data is in the req.body and req.session
+    Requires authentation
+*/
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const eventData = await Event.destroy({

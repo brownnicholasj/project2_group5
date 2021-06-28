@@ -1,3 +1,7 @@
+/*
+    Reads the user input for events data through an HTML form
+    Performs the necessary validations
+*/
 const eventFormHandler = async (event) => {
   event.preventDefault();
 
@@ -27,6 +31,7 @@ const eventFormHandler = async (event) => {
   const location_ctry = document.querySelector('#event-loc-ctry').value.trim();
   const event_reference = document.querySelector('#event-ref').value.trim();
 
+  // If button = create, post a call to the /api/events end point
   if (createBtn === 'create') {
     const response = await fetch(`/api/events`, {
       method: 'POST',
@@ -47,12 +52,14 @@ const eventFormHandler = async (event) => {
       headers: { 'Content-Type': 'application/json' },
     });
 
+    // If successful, render the dashboard
     if (response.ok) {
       document.location.replace(`/dashboard`);
     } else {
       alert('Failed to update.');
     }
   } else if (event_date && event_id && location_name && name) {
+    //   Update the event
     const response = await fetch(`/api/events/${event_id}`, {
       method: 'PUT',
       body: JSON.stringify({
@@ -79,6 +86,9 @@ const eventFormHandler = async (event) => {
   }
 };
 
+/*
+   Reads the user input and performs the event deletion 
+*/
 const eventDeleteHandler = async (event) => {
   event.preventDefault();
   const event_id = document
@@ -100,6 +110,9 @@ const eventDeleteHandler = async (event) => {
   }
 };
 
+/*
+   Returns the control to the calling sub-application
+*/
 const eventCancelHandler = async (event) => {
   event.preventDefault();
 
@@ -110,6 +123,9 @@ const createBtn = document
   .querySelector('#event-create-btn')
   .getAttribute('value');
 
+/*
+    Creates event listeners
+*/
 document
   .querySelector('#event-update-btn')
   .addEventListener('click', eventFormHandler);

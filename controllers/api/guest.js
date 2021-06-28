@@ -1,10 +1,14 @@
-//
-// Handles CRUD operations for Guest model
-//
+/*
+    Handles CRUD operations for Guest model
+*/
 const router = require('express').Router();
 const { Guest } = require('../../models');
-
-router.post('/', async (req, res) => {
+const withAuth = require('../../util/authorize');
+/*
+    Create a guest - Data is in the req.body and req.session
+    Requires authentation
+*/
+router.post('/', withAuth, async (req, res) => {
   try {
     const guestData = await Guest.create(req.body);
 
@@ -18,7 +22,11 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.put('/:id', async (req, res) => {
+/* 
+    Update a guest - Data is in the req.body and req.session
+    Requires authentation
+*/
+router.put('/:id', withAuth, async (req, res) => {
   try {
     const guest = await Guest.update(req.body, {
       where: {
@@ -42,7 +50,11 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-router.delete('/:id', async (req, res) => {
+/* 
+    Update a guest - Data is in the req.body and req.session
+    Requires authentation
+*/
+router.delete('/:id', withAuth, async (req, res) => {
   try {
     const guest = await Guest.destroy({
       where: {
