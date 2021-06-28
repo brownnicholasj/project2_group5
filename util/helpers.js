@@ -1,3 +1,6 @@
+/*
+    Utility functions used in handlebars layouts
+*/
 const fetch = require('node-fetch');
 
 module.exports = {
