@@ -66,7 +66,7 @@ const guestFormHandler = async (event) => {
         headers: { 'Content-Type': 'application/json' },
       });
 
-      // If successful, show the guest details form
+      // Redirect the user to enter/view the guest details
       if (send.ok) {
         document.location.replace(
           `/users/${user_id}/events/${event_id}/guestDetails`
@@ -195,6 +195,7 @@ const guestDeleteHandler = async (event) => {
     headers: { 'Content-Type': 'application/json' },
   });
 
+  // Redirect the user to enter/view the guest details
   if (send.ok) {
     document.location.replace(
       `/users/${user_id}/events/${event_id}/guestDetails`
