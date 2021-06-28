@@ -34,7 +34,9 @@ const itemFormHandler = async (event) => {
     });
 
     if (send.ok) {
-      document.location.replace(`/users/${user_id}/events/${event_id}`);
+      document.location.replace(
+        `/users/${user_id}/events/${event_id}/itemDetails`
+      );
     } else {
       alert('Failed to create.');
     }
@@ -52,7 +54,9 @@ const itemFormHandler = async (event) => {
     });
 
     if (send.ok) {
-      document.location.replace(`/users/${user_id}/events/${event_id}`);
+      document.location.replace(
+        `/users/${user_id}/events/${event_id}/itemDetails`
+      );
     } else {
       alert('Failed to update.');
     }
@@ -82,7 +86,9 @@ const itemDeleteHandler = async (event) => {
   });
 
   if (send.ok) {
-    document.location.replace(`/users/${user_id}/events/${event_id}`);
+    document.location.replace(
+      `/users/${user_id}/events/${event_id}/itemDetails`
+    );
   } else {
     alert('Failed to delete.');
   }
