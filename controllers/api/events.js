@@ -25,7 +25,6 @@ router.post('/', withAuth, async (req, res) => {
 // Update an event - Data is in the req.body and req.session
 router.put('/:id', withAuth, async (req, res) => {
   try {
-    console.log(req.body);
     const eventData = await Event.update(req.body, {
       where: {
         id: req.params.id,

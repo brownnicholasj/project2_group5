@@ -1,7 +1,7 @@
-<div class='content-box p-0 m-2 w-auto h-auto grid grid-cols-4 gap-1'>
-  <h1 class='font-bold text-lg md:text-4xl col-span-full text-center'>{{event.name}}</h1>
+<div class='content-box p-0 m-2 w-auto h-auto grid grid-cols-5 gap-1'>
+  <h1 class='font-bold text-lg md:text-4xl col-span-4 text-center'>{{event.name}}</h1>
 
- <div class="bg-white row-start-2 row-span-1 col-start-1 col-span-2  m-1.5 border-1 rounded-md shadow-md hover:shadow-xl">
+ <div class="bg-white row-start-2 row-span-1 col-start-1 col-span-2 m-1.5 border-1 rounded-md shadow-md hover:shadow-xl">
     <a href='/users/{{user_id}}/events/{{event.id}}/eventDetails'>
       <h2 class='text-center mx-0 my-1 font-bold text-sm md:text-lg'>Event Date</h2>
       <p class='text-center m-0 text-xs md:text-sm'>{{format_date event.event_date}}</p>

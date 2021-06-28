@@ -106,6 +106,10 @@ const eventCancelHandler = async (event) => {
   window.history.back();
 };
 
+const createBtn = document
+  .querySelector('#event-create-btn')
+  .getAttribute('value');
+
 document
   .querySelector('#event-update-btn')
   .addEventListener('click', eventFormHandler);
@@ -121,7 +125,3 @@ document
 document
   .querySelector('#event-create-btn')
   .addEventListener('click', eventFormHandler);
-
-const createBtn = document
-  .querySelector('#event-create-btn')
-  .getAttribute('value');

@@ -19,6 +19,15 @@ const loginFormHandler = async (event) => {
   }
 };
 
+const showPassword = () => {
+  var checkbox = document.getElementById('password-login');
+  if (checkbox.type === 'password') {
+    checkbox.type = 'text';
+  } else {
+    checkbox.type = 'password';
+  }
+};
+
 document
   .querySelector('#login-form')
   .addEventListener('submit', loginFormHandler);
