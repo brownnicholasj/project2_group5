@@ -36,7 +36,7 @@
            <a
           href='/login'
           class='p-1 hover:bg-gray-600 font-bold text-white hover:text-white md:text-lg  lg:text-lg text-xs'
-        ><i class='fas fa-lock-open'> Login</i></a>
+        ><i class="fas fa-sign-in-alt"> Login</i></a>
         {{/if}}
       </nav>
     </header>
@@ -54,7 +54,7 @@
            
               <ol class='text-xs md:tex-md'>
                 {{#each nextEvents}}
-                <a href="/users/{{../user_id}}/events/{{this.id}}""><li class="text-xs md:text-md text-center">{{this.name}}</li></a>
+                <a href="/users/{{../user_id}}/events/{{this.id}}"><li class="text-xs md:text-md text-center">{{this.name}}</li></a>
                 {{/each}}
               </ol>
           </div>
@@ -62,7 +62,7 @@
 
         <div class="text-center">
           <a href='/newEvent'>
-            <button class="py-0.5 px-0.5 text-xs md:text-md md:py-2 md:px-4 font-semibold rounded shadow-md text-white bg-green-500 hover:bg-green-700">Create Event</button>
+            <button class="py-0.5 px-0.5 text-xs md:text-md md:py-2 md:px-4 font-semibold rounded shadow-md text-white bg-green-500 hover:bg-green-700"><i class="fa fa-plus" aria-hidden="true"> Create Event</i></button>
           </a>
         <div>
       </aside>

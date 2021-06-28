@@ -1,18 +1,46 @@
 <div class='content-box w-auto h-auto grid grid-cols-4 gap-1'>
-  <h1 class='col-start-2 col-span-2 row-start-1 row-span-1 font-bold text-lg md:text-4xl text-center pb-5'>Guest Details</h1>
-  <div class='col-start-1 col-span-full row-start-2 bg-white row-span-1 grid grid-cols-12 auto-rows-auto justify-center content-center m-1.5 border-1 rounded-md shadow-md hover:shadow-xl'>
-    <div class='col-start-1 col-span-1 mx-0 my-1 font-bold text-sm md:tex-md text-center'>Guest Type</div>
-    <div class='col-start-2 col-span-1 mx-0 my-1 font-bold text-sm md:tex-md text-center'>First Name</div>
-    <div class='col-start-3 col-span-1 mx-0 my-1 font-bold text-sm md:tex-md text-center'>Last Name</div>
-    <div class='col-start-4 col-span-1 mx-0 my-1 font-bold text-sm md:tex-md text-center'>Address 1</div>
-    <div class='col-start-5 col-span-1 mx-0 my-1 font-bold text-sm md:tex-md text-center'>Address 2</div>
-    <div class='col-start-6 col-span-1 mx-0 my-1 font-bold text-sm md:tex-md text-center'>City</div>
-    <div class='col-start-7 col-span-1 mx-0 my-1 font-bold text-sm md:tex-md text-center'>State</div>
-    <div class='col-start-8 col-span-1 mx-0 my-1 font-bold text-sm md:tex-md text-center'>Zip</div>
-    <div class='col-start-9 col-span-1 mx-0 my-1 font-bold text-sm md:tex-md text-center'>Country</div>
-    <div class='col-start-10 col-span-1 mx-0 my-1 font-bold text-sm md:tex-md text-center'>Email</div>
-    <div class='col-start-11 col-span-1 mx-0 my-1 font-bold text-sm md:tex-md text-center'>Phone</div>
-    <div class='col-start-12 col-span-1 mx-0 my-1 font-bold text-sm md:tex-md text-center'>Response</div>
+  <h1
+    class='col-start-2 col-span-2 row-start-1 row-span-1 font-bold text-lg md:text-4xl text-center pb-5'
+  >Guest Details</h1>
+  <div
+    class='col-start-1 col-span-full row-start-2 bg-white row-span-1 grid grid-cols-12 auto-rows-auto justify-center content-center m-1.5 border-1 rounded-md shadow-md hover:shadow-xl'
+  >
+    <div
+      class='col-start-1 col-span-1 mx-0 my-1 font-bold text-sm md:tex-md text-center'
+    >Guest Type</div>
+    <div
+      class='col-start-2 col-span-1 mx-0 my-1 font-bold text-sm md:tex-md text-center'
+    >First Name</div>
+    <div
+      class='col-start-3 col-span-1 mx-0 my-1 font-bold text-sm md:tex-md text-center'
+    >Last Name</div>
+    <div
+      class='col-start-4 col-span-1 mx-0 my-1 font-bold text-sm md:tex-md text-center'
+    >Address 1</div>
+    <div
+      class='col-start-5 col-span-1 mx-0 my-1 font-bold text-sm md:tex-md text-center'
+    >Address 2</div>
+    <div
+      class='col-start-6 col-span-1 mx-0 my-1 font-bold text-sm md:tex-md text-center'
+    >City</div>
+    <div
+      class='col-start-7 col-span-1 mx-0 my-1 font-bold text-sm md:tex-md text-center'
+    >State</div>
+    <div
+      class='col-start-8 col-span-1 mx-0 my-1 font-bold text-sm md:tex-md text-center'
+    >Zip</div>
+    <div
+      class='col-start-9 col-span-1 mx-0 my-1 font-bold text-sm md:tex-md text-center'
+    >Country</div>
+    <div
+      class='col-start-10 col-span-1 mx-0 my-1 font-bold text-sm md:tex-md text-center'
+    >Email</div>
+    <div
+      class='col-start-11 col-span-1 mx-0 my-1 font-bold text-sm md:tex-md text-center'
+    >Phone</div>
+    <div
+      class='col-start-12 col-span-1 mx-0 my-1 font-bold text-sm md:tex-md text-center'
+    >Response</div>
     {{#each guests}}
       <a
         href='/guest/{{this.id}}'
@@ -59,8 +87,8 @@
         href='/guest/{{this.id}}'
         class='col-start-11 col-span-1 text-center m-0 text-xs md:text-sm hover:text-blue-500'
       >{{#if this.phone}}
-      {{this.phone}}
-      {{/if}}</a>
+          {{this.phone}}
+        {{/if}}</a>
       <a
         href='/guest/{{this.id}}'
         class='col-start-12 col-span-1 text-center m-0 text-xs md:text-sm hover:text-blue-500'
@@ -68,17 +96,19 @@
       </a>
     {{/each}}
   </div>
-  <br>
-  <div class="row-start-5 row-span-1 col-start-1 col-span-4 flex justify-center content-center">
-  <a
-    class='shadow-md py-1 px-1 md:py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700 m-1'
-    href='/users/{{user_id}}/events/{{eventId}}/guest'
-    role='button'
-  ><i class='fas fa-plus'> New Guest</i></a>
-  <a
-    class='shadow-md py-1 px-1 md:py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700 m-1'
-    href='/users/{{user_id}}/events/{{eventId}}'
-    role='button'
-  ><i class='fas fa-home'> Back</i></a>
-</div>
+  <br />
+  <div
+    class='row-start-5 row-span-1 col-start-1 col-span-4 flex justify-center content-center'
+  >
+    <a
+      class='shadow-md py-1 px-1 md:py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700 m-1'
+      href='/users/{{user_id}}/events/{{eventId}}/guest'
+      role='button'
+    ><i class='fas fa-plus'> New Guest</i></a>
+    <a
+      class='shadow-md py-1 px-1 md:py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700 m-1'
+      href='/users/{{user_id}}/events/{{eventId}}'
+      role='button'
+    ><i class='fas fa-home'> Back</i></a>
+  </div>
 </div>

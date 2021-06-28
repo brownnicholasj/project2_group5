@@ -14,9 +14,10 @@
           data-id=''
           data-user_id='{{user_id}}'
           data-event_id='{{eventId}}'
-          value=''>
-            <option value='Primary'>Primary</option>
-            <option value='Secondary'>Secondary</option>
+          value=''
+        >
+          <option value='Primary'>Primary</option>
+          <option value='Secondary'>Secondary</option>
         </select>
       </div>
       <div class='w-1/3 text-xs md:text-lg'>
@@ -25,7 +26,8 @@
           class='border border-gray-400 block py-1 px-4 w-full rounded-md focus:outline-none focus:border-blue-500'
           type='text'
           id='guest-first-name'
-          value=''>
+          value=''
+        />
       </div>
       <div class='w-1/3 text-xs md:text-lg'>
         <label for='guest-last-name'>Guest Last Name</label>
@@ -33,25 +35,28 @@
           class='border border-gray-400 block py-1 px-4 w-full rounded-md focus:outline-none focus:border-blue-500'
           type='text'
           id='guest-last-name'
-          value=''>
+          value=''
+        />
       </div>
     </div>
 
     <div class='text-xs md:text-lg'>
       <label for='guest-address-1'>Guest Address 1</label>
-        <input
-          class='border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500'
-          type='text'
-          id='guest-addr1'
-          value=''>
+      <input
+        class='border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500'
+        type='text'
+        id='guest-addr1'
+        value=''
+      />
     </div>
     <div class='text-xs md:text-lg'>
       <label for='guest-address-2'>Guest Address 2</label>
-        <input
-          class='border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500'
-          type='text'
-          id='guest-addr2'
-          value=''>
+      <input
+        class='border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500'
+        type='text'
+        id='guest-addr2'
+        value=''
+      />
     </div>
 
     <div class='flex space-x-4 text-xs md:text-lg'>
@@ -61,7 +66,8 @@
           class='border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500'
           type='text'
           id='guest-city'
-          value=''>
+          value=''
+        />
       </div>
       <div class='w-1/4 text-xs md:text-lg'>
         <label for='guest-state'>Guest State</label>
@@ -69,7 +75,8 @@
           class='border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500'
           type='text'
           id='guest-state'
-          value=''>
+          value=''
+        />
       </div>
       <div class='w-1/4 text-xs md:text-lg'>
         <label for='guest-zip'>Guest Zip</label>
@@ -77,7 +84,8 @@
           class='border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500'
           type='text'
           id='guest-zip'
-          value=''>
+          value=''
+        />
       </div>
       <div class='w-1/4 text-xs md:text-lg'>
         <label for='guest-country'>Guest Country</label>
@@ -85,8 +93,9 @@
           class='border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500'
           type='text'
           id='guest-ctry'
-          value=''>
-        </div>
+          value=''
+        />
+      </div>
     </div>
 
     <div class='flex space-x-4 text-xs md:text-lg'>
@@ -96,7 +105,8 @@
           class='border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500'
           type='text'
           id='guest-email'
-          value=''>
+          value=''
+        />
       </div>
       <div class='w-1/2 text-xs md:text-lg'>
         <label for='guest-phone'>Guest Phone:</label>
@@ -104,7 +114,8 @@
           class='border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500'
           type='text'
           id='guest-phone'
-          value=''>
+          value=''
+        />
       </div>
     </div>
 
@@ -115,10 +126,11 @@
           class='border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500'
           type='text'
           id='guest-response'
-          value=''>
-            <option value='none'>No Response</option>
-            <option value='true'>Accepted</option>
-            <option value='false'>Declined</option>
+          value=''
+        >
+          <option value='none'>No Response</option>
+          <option value='true'>Accepted</option>
+          <option value='false'>Declined</option>
         </select>
       </div>
       <div class='w-1/2 text-xs md:text-lg'>
@@ -127,45 +139,41 @@
           class='border border-gray-400 block py-1 px-4 w-full rounded focus:outline-none focus:border-teal-500'
           type='text'
           id='guest-inviter'
-          value=''>
-            <option value=''></option>  
-            {{#each guests}}
-            <option value='{{this.id}}'>{{this.first_name}} {{this.last_name}}</option>
-            {{/each}}
+          value=''
+        >
+          <option value=''></option>
+          {{#each guests}}
+            <option value='{{this.id}}'>{{this.first_name}}
+              {{this.last_name}}</option>
+          {{/each}}
         </select>
       </div>
     </div>
 
     <div class='flex flex-row justify-center content-center mt-5'>
-    <button
-      class='box-border border-2 px-4 rounded m-1 py-1 px-1 md:py-2 px-3 m-1 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700'
-      type='button'
-      value='create'
-      id='guest-create-btn'
-    >Create</button>
-    <button
-      class='box-border border-2 px-4 rounded m-1 py-1 px-1 md:py-2 px-3 m-1 font-semibold rounded-lg shadow-md text-white bg-red-500 hover:bg-red-700'
-      type='button'
-      value='cancel'
-      id='guest-cancel-btn'
-    >Cancel</button>
- 
+      <button
+        class='box-border border-2 px-4 rounded m-1 py-1 px-1 md:py-2 px-3 m-1 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700'
+        type='button'
+        value='create'
+        id='guest-create-btn'
+      ><i class='fa fa-plus' aria-hidden='true'> Create</i></button>
+      <button
+        class='box-border border-2 px-4 rounded m-1 py-1 px-1 md:py-2 px-3 m-1 font-semibold rounded-lg shadow-md text-white bg-red-500 hover:bg-red-700'
+        type='button'
+        value='cancel'
+        id='guest-cancel-btn'
+      ><i class='far fa-window-close'> Cancel</i></button>
+
     </div>
   </form>
 
 </div>
 
-<button
-      class='invisible'
-      type='button'
-      value='delete'
-      id='guest-delete-btn'
-    >Delete</button>
-            <button
-      class='invisible'
-      type='button'
-      value='update'
-      id='guest-update-btn'
-    >Update</button>
+<button class='invisible' type='button' value='delete' id='guest-delete-btn'><i
+    class='far fa-trash-alt'
+  > Delete</i></button>
+<button class='invisible' type='button' value='update' id='guest-update-btn'><i
+    class='fas fa-edit'
+  > Update</i></button>
 
 <script type='text/javascript' src='/js/guestDetails.js'></script>
