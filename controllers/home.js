@@ -224,7 +224,6 @@ router.get('/users/:user_id/events/:id', async (req, res) => {
       }
     }
 
-    // console.log(itemDetails);
     res.render('events', {
       event,
       logged_in: req.session.logged_in,
@@ -596,7 +595,7 @@ router.get('/users/:user_id/events/:id/itemDetails', async (req, res) => {
         nextEvents.push(events[i]);
       }
     }
-    // console.log(itemCost);
+
     res.render('itemDetail', {
       items,
       logged_in: req.session.logged_in,
@@ -902,7 +901,7 @@ router.get('/guestitem/:eventid/:guestid/:itemid', async (req, res) => {
       raw: true,
     });
 
-    if (entryFound[0].id) {
+    if (entryFound[0]) {
       res.status(200).send('FOUND');
     } else {
       res.status(200).send('UNFOUND');

@@ -90,11 +90,7 @@ const guestFormHandler = async (event) => {
       headers: { 'Content-Type': 'application/json' },
     });
 
-    if (send.ok) {
-      document.location.replace(
-        `/users/${user_id}/events/${event_id}/guestDetails`
-      );
-    } else {
+    if (!send.ok) {
       alert('Failed to update.');
     }
   }
@@ -110,17 +106,12 @@ const guestFormHandler = async (event) => {
     var item_id = item_select[i].getAttribute('name');
 
     const isCreated = await fetch(
-      `/guestitem/${event_id}/${guest_id}/${item_id}`,
-      {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-      }
+      `/guestitem/${event_id}/${guest_id}/${item_id}`
     );
     if (isCreated.ok) {
       var result = await isCreated.text();
     }
 
-    console.log(result);
     if (result === 'FOUND') {
       const send = await fetch(`/api/guestitems`, {
         method: 'PUT',
@@ -153,7 +144,9 @@ const guestFormHandler = async (event) => {
       });
 
       if (send.ok) {
-        document.location.replace(`/users/${user_id}/events/${event_id}`);
+        document.location.replace(
+          `/users/${user_id}/events/${event_id}/guestDetails`
+        );
       } else {
         alert('Failed to update.');
       }
