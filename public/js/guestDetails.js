@@ -97,77 +97,59 @@ const guestFormHandler = async (event) => {
       headers: { 'Content-Type': 'application/json' },
     });
 
+    /*
+      Saves the guest's item selection to the database 
+      (Checked items)
+  */
+    const item_select = [...document.querySelectorAll('[id=items]')];
+
+    for (let i = 0; i < item_select.length; i++) {
+      if (item_select[i].checked) {
+        var selected = true;
+      } else {
+        var selected = false;
+      }
+      var item_id = item_select[i].getAttribute('name');
+
+      const isCreated = await fetch(
+        `/guestitem/${event_id}/${guest_id}/${item_id}`
+      );
+      if (isCreated.ok) {
+        var result = await isCreated.text();
+      }
+
+      // If found, update the guest/item record
+      if (result === 'FOUND') {
+        const send = await fetch(`/api/guestitems`, {
+          method: 'PUT',
+          body: JSON.stringify({
+            event_id,
+            selected,
+            guest_id,
+            item_id,
+          }),
+          headers: { 'Content-Type': 'application/json' },
+        });
+      } else {
+        // If not found, create the guest/item record
+        const send = await fetch(`/api/guestitems`, {
+          method: 'POST',
+          body: JSON.stringify({
+            event_id,
+            selected,
+            guest_id,
+            item_id,
+          }),
+          headers: { 'Content-Type': 'application/json' },
+        });
+      }
+    }
     if (send.ok) {
       document.location.replace(
         `/users/${user_id}/events/${event_id}/guestDetails`
       );
     } else {
       alert('Failed to update.');
-  }
-
-  /*
-      Saves the guest's item selection to the database 
-      (Checked items)
-  */
-  const item_select = [...document.querySelectorAll('[id=items]')];
-
-  for (let i = 0; i < item_select.length; i++) {
-    if (item_select[i].checked) {
-      var selected = true;
-    } else {
-      var selected = false;
-    }
-    var item_id = item_select[i].getAttribute('name');
-
-    const isCreated = await fetch(
-      `/guestitem/${event_id}/${guest_id}/${item_id}`
-    );
-    if (isCreated.ok) {
-      var result = await isCreated.text();
-    }
-
-    // If found, update the guest/item record
-    if (result === 'FOUND') {
-      const send = await fetch(`/api/guestitems`, {
-        method: 'PUT',
-        body: JSON.stringify({
-          event_id,
-          selected,
-          guest_id,
-          item_id,
-        }),
-        headers: { 'Content-Type': 'application/json' },
-      });
-
-      // Redirect the user to enter/view the guest details
-      if (send.ok) {
-        document.location.replace(
-          `/users/${user_id}/events/${event_id}/guestDetails`
-        );
-      } else {
-        alert('Failed to update.');
-      }
-    } else {
-      // If not found, create the guest/item record
-      const send = await fetch(`/api/guestitems`, {
-        method: 'POST',
-        body: JSON.stringify({
-          event_id,
-          selected,
-          guest_id,
-          item_id,
-        }),
-        headers: { 'Content-Type': 'application/json' },
-      });
-
-      // Redirect the user to enter/view the guest details
-      if (send.ok) {
-        document.location.replace(
-          `/users/${user_id}/events/${event_id}/guestDetails`
-        );
-      } else {
-        alert('Failed to update.');
-      }
     }
   }
 }
