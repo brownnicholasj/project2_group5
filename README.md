@@ -1,7 +1,12 @@
 # The Event Planning 
 ![License: ISC](https://img.shields.io/badge/License-ISC-blue)
 
-![Screenshot](dashboard.png)
+![Screenshot](./public/images/dashboard.png)
+![Screenshot](./public/images/login.png)
+![Screenshot](./public/images/signup.png)
+![Screenshot](./public/images/creatingevent.png)
+![Screenshot](./public/images/listofevents.png)
+![Screenshot](./public/images/event.png)
 
   # Description
    This application is a Event planner that helps organize data when planning an event. This app helps the user keep track of the guests and items associted with the planned event.The technology used for this application are: node, javascript, mysql2 (npm),express (npm), dotenv (npm), sequelize (npm), and nodemon 
